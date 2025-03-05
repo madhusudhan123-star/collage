@@ -1,0 +1,13 @@
+
+The video used in the header is currently a placeholder from a free stock video service.
+
+To use your own video:
+1. Replace the video source URL in Home.jsx with your own video file
+2. Recommended to have multiple formats (mp4, webm) for better browser compatibility
+3. Optimize the video for web (compress it to reduce file size)
+4. Keep the video duration short (10-30 seconds) and set to loop for better performance
+
+Example video formats:
+- HD quality: 1920x1080
+- Format: MP4 with H.264 codec
+- File size: <10MB for optimal performance

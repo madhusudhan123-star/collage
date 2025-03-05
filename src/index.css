@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.font{
+    font-family: 'PP Mori';
+    src: url('./assets/font/CanelaDeckFamily/CanelaDeck-Medium-Trial.otf') format('opentype');
+}
