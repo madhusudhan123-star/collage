@@ -111,14 +111,6 @@ const ImageSlider = () => {
                             alt={currentImage.alt}
                             className="w-full h-full object-cover"
                         />
-                        {/* Gradient overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
-
-                        {/* Caption */}
-                        <div className="absolute bottom-0 left-0 right-0 p-8 text-white z-10 transform transition-transform duration-700 ease-out translate-y-0">
-                            <h3 className="text-3xl font-bold mb-2">{currentImage.title}</h3>
-                            <p className="text-lg">{currentImage.description}</p>
-                        </div>
                     </div>
                 </div>
 
@@ -179,8 +171,8 @@ const ImageSlider = () => {
                         key={index}
                         onClick={() => goToSlide(index)}
                         className={`mx-2 transition-all duration-300 ${index === currentIndex
-                                ? `w-8 h-2 bg-[${primary}]`
-                                : `w-2 h-2 bg-gray-400 hover:bg-[${secondary}]`
+                            ? `w-8 h-2 bg-[${primary}]`
+                            : `w-2 h-2 bg-gray-400 hover:bg-[${secondary}]`
                             } rounded-full`}
                         aria-label={`Go to slide ${index + 1}`}
                     />

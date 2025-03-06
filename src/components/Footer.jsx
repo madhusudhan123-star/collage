@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { mainNavigation } from '../data/navigationData';
 
 const Footer = () => {
     const [email, setEmail] = useState('');
@@ -14,40 +15,6 @@ const Footer = () => {
         darkPrimary: '#8B1425', // Darker shade of primary
         lightSecondary: '#FFF0A3', // Lighter shade of gold
     };
-
-    // Quick links sections
-    const quickLinks = [
-        {
-            title: "Programs",
-            links: [
-                { name: "CA Foundation", url: "/courses/ca-foundation" },
-                { name: "CA Inter", url: "/courses/ca-inter" },
-                { name: "CA Final", url: "/courses/ca-final" },
-                { name: "CMA", url: "/courses/cma" },
-                { name: "ACCA", url: "/courses/acca" },
-            ]
-        },
-        {
-            title: "About Us",
-            links: [
-                { name: "Our Story", url: "/about" },
-                { name: "Faculty", url: "/faculty" },
-                { name: "Testimonials", url: "/testimonials" },
-                { name: "Campus", url: "/campus" },
-                { name: "Careers", url: "/careers" },
-            ]
-        },
-        {
-            title: "Student Resources",
-            links: [
-                { name: "Study Materials", url: "/resources/study-materials" },
-                { name: "Library", url: "/resources/library" },
-                { name: "Exam Calendar", url: "/resources/exam-calendar" },
-                { name: "Downloads", url: "/resources/downloads" },
-                { name: "Blog", url: "/blog" },
-            ]
-        }
-    ];
 
     // Social media links
     const socialLinks = [
@@ -89,6 +56,71 @@ const Footer = () => {
         }
     };
 
+    // Enhanced renderNavLinks function to handle all nested structures
+    const renderNavLinks = (navItem) => {
+        if (navItem.dropdownItems && navItem.dropdownItems.length > 0) {
+            return (
+                <div key={navItem.id} className="mb-8">
+                    <h3 className="text-lg font-bold mb-6">{navItem.label}</h3>
+                    <ul className="space-y-3">
+                        {navItem.dropdownItems.map((item) => {
+                            // Check if this item has its own dropdown items
+                            if (item.dropdownItems && item.dropdownItems.length > 0) {
+                                return (
+                                    <li key={item.id} className="mb-4">
+                                        <Link
+                                            to={item.path}
+                                            className="text-yellow-300 font-semibold hover:underline transition-colors duration-200 flex items-center"
+                                        >
+                                            {item.label}
+                                        </Link>
+
+                                        <ul className="pl-4 mt-2 space-y-2 border-l-2 border-white/20">
+                                            {item.dropdownItems.map(subItem => (
+                                                <li key={subItem.id}>
+                                                    <Link
+                                                        to={subItem.path}
+                                                        className="text-sm hover:text-yellow-300 transition-colors duration-200 flex items-center"
+                                                    >
+                                                        <svg className="w-2 h-2 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                                            <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                                                        </svg>
+                                                        {subItem.label}
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </li>
+                                );
+                            }
+
+                            // Regular dropdown item without nested items
+                            return (
+                                <li key={item.id}>
+                                    <Link
+                                        to={item.path}
+                                        className="hover:text-yellow-300 transition-colors duration-200 flex items-center"
+                                    >
+                                        <svg className="w-3 h-3 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                                        </svg>
+                                        {item.label}
+                                    </Link>
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </div>
+            );
+        }
+        return null;
+    };
+
+    // Filter navigation items with any dropdown items for the footer menu section
+    const footerNavItems = mainNavigation.filter(item =>
+        item.dropdownItems && item.dropdownItems.length > 0
+    );
+
     return (
         <footer style={{ backgroundColor: theme.primary }} className="text-white">
             {/* Main Footer Content */}
@@ -98,6 +130,23 @@ const Footer = () => {
                     <div>
                         <h3 className="text-2xl font-bold mb-6">Institute of Science & Nutrition</h3>
                         <p className="mb-4">Empowering future leaders through quality education and comprehensive training in professional accounting and finance courses.</p>
+
+                        {/* Navigation Quick Links - Non-dropdown items */}
+                        <div className="mt-6">
+                            <h4 className="text-md font-semibold mb-3">Quick Links</h4>
+                            <div className="flex flex-wrap gap-3">
+                                {mainNavigation.filter(item => !item.hasDropdown).map(item => (
+                                    <Link
+                                        key={item.id}
+                                        to={item.path}
+                                        className="text-sm bg-white/10 px-3 py-1 rounded hover:bg-white/20 transition-colors duration-300"
+                                    >
+                                        {item.label}
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+
                         <div className="flex items-center space-x-4 mt-6">
                             {socialLinks.map((link, index) => (
                                 <a
@@ -115,27 +164,8 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    {/* Quick Links */}
-                    {quickLinks.map((section, index) => (
-                        <div key={index}>
-                            <h3 className="text-lg font-bold mb-6">{section.title}</h3>
-                            <ul className="space-y-3">
-                                {section.links.map((link, linkIndex) => (
-                                    <li key={linkIndex}>
-                                        <Link
-                                            to={link.url}
-                                            className="hover:text-yellow-300 transition-colors duration-200 flex items-center"
-                                        >
-                                            <svg className="w-3 h-3 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                                <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                                            </svg>
-                                            {link.name}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
+                    {/* Navigation Links from mainNavigation */}
+                    {footerNavItems.map(navItem => renderNavLinks(navItem))}
 
                     {/* Newsletter Subscription */}
                     <div>

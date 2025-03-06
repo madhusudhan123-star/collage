@@ -158,30 +158,21 @@ const Home = () => {
 
     return (
         <div>
-            {/* Hero Section with Video Background */}
+            {/* Hero Section with Image Slider Background */}
             <section className="relative h-screen w-full overflow-hidden">
-                {/* Video Background */}
+                {/* Image Slider Background */}
                 <div className="absolute inset-0">
-                    <video
-                        className="h-full w-full object-cover"
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                    >
-                        <source src="https://assets.mixkit.co/videos/preview/mixkit-students-walking-in-a-university-campus-4519-large.mp4" type="video/mp4" />
-                        Your browser does not support the video tag.
-                    </video>
-                    {/* Overlay to darken video and make text more readable */}
-                    <div className="absolute inset-0 bg-black opacity-60"></div>
+                    <ImageSlider autoPlay={true} infiniteLoop={true} showArrows={false} showStatus={false} showThumbs={false} />
+                    {/* Overlay to darken images and make text more readable */}
+                    <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
                 </div>
 
                 {/* Hero Content */}
-                <div className="relative h-full flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 z-10">
-                    <h1 className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-white`}>
+                <div className="relative h-full flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 z-20">
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-white">
                         <span>Welcome to Lakshya Edu</span>
                         <br />
-                        <span className={`mt-3 block text-[${theme.primary}] `}>Your Path to Success!</span>
+                        <span className="mt-3 block text-[#A6192E]">Your Path to Success!</span>
                     </h1>
 
                     <p className="text-xl sm:text-2xl md:text-3xl text-white mb-10 max-w-3xl">
@@ -191,13 +182,13 @@ const Home = () => {
                     <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
                         <Link
                             to="/courses"
-                            className={`px-8 py-3 bg-[${theme.primary}] text-white font-semibold rounded-md shadow-lg hover:bg-[${theme.darkPrimary}] transform hover:-translate-y-1 transition-all duration-300`}
+                            className="px-8 py-3 bg-[#A6192E] text-white font-semibold rounded-md shadow-lg hover:bg-[#8B1425] transform hover:-translate-y-1 transition-all duration-300"
                         >
                             Explore Courses
                         </Link>
                         <Link
                             to="/about"
-                            className={`px-8 py-3 bg-white text-[${theme.primary}] font-semibold rounded-md shadow-lg hover:bg-[${theme.accent}] transform hover:-translate-y-1 transition-all duration-300`}
+                            className="px-8 py-3 bg-white text-[#A6192E] font-semibold rounded-md shadow-lg hover:bg-[#FAF3E0] transform hover:-translate-y-1 transition-all duration-300"
                         >
                             Learn More
                         </Link>
@@ -206,7 +197,7 @@ const Home = () => {
                     {/* Scrolling indicator */}
                     <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
                         <svg
-                            className={`w-10 h-10 text-[${theme.secondary}]`}
+                            className="w-10 h-10 text-[#FFD700]"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -221,77 +212,154 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            {/* Second Section with content */}
-            <section>
-                <div className='h-screen'>
-                    <div className='flex flex-col justify-center items-center'>
-                        <h1 className={`font mt-10 font-bold text-9xl text-center text-[${theme.primary}]`}>At Lakshya Edu</h1>
-                        <p className={`font mt-10 font-thin text-xl w-1/2 text-center text-[${theme.primary}]`}>We believe education is more than just learning—it's about building a future. With expert faculty, a student-first approach, and career-focused programs, we help you achieve your dreams in Commerce, Accounting, and Management.</p>
-                    </div>
-                    <div className='flex justify-around mt-10 items-center'>
-                        <div>
-                            <h1
-                                className="font mt-10 font-bold text-9xl text-center text-transparent"
-                                style={{ WebkitTextStroke: `2px ${theme.primary}` }}
-                            >
-                                Our
-                                <a href="#" className={`text-[${theme.primary}]`}> students</a>
-                            </h1>
-                        </div>
-                        <div className={`w-1/3 font-thin text-[${theme.primary}] text-xl`}>
-                            <p>Whether you aim to become a Chartered Accountant (CA), a Certified Management Accountant (CMA), or an ACCA professional, or</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            {/* Third Section with side-by-side content and image */}
-            <section className={`py-20 bg-[${theme.background}]`}>
-                <div className="container mx-auto px-4">
-                    <div className="flex flex-col lg:flex-row items-center gap-12">
-                        {/* Content side */}
-                        <div className="w-full lg:w-1/2 order-2 lg:order-1">
-                            <h2 className={`text-4xl font-bold mb-6 text-[${theme.primary}]`}>
-                                CA (Chartered Accountant) Coaching
-                            </h2>
-                            {/* <p className="text-lg mb-8 text-gray-700">
-                                At Institute of Science & Nutrition, we believe in providing a
-                                comprehensive educational experience that goes beyond textbooks.
-                                Our approach combines rigorous academic training with practical
-                                skills development, ensuring our students are well-prepared for
-                                their professional journeys.
-                            </p> */}
-                            <ul className="space-y-3 mb-8">
-                                <li className="flex items-start">
-                                    <span className={`mr-2 text-[${theme.secondary}] font-bold text-xl`}>✓</span>
-                                    <span>CA Foundation, CA Intermediate & CA Final</span>
-                                </li>
-                                <li className="flex items-start">
-                                    <span className={`mr-2 text-[${theme.secondary}] font-bold text-xl`}>✓</span>
-                                    <span>Covers Accounting, Taxation, Law, Costing & Auditing</span>
-                                </li>
-                                <li className="flex items-start">
-                                    <span className={`mr-2 text-[${theme.secondary}] font-bold text-xl`}>✓</span>
-                                    <span>Exam-oriented coaching with conceptual clarity</span>
-                                </li>
-                            </ul>
-                            <Link
-                                to="/about"
-                                className={`inline-block px-6 py-3 rounded-md bg-[${theme.primary}] text-white font-medium hover:bg-[${theme.darkPrimary}] transition duration-300`}
-                            >
-                                Learn More About Our Approach
-                            </Link>
-                        </div>
 
-                        {/* Image side */}
-                        <div className="w-full lg:w-1/2 order-1 lg:order-2">
+            {/* Third Section with Course Cards */}
+            <section className="py-20 bg-[#ECECEC]">
+                <div className="container mx-auto px-4">
+                    <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-[#A6192E]">
+                        Explore Our <span className="relative inline-block">
+                            Courses
+                            <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FFD700] rounded-full"></span>
+                        </span>
+                    </h2>
+
+                    {/* Course Cards */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        {/* CA Course Card */}
+                        <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute top-0 left-0 w-full h-1 bg-[#A6192E] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                             <div className="relative">
-                                <div className={`absolute -top-6 -left-6 w-64 h-64 rounded-full bg-[${theme.secondary}] opacity-20 z-0`}></div>
                                 <img
                                     src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                                    alt="Students in classroom"
-                                    className="w-full h-auto rounded-lg shadow-xl relative z-10"
+                                    alt="CA Course"
+                                    className="w-full h-52 object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
                                 />
-                                <div className={`absolute -bottom-6 -right-6 w-48 h-48 rounded-full bg-[${theme.primary}] opacity-20 z-0`}></div>
+                                <div className="absolute top-4 right-4 px-3 py-1 bg-[#FFD700] text-gray-800 font-medium rounded-full shadow-lg flex items-center gap-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                    </svg>
+                                    <span>Popular</span>
+                                </div>
+                                <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black/70 to-transparent"></div>
+                            </div>
+                            <div className="p-6 relative">
+                                <div className="absolute -top-12 left-6 w-12 h-12 rounded-full bg-[#A6192E] shadow-lg flex items-center justify-center text-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                    </svg>
+                                </div>
+                                <h3 className="text-2xl font-bold mb-3 mt-2 text-[#A6192E]">CA (Chartered Accountant)</h3>
+                                <ul className="mb-6 space-y-3">
+                                    <li className="flex items-start">
+                                        <span className="flex-shrink-0 mr-2 text-[#FFD700] text-lg">✓</span>
+                                        <span className="text-gray-700">Foundation, Intermediate & Final Levels</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="flex-shrink-0 mr-2 text-[#FFD700] text-lg">✓</span>
+                                        <span className="text-gray-700">Accounting, Taxation, Auditing & Law</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="flex-shrink-0 mr-2 text-[#FFD700] text-lg">✓</span>
+                                        <span className="text-gray-700">Expert Faculty with Industry Experience</span>
+                                    </li>
+                                </ul>
+                                <Link
+                                    to="/courses/ca"
+                                    className="relative overflow-hidden w-full block text-center px-4 py-3 rounded-lg font-semibold bg-[#A6192E] text-white shadow-md hover:shadow-xl transition-all duration-300 before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-white/20 before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300 before:origin-left"
+                                >
+                                    <span className="relative text-black z-10">Explore CA Program</span>
+                                </Link>
+                            </div>
+                        </div>
+
+                        {/* CMA Course Card */}
+                        <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute top-0 left-0 w-full h-1 bg-[#A6192E] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                            <div className="relative">
+                                <img
+                                    src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                                    alt="CMA Course"
+                                    className="w-full h-52 object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
+                                />
+                                <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black/70 to-transparent"></div>
+                            </div>
+                            <div className="p-6 relative">
+                                <div className="absolute -top-12 left-6 w-12 h-12 rounded-full bg-[#A6192E] shadow-lg flex items-center justify-center text-white">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <h3 className="text-2xl font-bold mb-3 mt-2 text-[#A6192E]">CMA (Cost & Management)</h3>
+                                <ul className="mb-6 space-y-3">
+                                    <li className="flex items-start">
+                                        <span className="flex-shrink-0 mr-2 text-[#FFD700] text-lg">✓</span>
+                                        <span className="text-gray-700">Foundation, Intermediate & Final Levels</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="flex-shrink-0 mr-2 text-[#FFD700] text-lg">✓</span>
+                                        <span className="text-gray-700">Costing, Financial Management & Strategy</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="flex-shrink-0 mr-2 text-[#FFD700] text-lg">✓</span>
+                                        <span className="text-gray-700">Real-time Practice & Mock Exams</span>
+                                    </li>
+                                </ul>
+                                <Link
+                                    to="/courses/cma"
+                                    className="relative overflow-hidden w-full block text-center px-4 py-3 rounded-lg font-semibold bg-[#A6192E] text-white shadow-md hover:shadow-xl transition-all duration-300 before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-white/20 before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300 before:origin-left"
+                                >
+                                    <span className="relative text-black z-10">Explore CMA Program</span>
+                                </Link>
+                            </div>
+                        </div>
+
+                        {/* ACCA Course Card */}
+                        <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div className="absolute top-0 left-0 w-full h-1 bg-[#FFD700] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                            <div className="relative">
+                                <img
+                                    src="https://images.unsplash.com/photo-1560439513-74b037a25d84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                                    alt="ACCA Course"
+                                    className="w-full h-52 object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
+                                />
+                                <div className="absolute top-4 right-4 px-3 py-1 bg-[#A6192E] text-white font-medium rounded-full shadow-lg flex items-center gap-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h.5A2.5 2.5 0 0020 5.5v-1.5" />
+                                    </svg>
+                                    <span>International</span>
+                                </div>
+                                <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black/70 to-transparent"></div>
+                            </div>
+                            <div className="p-6 relative">
+                                <div className="absolute -top-12 left-6 w-12 h-12 rounded-full bg-[#FFD700] shadow-lg flex items-center justify-center text-gray-800">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                                    </svg>
+                                </div>
+                                <h3 className="text-2xl font-bold mb-3 mt-2 text-[#A6192E]">ACCA Certification</h3>
+                                <ul className="mb-6 space-y-3">
+                                    <li className="flex items-start">
+                                        <span className="flex-shrink-0 mr-2 text-[#FFD700] text-lg">✓</span>
+                                        <span className="text-gray-700">F1 to F9 & Strategic Level Papers</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="flex-shrink-0 mr-2 text-[#FFD700] text-lg">✓</span>
+                                        <span className="text-gray-700">Globally Recognized Qualification</span>
+                                    </li>
+                                    <li className="flex items-start">
+                                        <span className="flex-shrink-0 mr-2 text-[#FFD700] text-lg">✓</span>
+                                        <span className="text-gray-700">International Career Opportunities</span>
+                                    </li>
+                                </ul>
+                                <Link
+                                    to="/courses/acca"
+                                    className="relative overflow-hidden w-full block text-center px-4 py-3 rounded-lg font-semibold bg-[#A6192E] text-white shadow-md hover:shadow-xl transition-all duration-300 before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-white/20 before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300 before:origin-left"
+                                >
+                                    <span className="relative text-black z-10">Explore ACCA Program</span>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -300,9 +368,9 @@ const Home = () => {
                     <div className="flex justify-center mt-16">
                         <button
                             onClick={toggleMoreContent}
-                            className={`group flex items-center gap-2 px-8 py-4 rounded-full bg-white border-2 border-[${theme.primary}] text-[${theme.primary}] font-bold shadow-lg hover:bg-[${theme.primary}] hover:text-white transition-all duration-300`}
+                            className="group flex items-center gap-2 px-8 py-4 rounded-full bg-white border-2 border-[#A6192E] text-[#A6192E] font-bold shadow-lg hover:bg-[#A6192E] hover:text-white transition-all duration-300"
                         >
-                            <span>{showMoreContent ? 'Show Less' : 'Discover More About Our Programs'}</span>
+                            <span>{showMoreContent ? 'Show Less' : 'Discover More Programs'}</span>
                             <svg
                                 className={`w-5 h-5 transition-transform duration-300 ${showMoreContent ? 'transform rotate-180' : ''}`}
                                 fill="none"
@@ -315,217 +383,90 @@ const Home = () => {
                     </div>
 
                     {/* Expandable Content Area */}
-                    <div className={`mt-8 transition-all font duration-500 ease-in-out overflow-hidden ${showMoreContent ? 'max-h-[400vh] opacity-100' : 'max-h-0 opacity-0'}`}>
-                        <div className="p-6 bg-white rounded-xl shadow-lg">
-                            <div className="flex flex-col lg:flex-row gap-10 items-center">
-                                {/* Content Side */}
-                                <div className="lg:w-1/2">
-                                    <h3 className={`text-3xl font-bold mb-4 text-[${theme.primary}]`}>CMA (Cost & Management Accounting) Coaching</h3>
-                                    {/* <p className="text-gray-700 mb-6">
-                                        Our teaching methodology is rooted in the belief that effective learning comes from
-                                        a combination of theoretical knowledge and practical application. We employ a multi-faceted
-                                        approach that caters to different learning styles.
-                                    </p> */}
-                                    <div className="space-y-4">
-                                        <div className="flex items-start">
-                                            <div className={`flex-shrink-0 w-10 h-10 rounded-full bg-[${theme.secondary}] flex items-center justify-center mr-4`}>
-                                                <span className="font-bold">1</span>
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-lg">CMA Foundation, Intermediate & Final</h4>
-                                                {/* <p className="text-gray-600">Engage in dynamic classroom sessions that encourage discussion and critical thinking.</p> */}
-                                            </div>
-                                        </div>
-                                        <div className="flex items-start">
-                                            <div className={`flex-shrink-0 w-10 h-10 rounded-full bg-[${theme.secondary}] flex items-center justify-center mr-4`}>
-                                                <span className="font-bold">2</span>
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-lg">Focused training on Costing, Financial Management, and Law</h4>
-                                                {/* <p className="text-gray-600">Learn through real-world cases that bridge theory and practical application.</p> */}
-                                            </div>
-                                        </div>
-                                        <div className="flex items-start">
-                                            <div className={`flex-shrink-0 w-10 h-10 rounded-full bg-[${theme.secondary}] flex items-center justify-center mr-4`}>
-                                                <span className="font-bold">3</span>
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-lg">Mock exams and real-time practice sessions</h4>
-                                                {/* <p className="text-gray-600">Receive guidance from industry professionals who provide insights beyond the curriculum.</p> */}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Image Side */}
-                                <div className="lg:w-1/2">
-                                    <div className="relative">
+                    <div className={`mt-12 transition-all duration-500 ease-in-out overflow-hidden ${showMoreContent ? 'max-h-[400vh] opacity-100' : 'max-h-0 opacity-0'}`}>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            {/* BBA & B.Com Card */}
+                            <div className="group relative bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300">
+                                <div className="flex flex-col md:flex-row h-full">
+                                    <div className="md:w-2/5 relative overflow-hidden">
                                         <img
                                             src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
-                                            alt="Students collaborating"
-                                            className="w-full h-auto rounded-lg shadow-md"
+                                            alt="BBA & B.Com"
+                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                         />
+                                        <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent md:bg-gradient-to-t md:from-black/50 md:to-transparent"></div>
+                                        <div className="absolute bottom-4 left-4 md:bottom-auto md:left-auto md:top-4 md:right-4 px-3 py-1 bg-[#FFD700] text-gray-800 font-medium rounded-full shadow-lg">
+                                            Undergraduate
+                                        </div>
+                                    </div>
+                                    <div className="md:w-3/5 p-6 flex flex-col justify-center relative">
+                                        <div className="hidden md:block absolute -left-6 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-[#A6192E] rotate-45"></div>
+                                        <div className="relative">
+                                            <h3 className="text-2xl font-bold mb-4 text-[#A6192E]">BBA & B.Com Coaching</h3>
+                                            <div className="space-y-3 mb-6">
+                                                <p className="flex items-start">
+                                                    <span className="flex-shrink-0 mr-2 text-[#FFD700] font-bold text-xl">✓</span>
+                                                    <span className="text-gray-700">Business Management, Economics & Accounting</span>
+                                                </p>
+                                                <p className="flex items-start">
+                                                    <span className="flex-shrink-0 mr-2 text-[#FFD700] font-bold text-xl">✓</span>
+                                                    <span className="text-gray-700">University exam-focused coaching</span>
+                                                </p>
+                                                <p className="flex items-start">
+                                                    <span className="flex-shrink-0 mr-2 text-[#FFD700] font-bold text-xl">✓</span>
+                                                    <span className="text-gray-700">Real-world business applications</span>
+                                                </p>
+                                            </div>
+                                            <Link
+                                                to="/courses/bba-bcom"
+                                                className="inline-block px-6 py-3 rounded-lg bg-[#A6192E] text-white font-medium hover:bg-[#8B1425] transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
+                                            >
+                                                Learn More
+                                            </Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                        </div>
-                        <div className="p-6 bg-white rounded-xl shadow-lg">
-                            <div className="flex flex-col lg:flex-row gap-10 items-center">
-                                {/* Image Side */}
-                                <div className="lg:w-1/2">
-                                    <div className="relative">
+                            {/* Intermediate Card */}
+                            <div className="group relative bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300">
+                                <div className="flex flex-col md:flex-row h-full">
+                                    <div className="md:w-2/5 relative overflow-hidden">
                                         <img
-                                            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
-                                            alt="Students collaborating"
-                                            className="w-full h-auto rounded-lg shadow-md"
+                                            src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80"
+                                            alt="Intermediate Coaching"
+                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                         />
-                                    </div>
-                                </div>
-
-                                {/* Content Side */}
-                                <div className="lg:w-1/2">
-                                    <h3 className={`text-3xl font-bold mb-4 text-[${theme.primary}]`}>ACCA (Association of Chartered Certified Accountants)</h3>
-                                    {/* <p className="text-gray-700 mb-6">
-                                        Our teaching methodology is rooted in the belief that effective learning comes from
-                                        a combination of theoretical knowledge and practical application. We employ a multi-faceted
-                                        approach that caters to different learning styles.
-                                    </p> */}
-                                    <div className="space-y-4">
-                                        <div className="flex items-start">
-                                            <div className={`flex-shrink-0 w-10 h-10 rounded-full bg-[${theme.secondary}] flex items-center justify-center mr-4`}>
-                                                <span className="font-bold">1</span>
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-lg">F1 to F9 & Strategic Level Papers</h4>
-                                                {/* <p className="text-gray-600">Engage in dynamic classroom sessions that encourage discussion and critical thinking.</p> */}
-                                            </div>
-                                        </div>
-                                        <div className="flex items-start">
-                                            <div className={`flex-shrink-0 w-10 h-10 rounded-full bg-[${theme.secondary}] flex items-center justify-center mr-4`}>
-                                                <span className="font-bold">2</span>
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-lg">Internationally recognized qualification with practical application</h4>
-                                                {/* <p className="text-gray-600">Learn through real-world cases that bridge theory and practical application.</p> */}
-                                            </div>
-                                        </div>
-                                        <div className="flex items-start">
-                                            <div className={`flex-shrink-0 w-10 h-10 rounded-full bg-[${theme.secondary}] flex items-center justify-center mr-4`}>
-                                                <span className="font-bold">3</span>
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-lg">Global career opportunities in finance and accounting</h4>
-                                                {/* <p className="text-gray-600">Receive guidance from industry professionals who provide insights beyond the curriculum.</p> */}
-                                            </div>
+                                        <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent md:bg-gradient-to-t md:from-black/50 md:to-transparent"></div>
+                                        <div className="absolute bottom-4 left-4 md:bottom-auto md:left-auto md:top-4 md:right-4 px-3 py-1 bg-[#A6192E] text-white font-medium rounded-full shadow-lg">
+                                            Foundation
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="p-6 bg-white rounded-xl shadow-lg">
-                            <div className="flex flex-col lg:flex-row gap-10 items-center">
-                                {/* Content Side */}
-                                <div className="lg:w-1/2">
-                                    <h3 className={`text-3xl font-bold mb-4 text-[${theme.primary}]`}>BBA & B.Com Coaching</h3>
-                                    {/* <p className="text-gray-700 mb-6">
-                                        Our teaching methodology is rooted in the belief that effective learning comes from
-                                        a combination of theoretical knowledge and practical application. We employ a multi-faceted
-                                        approach that caters to different learning styles.
-                                    </p> */}
-                                    <div className="space-y-4">
-                                        <div className="flex items-start">
-                                            <div className={`flex-shrink-0 w-10 h-10 rounded-full bg-[${theme.secondary}] flex items-center justify-center mr-4`}>
-                                                <span className="font-bold">1</span>
+                                    <div className="md:w-3/5 p-6 flex flex-col justify-center relative">
+                                        <div className="hidden md:block absolute -left-6 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-[#A6192E] rotate-45"></div>
+                                        <div className="relative">
+                                            <h3 className="text-2xl font-bold mb-4 text-[#A6192E]">Intermediate (MEC & CEC)</h3>
+                                            <div className="space-y-3 mb-6">
+                                                <p className="flex items-start">
+                                                    <span className="flex-shrink-0 mr-2 text-[#FFD700] font-bold text-xl">✓</span>
+                                                    <span className="text-gray-700">Foundation courses for commerce & business</span>
+                                                </p>
+                                                <p className="flex items-start">
+                                                    <span className="flex-shrink-0 mr-2 text-[#FFD700] font-bold text-xl">✓</span>
+                                                    <span className="text-gray-700">Board exam preparation with in-depth training</span>
+                                                </p>
+                                                <p className="flex items-start">
+                                                    <span className="flex-shrink-0 mr-2 text-[#FFD700] font-bold text-xl">✓</span>
+                                                    <span className="text-gray-700">Subject expertise & conceptual clarity</span>
+                                                </p>
                                             </div>
-                                            <div>
-                                                <h4 className="font-bold text-lg">Covers Business Management, Economics, and Accounting</h4>
-                                                {/* <p className="text-gray-600">Engage in dynamic classroom sessions that encourage discussion and critical thinking.</p> */}
-                                            </div>
+                                            <Link
+                                                to="/courses/intermediate"
+                                                className="inline-block px-6 py-3 rounded-lg bg-[#A6192E] text-white font-medium hover:bg-[#8B1425] transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
+                                            >
+                                                Learn More
+                                            </Link>
                                         </div>
-                                        <div className="flex items-start">
-                                            <div className={`flex-shrink-0 w-10 h-10 rounded-full bg-[${theme.secondary}] flex items-center justify-center mr-4`}>
-                                                <span className="font-bold">2</span>
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-lg">University exam-focused coaching with real-world applications</h4>
-                                                {/* <p className="text-gray-600">Learn through real-world cases that bridge theory and practical application.</p> */}
-                                            </div>
-                                        </div>
-                                        {/* <div className="flex items-start">
-                                            <div className={`flex-shrink-0 w-10 h-10 rounded-full bg-[${theme.secondary}] flex items-center justify-center mr-4`}>
-                                                <span className="font-bold">3</span>
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-lg">Mentorship Programs</h4>
-                                                <p className="text-gray-600">Receive guidance from industry professionals who provide insights beyond the curriculum.</p>
-                                            </div>
-                                        </div> */}
-                                    </div>
-                                </div>
-
-                                {/* Image Side */}
-                                <div className="lg:w-1/2">
-                                    <div className="relative">
-                                        <img
-                                            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
-                                            alt="Students collaborating"
-                                            className="w-full h-auto rounded-lg shadow-md"
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div className="p-6 bg-white rounded-xl shadow-lg">
-                            <div className="flex flex-col lg:flex-row gap-10 items-center">
-                                {/* Image Side */}
-                                <div className="lg:w-1/2">
-                                    <div className="relative">
-                                        <img
-                                            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
-                                            alt="Students collaborating"
-                                            className="w-full h-auto rounded-lg shadow-md"
-                                        />
-                                    </div>
-                                </div>
-
-                                {/* Content Side */}
-                                <div className="lg:w-1/2">
-                                    <h3 className={`text-3xl font-bold mb-4 text-[${theme.primary}]`}>Intermediate (MEC & CEC) Coaching</h3>
-                                    {/* <p className="text-gray-700 mb-6">
-                                        Our teaching methodology is rooted in the belief that effective learning comes from
-                                        a combination of theoretical knowledge and practical application. We employ a multi-faceted
-                                        approach that caters to different learning styles.
-                                    </p> */}
-                                    <div className="space-y-4">
-                                        <div className="flex items-start">
-                                            <div className={`flex-shrink-0 w-10 h-10 rounded-full bg-[${theme.secondary}] flex items-center justify-center mr-4`}>
-                                                <span className="font-bold">1</span>
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-lg">Foundation courses for commerce & business students</h4>
-                                                {/* <p className="text-gray-600">Engage in dynamic classroom sessions that encourage discussion and critical thinking.</p> */}
-                                            </div>
-                                        </div>
-                                        <div className="flex items-start">
-                                            <div className={`flex-shrink-0 w-10 h-10 rounded-full bg-[${theme.secondary}] flex items-center justify-center mr-4`}>
-                                                <span className="font-bold">2</span>
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-lg">Board exam preparation with in-depth subject training</h4>
-                                                {/* <p className="text-gray-600">Learn through real-world cases that bridge theory and practical application.</p> */}
-                                            </div>
-                                        </div>
-                                        {/* <div className="flex items-start">
-                                            <div className={`flex-shrink-0 w-10 h-10 rounded-full bg-[${theme.secondary}] flex items-center justify-center mr-4`}>
-                                                <span className="font-bold">3</span>
-                                            </div>
-                                            <div>
-                                                <h4 className="font-bold text-lg">Mentorship Programs</h4>
-                                                <p className="text-gray-600">Receive guidance from industry professionals who provide insights beyond the curriculum.</p>
-                                            </div>
-                                        </div> */}
                                     </div>
                                 </div>
                             </div>
@@ -535,9 +476,9 @@ const Home = () => {
             </section>
 
             {/* Fourth Section with video slider */}
-            <section className={`py-20 bg-[${theme.accent}]`}>
+            <section className="py-20 bg-[#FAF3E0]">
                 <div className="container mx-auto px-4">
-                    <h2 className={`text-4xl font-bold text-center mb-12 text-[${theme.primary}]`}>
+                    <h2 className="text-4xl font-bold text-center mb-12 text-[#A6192E]">
                         Experience Our Institute
                     </h2>
 
@@ -549,7 +490,7 @@ const Home = () => {
                                 <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-10">
                                     <button
                                         onClick={handlePlayPause}
-                                        className={`w-20 h-20 rounded-full bg-[${theme.primary}] bg-opacity-90 flex items-center justify-center transform transition-transform hover:scale-110`}
+                                        className="w-20 h-20 rounded-full bg-[#A6192E] bg-opacity-90 flex items-center justify-center transform transition-transform hover:scale-110"
                                     >
                                         <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
                                             <path d="M8 5v14l11-7z" />
@@ -576,14 +517,13 @@ const Home = () => {
                                 )}
                             </div>
                         </div>
-
                         {/* Video Thumbnails */}
                         <div className="w-full lg:w-2/5">
                             <div className="flex flex-col space-y-4">
                                 {videoData.map((video, index) => (
                                     <div
                                         key={video.id}
-                                        className={`flex cursor-pointer rounded-lg overflow-hidden shadow-md ${currentVideo === index ? `ring-2 ring-[${theme.primary}]` : 'hover:bg-gray-100'}`}
+                                        className={`flex cursor-pointer rounded-lg overflow-hidden shadow-md ${currentVideo === index ? 'ring-2 ring-[#A6192E]' : 'hover:bg-gray-100'}`}
                                         onClick={() => handleVideoNav(index)}
                                     >
                                         {/* Thumbnail */}
@@ -594,16 +534,16 @@ const Home = () => {
                                                 className="w-full h-24 object-cover"
                                             />
                                             <div className={`absolute inset-0 flex items-center justify-center ${currentVideo === index ? 'bg-black bg-opacity-60' : 'bg-black bg-opacity-30'}`}>
-                                                <svg className={`w-8 h-8 ${currentVideo === index ? `text-[${theme.secondary}]` : 'text-white'}`} fill="currentColor" viewBox="0 0 24 24">
+                                                <svg className={`w-8 h-8 ${currentVideo === index ? 'text-[#FFD700]' : 'text-white'}`} fill="currentColor" viewBox="0 0 24 24">
                                                     <path d="M8 5v14l11-7z" />
                                                 </svg>
                                             </div>
                                         </div>
 
                                         {/* Video Info */}
-                                        <div className={`w-2/3 p-4 ${currentVideo === index ? `bg-[${theme.background}]` : 'bg-white'}`}>
-                                            <h4 className={`font-bold ${currentVideo === index ? `text-[${theme.primary}]` : 'text-gray-800'}`}>{video.title}</h4>
-                                            <p className="text-sm text-gray-600 line-clamp-2">{video.description}</p>
+                                        <div className={`w-2/3 p-4 ${currentVideo === index ? 'bg-[#ECECEC]' : 'bg-white'}`}>
+                                            <h4 className={`font-bold ${currentVideo === index ? 'text-[#A6192E]' : 'text-gray-800'}`}>{video.title}</h4>
+                                            <p className="text-sm text-gray-600">{video.description}</p>
                                         </div>
                                     </div>
                                 ))}
@@ -611,7 +551,7 @@ const Home = () => {
                                 {/* More Videos Button */}
                                 <Link
                                     to="/videos"
-                                    className={`mt-4 text-center py-3 bg-white border border-[${theme.primary}] text-[${theme.primary}] rounded-lg hover:bg-[${theme.primary}] hover:text-white transition-colors`}
+                                    className="mt-4 text-center py-3 bg-white border border-[#A6192E] text-[#A6192E] rounded-lg hover:bg-[#A6192E] hover:text-white transition-colors"
                                 >
                                     View All Videos
                                 </Link>
@@ -622,9 +562,9 @@ const Home = () => {
             </section>
 
             {/* Images slide section */}
-            <section className={`py-16 bg-[${theme.background}]`}>
+            <section className="py-16 bg-[#ECECEC]">
                 <div className="container mx-auto px-4">
-                    <h2 className={`text-4xl font-bold text-center mb-12 text-[${theme.primary}]`}>
+                    <h2 className="text-4xl font-bold text-center mb-12 text-[#A6192E]">
                         Our Campus Gallery
                     </h2>
 
@@ -632,10 +572,170 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Dropdown FAQ section */}
-            <section className="py-16">
+            {/* Testimonials Section */}
+            <section className="py-20 bg-white">
                 <div className="container mx-auto px-4">
-                    <h2 className={`text-3xl font-bold text-center mb-12 text-[${theme.primary}]`}>
+                    <h2 className="text-4xl font-bold text-center mb-16 text-[#A6192E]">
+                        Student <span className="relative inline-block">
+                            Testimonials
+                            <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FFD700] rounded-full"></span>
+                        </span>
+                    </h2>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                        {/* Video Testimonials */}
+                        <div className="space-y-6 max-h-[600px] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+                            {/* Main Video */}
+                            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                                <video
+                                    className="w-full aspect-video object-cover"
+                                    poster="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3"
+                                    controls
+                                >
+                                    <source src="/path/to/testimonial-video.mp4" type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+
+                            {/* Additional Video Testimonials */}
+                            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                                <video
+                                    className="w-full aspect-video object-cover"
+                                    poster="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846"
+                                    controls
+                                >
+                                    <source src="/path/to/testimonial-video-2.mp4" type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+
+                            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                                <video
+                                    className="w-full aspect-video object-cover"
+                                    poster="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4"
+                                    controls
+                                >
+                                    <source src="/path/to/testimonial-video-3.mp4" type="video/mp4" />
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+
+                        </div>
+                        {/* Text Testimonials */}
+                        <div className="space-y-8 max-h-[600px] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+
+                            {/* Additional Testimonials */}
+                            <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
+                                <div className="flex items-center mb-4">
+                                    <img
+                                        className="w-12 h-12 rounded-full object-cover mr-4"
+                                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
+                                        alt="Student testimonial"
+                                    />
+                                    <div>
+                                        <h4 className="font-bold text-gray-900">Arjun Kumar</h4>
+                                        <p className="text-sm text-[#A6192E]">CA Foundation Topper</p>
+                                    </div>
+                                </div>
+                                <p className="text-gray-600">
+                                    "Starting my CA journey with Lakshya was the best decision. The foundation course gave me a strong base and confidence. The faculty's attention to detail is remarkable."
+                                </p>
+                            </div>
+
+                            <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
+                                <div className="flex items-center mb-4">
+                                    <img
+                                        className="w-12 h-12 rounded-full object-cover mr-4"
+                                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
+                                        alt="Student testimonial"
+                                    />
+                                    <div>
+                                        <h4 className="font-bold text-gray-900">Arjun Kumar</h4>
+                                        <p className="text-sm text-[#A6192E]">CA Foundation Topper</p>
+                                    </div>
+                                </div>
+                                <p className="text-gray-600">
+                                    "Starting my CA journey with Lakshya was the best decision. The foundation course gave me a strong base and confidence. The faculty's attention to detail is remarkable."
+                                </p>
+                            </div>
+
+                            <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
+                                <div className="flex items-center mb-4">
+                                    <img
+                                        className="w-12 h-12 rounded-full object-cover mr-4"
+                                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
+                                        alt="Student testimonial"
+                                    />
+                                    <div>
+                                        <h4 className="font-bold text-gray-900">Arjun Kumar</h4>
+                                        <p className="text-sm text-[#A6192E]">CA Foundation Topper</p>
+                                    </div>
+                                </div>
+                                <p className="text-gray-600">
+                                    "Starting my CA journey with Lakshya was the best decision. The foundation course gave me a strong base and confidence. The faculty's attention to detail is remarkable."
+                                </p>
+                            </div>
+
+                            <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
+                                <div className="flex items-center mb-4">
+                                    <img
+                                        className="w-12 h-12 rounded-full object-cover mr-4"
+                                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
+                                        alt="Student testimonial"
+                                    />
+                                    <div>
+                                        <h4 className="font-bold text-gray-900">Meera Desai</h4>
+                                        <p className="text-sm text-[#A6192E]">CMA Final Student</p>
+                                    </div>
+                                </div>
+                                <p className="text-gray-600">
+                                    "The study material and mock tests provided by Lakshya are comprehensive and well-structured. The personal mentoring sessions have been instrumental in my preparation."
+                                </p>
+                            </div>
+
+                            <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
+                                <div className="flex items-center mb-4">
+                                    <img
+                                        className="w-12 h-12 rounded-full object-cover mr-4"
+                                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
+                                        alt="Student testimonial"
+                                    />
+                                    <div>
+                                        <h4 className="font-bold text-gray-900">Rohan Sharma</h4>
+                                        <p className="text-sm text-[#A6192E]">ACCA Advanced Level</p>
+                                    </div>
+                                </div>
+                                <p className="text-gray-600">
+                                    "The international perspective in ACCA coaching at Lakshya is outstanding. The case studies and practical sessions have prepared me well for global opportunities."
+                                </p>
+                            </div>
+
+                            <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
+                                <div className="flex items-center mb-4">
+                                    <img
+                                        className="w-12 h-12 rounded-full object-cover mr-4"
+                                        src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e"
+                                        alt="Student testimonial"
+                                    />
+                                    <div>
+                                        <h4 className="font-bold text-gray-900">Ananya Patel</h4>
+                                        <p className="text-sm text-[#A6192E]">B.Com Graduate</p>
+                                    </div>
+                                </div>
+                                <p className="text-gray-600">
+                                    "The B.Com coaching at Lakshya helped me secure top ranks in university exams. The practical knowledge gained here gave me an edge in my career."
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section >
+
+            {/* Dropdown FAQ section */}
+            <section className="py-16" >
+                <div className="container mx-auto px-4">
+                    <h2 className="text-3xl font-bold text-center mb-12 text-[#A6192E]">
                         Frequently Asked Questions
                     </h2>
 
@@ -643,15 +743,15 @@ const Home = () => {
                         {faqItems.map((item) => (
                             <div
                                 key={item.id}
-                                className={`mb-4 border rounded-lg overflow-hidden transition-all duration-300 ${openItem === item.id ? `border-[${theme.primary}] shadow-md` : 'border-gray-200'}`}
+                                className={`mb-4 border rounded-lg overflow-hidden transition-all duration-300 ${openItem === item.id ? 'border-[#A6192E] shadow-md' : 'border-gray-200'}`}
                             >
                                 <button
                                     onClick={() => toggleItem(item.id)}
-                                    className={`w-full text-left p-5 flex items-center justify-between font-medium text-lg ${openItem === item.id ? `bg-[${theme.background}] text-[${theme.primary}]` : 'bg-white'}`}
+                                    className={`w-full text-left p-5 flex items-center justify-between font-medium text-lg ${openItem === item.id ? 'bg-[#ECECEC] text-[#A6192E]' : 'bg-white'}`}
                                 >
                                     {item.question}
                                     <svg
-                                        className={`w-5 h-5 transition-transform duration-300 ${openItem === item.id ? 'transform rotate-180' : ''}`}
+                                        className={`w-5 h-5 transition-rm duration-300 ${openItem === item.id ? 'transform rotate-180' : ''}`}
                                         fill="none"
                                         stroke="currentColor"
                                         viewBox="0 0 24 24"
@@ -673,14 +773,14 @@ const Home = () => {
                     <div className="text-center mt-10">
                         <Link
                             to="/faq"
-                            className={`inline-block px-6 py-2 text-[${theme.primary}] border border-[${theme.primary}] rounded-md hover:bg-[${theme.primary}] hover:text-white transition duration-300`}
+                            className="inline-block px-6 py-2 text-[#A6192E] border border-[#A6192E] rounded-md hover:bg-[#A6192E] hover:text-white transition duration-300"
                         >
                             View All FAQs
                         </Link>
                     </div>
                 </div>
             </section>
-        </div>
+        </div >
     );
 };
 
