@@ -16,33 +16,9 @@ export const mainNavigation = [
                 path: 'courses/ca',
                 hasDropdown: true,
                 dropdownItems: [
-                    {
-                        id: 'ca final', label: 'CA Final', path: 'courses/cafinal',
-                        hasDropdown: true,
-                        dropdownItems: [
-                            { id: 'ca final old', label: 'Enroll For Face to Face batch', path: 'courses/enroll' },
-                            { id: 'ca final new', label: 'Buy online course', path: 'courses/online' },
-                            { id: 'ca final info', label: 'Know about a course', path: 'courses/caknow' },
-                        ]
-                    },
-                    {
-                        id: 'ca inter', label: 'CA Inter', path: 'courses/cainter',
-                        hasDropdown: true,
-                        dropdownItems: [
-                            { id: 'ca final old', label: 'Enroll For Face to Face batch', path: 'courses/enroll' },
-                            { id: 'ca final new', label: 'Buy online course', path: 'courses/online' },
-                            { id: 'ca final info', label: 'Know about a course', path: 'courses/caknow' },
-                        ]
-                    },
-                    {
-                        id: 'ca foundation', label: 'CA Foundation', path: 'courses/cafoundation',
-                        hasDropdown: true,
-                        dropdownItems: [
-                            { id: 'ca final old', label: 'Enroll For Face to Face batch', path: 'courses/enroll' },
-                            { id: 'ca final new', label: 'Buy online course', path: 'courses/online' },
-                            { id: 'ca final info', label: 'Know about a course', path: 'courses/caknow' },
-                        ]
-                    },
+                    { id: 'ca final', label: 'CA Final', content: "The LAKSHYA COLLEGE OF COMMERCE (LCC) stands out as the premier destination for students seeking a top-notch commerce education.", path: 'courses/cafinal' },
+                    { id: 'ca inter', label: 'CA Inter', content: "The LAKSHYA COLLEGE OF COMMERCE (LCC) stands out as the premier destination for students seeking a top-notch commerce education.", path: 'courses/cainter' },
+                    { id: 'ca foundation', label: 'CA Foundation', content: "The LAKSHYA COLLEGE OF COMMERCE (LCC) stands out as the premier destination for students seeking a top-notch commerce education.", path: 'courses/cafoundation' },
                 ]
 
             },
@@ -51,33 +27,9 @@ export const mainNavigation = [
                 label: 'CMA',
                 path: 'courses/cma',
                 dropdownItems: [
-                    {
-                        id: 'cma final', label: 'CMA Final', path: 'courses/cmafinal',
-                        hasDropdown: true,
-                        dropdownItems: [
-                            { id: 'ca final old', label: 'Enroll For Face to Face batch', path: 'courses/enroll' },
-                            { id: 'ca final new', label: 'Buy online course', path: 'courses/online' },
-                            { id: 'ca final info', label: 'Know about a course', path: 'courses/caknow' },
-                        ]
-                    },
-                    {
-                        id: 'cma inter', label: 'CMA Inter', path: 'courses/cmainter',
-                        hasDropdown: true,
-                        dropdownItems: [
-                            { id: 'ca final old', label: 'Enroll For Face to Face batch', path: 'courses/enroll' },
-                            { id: 'ca final new', label: 'Buy online course', path: 'courses/online' },
-                            { id: 'ca final info', label: 'Know about a course', path: 'courses/caknow' },
-                        ]
-                    },
-                    {
-                        id: 'cma foundation', label: 'CMA Foundation', path: 'courses/cmafoundation',
-                        hasDropdown: true,
-                        dropdownItems: [
-                            { id: 'ca final old', label: 'Enroll For Face to Face batch', path: 'courses/enroll' },
-                            { id: 'ca final new', label: 'Buy online course', path: 'courses/online' },
-                            { id: 'ca final info', label: 'Know about a course', path: 'courses/caknow' },
-                        ]
-                    },
+                    { id: 'cma final', label: 'CMA Final', content: "The LAKSHYA COLLEGE OF COMMERCE (LCC) stands out as the premier destination for students seeking a top-notch commerce education.", path: 'courses/cmafinal' },
+                    { id: 'cma inter', label: 'CMA Inter', content: "The LAKSHYA COLLEGE OF COMMERCE (LCC) stands out as the premier destination for students seeking a top-notch commerce education.", path: 'courses/cmainter' },
+                    { id: 'cma foundation', label: 'CMA Foundation', content: "The LAKSHYA COLLEGE OF COMMERCE (LCC) stands out as the premier destination for students seeking a top-notch commerce education.", path: 'courses/cmafoundation' },
                 ]
             },
             { id: 'mec', label: 'MEC & CEC', path: 'courses/mec' },
