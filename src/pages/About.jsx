@@ -67,35 +67,6 @@ const About = () => {
         }
     ];
 
-    // Timeline data
-    const timeline = [
-        {
-            year: "1998",
-            title: "Founding",
-            description: "Established as a small institute with just 3 faculty members and 45 students."
-        },
-        {
-            year: "2005",
-            title: "Expansion",
-            description: "Moved to our current campus and expanded programs to include CMA and professional diploma courses."
-        },
-        {
-            year: "2010",
-            title: "Recognition",
-            description: "Received outstanding educational institute award from the Chamber of Commerce."
-        },
-        {
-            year: "2015",
-            title: "International Partnerships",
-            description: "Established collaborations with international accounting bodies and universities."
-        },
-        {
-            year: "2023",
-            title: "Digital Transformation",
-            description: "Launched comprehensive digital learning platforms and hybrid education models."
-        }
-    ];
-
     // Intersection observer to trigger counter animation when stats section is visible
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -343,12 +314,12 @@ const About = () => {
                             <span style={{ color: theme.secondary }}> Our Institute</span>
                         </h1>
                         <p className="text-lg md:text-xl mb-8 text-gray-300">
-                            Excellence in professional education since 1998. Discover our story, mission, and the people who make us a leading institute in accounting and finance education.
+                            Excellence in professional education. Discover our story, mission, and the people who make us a leading institute in accounting and finance education.
                         </p>
 
                         {/* Tabs for different sections */}
                         <div className="flex flex-wrap space-x-1 space-y-1 md:space-y-0 mb-8">
-                            {['mission', 'vision', 'values', 'history'].map((tab) => (
+                            {['mission', 'vision', 'values', 'approach'].map((tab) => (
                                 <button
                                     key={tab}
                                     onClick={() => setActiveTab(tab)}
@@ -419,34 +390,52 @@ const About = () => {
                                 </div>
                             )}
 
-                            {activeTab === 'history' && (
-                                <div className="space-y-4">
-                                    <h2 className="text-2xl font-bold" style={{ color: theme.secondary }}>Our Journey</h2>
-                                    <div className="relative">
-                                        {/* Timeline Line */}
-                                        <div className="absolute left-3 top-5 bottom-5 w-0.5 bg-gray-400"></div>
-
-                                        {/* Timeline Events */}
-                                        <div className="space-y-8 relative">
-                                            {timeline.map((event, index) => (
-                                                <div key={index} className="ml-10 relative">
-                                                    {/* Timeline Dot */}
-                                                    <div
-                                                        className="absolute -left-11 w-6 h-6 rounded-full border-4 border-gray-400 flex items-center justify-center"
-                                                        style={{ backgroundColor: theme.secondary }}
-                                                    >
-                                                        <div className="w-2 h-2 bg-white rounded-full"></div>
-                                                    </div>
-
-                                                    {/* Event Content */}
-                                                    <div>
-                                                        <span className="text-sm text-gray-300 font-mono">{event.year}</span>
-                                                        <h3 className="font-bold">{event.title}</h3>
-                                                        <p className="text-gray-300">{event.description}</p>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
+                            {activeTab === 'approach' && (
+                                <div className="space-y-5">
+                                    <h2 className="text-2xl font-bold" style={{ color: theme.secondary }}>Our Educational Approach</h2>
+                                    
+                                    <p>
+                                        With a student-first approach, expert faculty, and career-focused programs, we empower students 
+                                        to excel in CA, CMA, ACCA, BBA, B. Com, and Intermediate (MEC & CEC). Whether you're starting 
+                                        your journey in commerce or aiming for professional certifications, Lakshya Edu is your trusted 
+                                        partner in success.
+                                    </p>
+                                    
+                                    <div className="bg-white/5 p-4 rounded-lg">
+                                        <h3 className="font-bold mb-2">Beyond Textbooks</h3>
+                                        <p>
+                                            At Lakshya Edu, we believe that quality education goes beyond textbooks. Our approach focuses 
+                                            on concept-based learning, real-world applications, and hands-on training, ensuring that students 
+                                            not only understand theoretical concepts but also develop practical skills that make them industry-ready.
+                                        </p>
+                                    </div>
+                                    
+                                    <div className="bg-white/5 p-4 rounded-lg">
+                                        <h3 className="font-bold mb-2">Expert Faculty & Mentorship</h3>
+                                        <p>
+                                            We take pride in our dedicated faculty, who bring years of expertise in Commerce, Accounting, 
+                                            and Management, guiding students through a structured curriculum designed for academic excellence 
+                                            and professional growth. Our personalized mentorship, mock tests, and career-oriented learning 
+                                            methods have helped countless student's clear professional exams with confidence.
+                                        </p>
+                                    </div>
+                                    
+                                    <div className="bg-white/5 p-4 rounded-lg">
+                                        <h3 className="font-bold mb-2">Flexible Learning Pathways</h3>
+                                        <p>
+                                            We understand that every student is unique, and so is their learning journey. That's why we 
+                                            offer both classroom and online learning options, ensuring flexibility and accessibility for all. 
+                                            Our goal is to bridge the gap between academic learning and industry expectations, making 
+                                            Lakshya Edu a trusted name among commerce aspirants in India.
+                                        </p>
+                                    </div>
+                                    
+                                    <div className="flex items-center justify-center my-5 space-x-2">
+                                        <span className="h-1 w-12 rounded-full" style={{ backgroundColor: theme.secondary }}></span>
+                                        <p className="text-center italic font-light">
+                                            "Empowering students to achieve their professional dreams"
+                                        </p>
+                                        <span className="h-1 w-12 rounded-full" style={{ backgroundColor: theme.secondary }}></span>
                                     </div>
                                 </div>
                             )}
@@ -560,17 +549,6 @@ const About = () => {
                                 </div>
                             </div>
                         ))}
-                    </div>
-
-                    {/* CTA Button */}
-                    <div className="text-center mt-12">
-                        <Link
-                            to="/faculty"
-                            className="inline-block px-8 py-3 rounded-md font-medium text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-                            style={{ backgroundColor: theme.primary }}
-                        >
-                            Meet Our Full Faculty Team
-                        </Link>
                     </div>
                 </div>
             </section>

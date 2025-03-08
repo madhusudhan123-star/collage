@@ -94,7 +94,7 @@ const ImageSlider = () => {
 
     return (
         <div
-            className="relative overflow-hidden"
+            className="relative z-[1px] overflow-hidden"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
         >

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ImageSlider from '../components/ImageSlider';
 
@@ -61,31 +61,6 @@ const faqItems = [
         question: "There are lot of institutes offering CA, why should I choose Lakshya Edu?",
         answer: "We are the only institute that provides coaching for all levels along with study hours and examinations till the final Exam."
     },
-    // {
-    //     id: 6,
-    //     question: "Can I do CA course online?",
-    //     answer: "Yes. You can attend CA Online Classes or also avail to the best CA Pendrive Classes."
-    // },
-    // {
-    //     id: 7,
-    //     question: "Can I complete CA Foundation in 3 months?",
-    //     answer: "The last 2-3 months are crucial for your Exam preparation. In this time span you have to solve RTPs, and MTPs, and devote time to self-revision. Basically, CA Foundation requires a 6-7 month time duration for preparation. You can opt the best CA Foundation online classes and CA Foundation Pendrive Classes are available."
-    // },
-    // {
-    //     id: 8,
-    //     question: "Can you pass CA Inter without coaching?",
-    //     answer: "You can pass your CA Inter Exam without coming down for offline classes. Just by sitting at home, you can choose one preference like CA Inter Online classes or CA Inter Pendrive."
-    // },
-    // {
-    //     id: 9,
-    //     question: "Can I complete CA in 2 years?",
-    //     answer: "The entire time required to become a CA typically ranges from 4.5 to 5 years, including the necessary educational qualifications, practical training, and examination process."
-    // },
-    // {
-    //     id: 10,
-    //     question: "How to clear CA in 1st attempt?",
-    //     answer: "To prepare for exams: 1. Consider the exam pattern and syllabus. 2. Create a suitable timetable. 3. And prioritize foundation studies. 4. Stay away from the virtual world and revise at least three times. To succeed, prioritize time management, have a strong understanding of theory, and take handwritten notes."
-    // }
 ];
 
 
@@ -127,6 +102,15 @@ const Home = () => {
     const [currentVideo, setCurrentVideo] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
     const videoRef = useRef(null);
+    const [isAutoScrolling, setIsAutoScrolling] = useState(true);
+    const testimonialContainerRef = useRef(null);
+    const videoTestimonialContainerRef = useRef(null);
+    const scrollIntervalRef = useRef(null);
+    const videoScrollIntervalRef = useRef(null);
+    const scrollAmountRef = useRef(0);
+    const videoScrollAmountRef = useRef(0);
+    const scrollSpeedRef = useRef(0.5); // pixels per frame
+    const [isVideoAutoScrolling, setIsVideoAutoScrolling] = useState(true);
 
     const toggleItem = (id) => {
         setOpenItem(openItem === id ? null : id);
@@ -156,6 +140,100 @@ const Home = () => {
         }
     };
 
+    // Auto-scrolling effect for testimonials
+    useEffect(() => {
+        const testimonialContainer = testimonialContainerRef.current;
+        if (!testimonialContainer) return;
+
+        const handleScroll = () => {
+            if (isAutoScrolling) {
+                scrollAmountRef.current += scrollSpeedRef.current;
+                
+                // Reset if we've scrolled to the bottom
+                if (scrollAmountRef.current >= testimonialContainer.scrollHeight - testimonialContainer.clientHeight) {
+                    scrollAmountRef.current = 0;
+                }
+                
+                testimonialContainer.scrollTop = scrollAmountRef.current;
+            }
+        };
+
+        const startAnimation = () => {
+            scrollIntervalRef.current = requestAnimationFrame(startAnimation);
+            handleScroll();
+        };
+
+        if (isAutoScrolling) {
+            startAnimation();
+        }
+
+        return () => {
+            if (scrollIntervalRef.current) {
+                cancelAnimationFrame(scrollIntervalRef.current);
+            }
+        };
+    }, [isAutoScrolling]);
+
+    // Pause auto-scroll when hovering over testimonials
+    const handleMouseEnter = () => {
+        setIsAutoScrolling(false);
+    };
+
+    const handleMouseLeave = () => {
+        setIsAutoScrolling(true);
+        // Reset the scroll position to avoid jumps when auto-scrolling resumes
+        if (testimonialContainerRef.current) {
+            scrollAmountRef.current = testimonialContainerRef.current.scrollTop;
+        }
+    };
+
+    // Auto-scrolling effect for video testimonials
+    useEffect(() => {
+        const videoContainer = videoTestimonialContainerRef.current;
+        if (!videoContainer) return;
+
+        const handleScroll = () => {
+            if (isVideoAutoScrolling) {
+                videoScrollAmountRef.current += scrollSpeedRef.current;
+                
+                // Reset if we've scrolled to the bottom
+                if (videoScrollAmountRef.current >= videoContainer.scrollHeight - videoContainer.clientHeight) {
+                    videoScrollAmountRef.current = 0;
+                }
+                
+                videoContainer.scrollTop = videoScrollAmountRef.current;
+            }
+        };
+
+        const startAnimation = () => {
+            videoScrollIntervalRef.current = requestAnimationFrame(startAnimation);
+            handleScroll();
+        };
+
+        if (isVideoAutoScrolling) {
+            startAnimation();
+        }
+
+        return () => {
+            if (videoScrollIntervalRef.current) {
+                cancelAnimationFrame(videoScrollIntervalRef.current);
+            }
+        };
+    }, [isVideoAutoScrolling]);
+
+    // Pause auto-scroll for video testimonials when hovering
+    const handleVideoMouseEnter = () => {
+        setIsVideoAutoScrolling(false);
+    };
+
+    const handleVideoMouseLeave = () => {
+        setIsVideoAutoScrolling(true);
+        // Reset the scroll position to avoid jumps
+        if (videoTestimonialContainerRef.current) {
+            videoScrollAmountRef.current = videoTestimonialContainerRef.current.scrollTop;
+        }
+    };
+
     return (
         <div>
             {/* Hero Section with Image Slider Background */}
@@ -164,7 +242,7 @@ const Home = () => {
                 <div className="absolute inset-0">
                     <ImageSlider autoPlay={true} infiniteLoop={true} showArrows={false} showStatus={false} showThumbs={false} />
                     {/* Overlay to darken images and make text more readable */}
-                    <div className="absolute inset-0 bg-black opacity-40 z-10"></div>
+                    <div className="absolute inset-0 bg-black opacity-40 z-20"></div>
                 </div>
 
                 {/* Hero Content */}
@@ -584,153 +662,289 @@ const Home = () => {
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                         {/* Video Testimonials */}
-                        <div className="space-y-6 max-h-[600px] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
-                            {/* Main Video */}
-                            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                                <video
-                                    className="w-full aspect-video object-cover"
-                                    poster="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3"
-                                    controls
+                        <div className="relative">
+                            {/* Video Testimonial Controls */}
+                            <div className="absolute -top-12 right-4 flex items-center space-x-2 z-10">
+                                <button 
+                                    onClick={() => setIsVideoAutoScrolling(!isVideoAutoScrolling)}
+                                    className={`p-2 rounded-full transition-colors ${isVideoAutoScrolling ? 'bg-[#A6192E] text-white' : 'bg-gray-200 text-gray-600'}`}
+                                    title={isVideoAutoScrolling ? "Pause Video Scrolling" : "Play Video Scrolling"}
                                 >
-                                    <source src="/path/to/testimonial-video.mp4" type="video/mp4" />
-                                    Your browser does not support the video tag.
-                                </video>
+                                    {isVideoAutoScrolling ? (
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+                                        </svg>
+                                    ) : (
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                                        </svg>
+                                    )}
+                                </button>
                             </div>
+                            
+                            <div 
+                                ref={videoTestimonialContainerRef}
+                                onMouseEnter={handleVideoMouseEnter}
+                                onMouseLeave={handleVideoMouseLeave}
+                                className="space-y-6 max-h-[600px] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 transition-all duration-300"
+                            >
+                                {/* Main Video */}
+                                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                                    <video
+                                        className="w-full aspect-video object-cover"
+                                        poster="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3"
+                                        controls
+                                    >
+                                        <source src="/path/to/testimonial-video.mp4" type="video/mp4" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
 
-                            {/* Additional Video Testimonials */}
-                            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                                <video
-                                    className="w-full aspect-video object-cover"
-                                    poster="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846"
-                                    controls
-                                >
-                                    <source src="/path/to/testimonial-video-2.mp4" type="video/mp4" />
-                                    Your browser does not support the video tag.
-                                </video>
+                                {/* Additional Video Testimonials */}
+                                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                                    <video
+                                        className="w-full aspect-video object-cover"
+                                        poster="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846"
+                                        controls
+                                    >
+                                        <source src="/path/to/testimonial-video-2.mp4" type="video/mp4" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+
+                                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                                    <video
+                                        className="w-full aspect-video object-cover"
+                                        poster="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4"
+                                        controls
+                                    >
+                                        <source src="/path/to/testimonial-video-3.mp4" type="video/mp4" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
                             </div>
-
-                            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                                <video
-                                    className="w-full aspect-video object-cover"
-                                    poster="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4"
-                                    controls
-                                >
-                                    <source src="/path/to/testimonial-video-3.mp4" type="video/mp4" />
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-
+                            
+                            {/* Gradient overlay to indicate more content */}
+                            <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
                         </div>
+                        
                         {/* Text Testimonials */}
-                        <div className="space-y-8 max-h-[600px] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
-
-                            {/* Additional Testimonials */}
-                            <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
-                                <div className="flex items-center mb-4">
-                                    <img
-                                        className="w-12 h-12 rounded-full object-cover mr-4"
-                                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
-                                        alt="Student testimonial"
-                                    />
-                                    <div>
-                                        <h4 className="font-bold text-gray-900">Arjun Kumar</h4>
-                                        <p className="text-sm text-[#A6192E]">CA Foundation Topper</p>
-                                    </div>
-                                </div>
-                                <p className="text-gray-600">
-                                    "Starting my CA journey with Lakshya was the best decision. The foundation course gave me a strong base and confidence. The faculty's attention to detail is remarkable."
-                                </p>
+                        <div className="relative">
+                            {/* Testimonial Controls */}
+                            <div className="absolute -top-12 right-4 flex items-center space-x-2 z-10">
+                                <button 
+                                    onClick={() => setIsAutoScrolling(!isAutoScrolling)}
+                                    className={`p-2 rounded-full transition-colors ${isAutoScrolling ? 'bg-[#A6192E] text-white' : 'bg-gray-200 text-gray-600'}`}
+                                    title={isAutoScrolling ? "Pause" : "Play"}
+                                >
+                                    {isAutoScrolling ? (
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clipRule="evenodd" />
+                                        </svg>
+                                    ) : (
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                                        </svg>
+                                    )}
+                                </button>
                             </div>
-
-                            <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
-                                <div className="flex items-center mb-4">
-                                    <img
-                                        className="w-12 h-12 rounded-full object-cover mr-4"
-                                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
-                                        alt="Student testimonial"
-                                    />
-                                    <div>
-                                        <h4 className="font-bold text-gray-900">Arjun Kumar</h4>
-                                        <p className="text-sm text-[#A6192E]">CA Foundation Topper</p>
+                            
+                            <div 
+                                ref={testimonialContainerRef}
+                                onMouseEnter={handleMouseEnter}
+                                onMouseLeave={handleMouseLeave}
+                                className="space-y-8 max-h-[600px] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 transition-all duration-300"
+                            >
+                                {/* Additional Testimonials */}
+                                <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
+                                    <div className="flex items-center mb-4">
+                                        <img
+                                            className="w-12 h-12 rounded-full object-cover mr-4"
+                                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
+                                            alt="Student testimonial"
+                                        />
+                                        <div>
+                                            <h4 className="font-bold text-gray-900">Priya M</h4>
+                                            {/* <p className="text-sm text-[#A6192E]">CA Foundation Topper</p> */}
+                                        </div>
                                     </div>
+                                    <p className="text-gray-600">
+                                        The online CA classes are a lifesaver! I was worried about studying from home, but the interactive sessions, doubt-solving support, and recorded lectures made learning super easy 
+                                    </p>
                                 </div>
-                                <p className="text-gray-600">
-                                    "Starting my CA journey with Lakshya was the best decision. The foundation course gave me a strong base and confidence. The faculty's attention to detail is remarkable."
-                                </p>
-                            </div>
 
-                            <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
-                                <div className="flex items-center mb-4">
-                                    <img
-                                        className="w-12 h-12 rounded-full object-cover mr-4"
-                                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
-                                        alt="Student testimonial"
-                                    />
-                                    <div>
-                                        <h4 className="font-bold text-gray-900">Arjun Kumar</h4>
-                                        <p className="text-sm text-[#A6192E]">CA Foundation Topper</p>
+                                <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
+                                    <div className="flex items-center mb-4">
+                                        <img
+                                            className="w-12 h-12 rounded-full object-cover mr-4"
+                                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
+                                            alt="Student testimonial"
+                                        />
+                                        <div>
+                                            <h4 className="font-bold text-gray-900">Ravi Kumar</h4>
+                                            {/* <p className="text-sm text-[#A6192E]">CA Foundation Topper</p> */}
+                                        </div>
                                     </div>
+                                    <p className="text-gray-600">
+                                        Lakshya Edu made CA Foundation so much easier for me! The faculty explains concepts in a way that just clicks, and the mock tests helped me prepare confidently. I cleared my exam on the first attempt!
+                                    </p>
                                 </div>
-                                <p className="text-gray-600">
-                                    "Starting my CA journey with Lakshya was the best decision. The foundation course gave me a strong base and confidence. The faculty's attention to detail is remarkable."
-                                </p>
-                            </div>
 
-                            <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
-                                <div className="flex items-center mb-4">
-                                    <img
-                                        className="w-12 h-12 rounded-full object-cover mr-4"
-                                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-                                        alt="Student testimonial"
-                                    />
-                                    <div>
-                                        <h4 className="font-bold text-gray-900">Meera Desai</h4>
-                                        <p className="text-sm text-[#A6192E]">CMA Final Student</p>
+                                <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
+                                    <div className="flex items-center mb-4">
+                                        <img
+                                            className="w-12 h-12 rounded-full object-cover mr-4"
+                                            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
+                                            alt="Student testimonial"
+                                        />
+                                        <div>
+                                            <h4 className="font-bold text-gray-900">Anirudh S</h4>
+                                            {/* <p className="text-sm text-[#A6192E]">CA Foundation Topper</p> */}
+                                        </div>
                                     </div>
+                                    <p className="text-gray-600">
+                                        I used to struggle with Cost Accounting, but the way they teach here is amazing. They give real-world examples that make concepts easy to understand. I finally feel confident in my CMA preparation!
+                                    </p>
                                 </div>
-                                <p className="text-gray-600">
-                                    "The study material and mock tests provided by Lakshya are comprehensive and well-structured. The personal mentoring sessions have been instrumental in my preparation."
-                                </p>
-                            </div>
 
-                            <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
-                                <div className="flex items-center mb-4">
-                                    <img
-                                        className="w-12 h-12 rounded-full object-cover mr-4"
-                                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
-                                        alt="Student testimonial"
-                                    />
-                                    <div>
-                                        <h4 className="font-bold text-gray-900">Rohan Sharma</h4>
-                                        <p className="text-sm text-[#A6192E]">ACCA Advanced Level</p>
+                                <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
+                                    <div className="flex items-center mb-4">
+                                        <img
+                                            className="w-12 h-12 rounded-full object-cover mr-4"
+                                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
+                                            alt="Student testimonial"
+                                        />
+                                        <div>
+                                            <h4 className="font-bold text-gray-900">Meera Desai</h4>
+                                            <p className="text-sm text-[#A6192E]">CMA Final Student</p>
+                                        </div>
                                     </div>
+                                    <p className="text-gray-600">
+                                        "The study material and mock tests provided by Lakshya are comprehensive and well-structured. The personal mentoring sessions have been instrumental in my preparation."
+                                    </p>
                                 </div>
-                                <p className="text-gray-600">
-                                    "The international perspective in ACCA coaching at Lakshya is outstanding. The case studies and practical sessions have prepared me well for global opportunities."
-                                </p>
-                            </div>
 
-                            <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
-                                <div className="flex items-center mb-4">
-                                    <img
-                                        className="w-12 h-12 rounded-full object-cover mr-4"
-                                        src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e"
-                                        alt="Student testimonial"
-                                    />
-                                    <div>
-                                        <h4 className="font-bold text-gray-900">Ananya Patel</h4>
-                                        <p className="text-sm text-[#A6192E]">B.Com Graduate</p>
+                                <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
+                                    <div className="flex items-center mb-4">
+                                        <img
+                                            className="w-12 h-12 rounded-full object-cover mr-4"
+                                            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
+                                            alt="Student testimonial"
+                                        />
+                                        <div>
+                                            <h4 className="font-bold text-gray-900">Sneha R</h4>
+                                            {/* <p className="text-sm text-[#A6192E]">ACCA Advanced Level</p> */}
+                                        </div>
                                     </div>
+                                    <p className="text-gray-600">
+                                        The best part about Lakshya Edu? The faculty actually cares about your progress. They take time to clear every doubt, and the personalized guidance really makes a difference
+                                    </p>
                                 </div>
-                                <p className="text-gray-600">
-                                    "The B.Com coaching at Lakshya helped me secure top ranks in university exams. The practical knowledge gained here gave me an edge in my career."
-                                </p>
+
+                                <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
+                                    <div className="flex items-center mb-4">
+                                        <img
+                                            className="w-12 h-12 rounded-full object-cover mr-4"
+                                            src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e"
+                                            alt="Student testimonial"
+                                        />
+                                        <div>
+                                            <h4 className="font-bold text-gray-900">Vikram T</h4>
+                                            {/* <p className="text-sm text-[#A6192E]">B.Com Graduate</p> */}
+                                        </div>
+                                    </div>
+                                    <p className="text-gray-600">
+                                        I joined Lakshya Edu for CA coaching, and I can say it’s the best decision I made. The structured study plans and regular practice tests helped me stay on track
+                                    </p>
+                                </div>
+                                                                <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
+                                    <div className="flex items-center mb-4">
+                                        <img
+                                            className="w-12 h-12 rounded-full object-cover mr-4"
+                                            src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e"
+                                            alt="Student testimonial"
+                                        />
+                                        <div>
+                                            <h4 className="font-bold text-gray-900">Megha P</h4>
+                                            {/* <p className="text-sm text-[#A6192E]">B.Com Graduate</p> */}
+                                        </div>
+                                    </div>
+                                    <p className="text-gray-600">
+                                        I was so nervous about my CMA exams, but the mock tests and revision classes here helped me improve my scores. The support from mentors is incredible!
+                                    </p>
+                                </div>
+                                                                <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
+                                    <div className="flex items-center mb-4">
+                                        <img
+                                            className="w-12 h-12 rounded-full object-cover mr-4"
+                                            src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e"
+                                            alt="Student testimonial"
+                                        />
+                                        <div>
+                                            <h4 className="font-bold text-gray-900">Rahul V</h4>
+                                            {/* <p className="text-sm text-[#A6192E]">B.Com Graduate</p> */}
+                                        </div>
+                                    </div>
+                                    <p className="text-gray-600">
+                                        I had joined another institute before, but Lakshya Edu is on another level! The teachers are so friendly and explain everything in detail. I finally feel ready for my ACCA exams.
+                                    </p>
+                                </div>
+                                <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
+                                    <div className="flex items-center mb-4">
+                                        <img
+                                            className="w-12 h-12 rounded-full object-cover mr-4"
+                                            src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e"
+                                            alt="Student testimonial"
+                                        />
+                                        <div>
+                                            <h4 className="font-bold text-gray-900">Shreya D</h4>
+                                            {/* <p className="text-sm text-[#A6192E]">B.Com Graduate</p> */}
+                                        </div>
+                                    </div>
+                                    <p className="text-gray-600">
+                                        The B. Com coaching classes are so well-structured. They cover everything in depth, and the study materials are super helpful. I feel much more prepared for my exams now!
+                                    </p>
+                                </div>
+                                <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
+                                    <div className="flex items-center mb-4">
+                                        <img
+                                            className="w-12 h-12 rounded-full object-cover mr-4"
+                                            src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e"
+                                            alt="Student testimonial"
+                                        />
+                                        <div>
+                                            <h4 className="font-bold text-gray-900">Kavya S</h4>
+                                            {/* <p className="text-sm text-[#A6192E]">B.Com Graduate</p> */}
+                                        </div>
+                                    </div>
+                                    <p className="text-gray-600">
+                                        I work part-time, so I needed flexible learning options. Their online classes and recorded lectures made it easy for me to manage my studies and job together
+                                    </p>
+                                </div>
+                                <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
+                                    <div className="flex items-center mb-4">
+                                        <img
+                                            className="w-12 h-12 rounded-full object-cover mr-4"
+                                            src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e"
+                                            alt="Student testimonial"
+                                        />
+                                        <div>
+                                            <h4 className="font-bold text-gray-900">Aditya P</h4>
+                                            {/* <p className="text-sm text-[#A6192E]">B.Com Graduate</p> */}
+                                        </div>
+                                    </div>
+                                    <p className="text-gray-600">
+                                        The teachers explain everything so well, and the support from the team keeps you motivated throughout the journey!
+                                    </p>
+                                </div>
                             </div>
+                            
+                            {/* Gradient overlay to indicate more content */}
+                            <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
                         </div>
-
                     </div>
                 </div>
-            </section >
+            </section>
 
             {/* Dropdown FAQ section */}
             <section className="py-16" >

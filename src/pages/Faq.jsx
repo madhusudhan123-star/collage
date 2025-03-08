@@ -16,75 +16,93 @@ const faqData = [
     {
         id: 1,
         category: 'courses',
-        question: 'What courses do you offer?',
-        answer: 'We offer a comprehensive range of professional courses including CA (Foundation, Inter, and Final), CMA (Foundation, Inter, and Final), ACCA, and various degree programs. Each course is designed with industry-relevant curriculum to prepare you for a successful career in finance and accounting.'
+        question: 'What courses does Lakshya Edu offer?',
+        answer: 'We offer CA Foundation, CMA, ACCA, BBA, B.Com, and Intermediate (MEC & CEC) coaching with expert faculty and structured learning programs. Each course is designed to provide comprehensive preparation for professional success.'
     },
     {
         id: 2,
-        category: 'courses',
-        question: 'How long does it take to complete the CA course?',
-        answer: 'The CA course is structured in three levels: Foundation (8 months), Intermediate (1.5-2 years), and Final (1.5-2 years). The total duration may vary from 3.5 to 5 years depending on your exam success and article training schedule.'
+        category: 'online',
+        question: 'Do you provide online classes?',
+        answer: 'Yes! We offer CA Foundation online classes and CMA online classes across India. Our online platform features live interactive sessions, recorded lectures, and digital study materials, allowing you to learn effectively from anywhere.'
     },
     {
         id: 3,
-        category: 'registration',
-        question: 'What is the registration process for new students?',
-        answer: 'Registration is a simple process. You can register online through our website by filling out the application form or visit our campus in person. You\'ll need to provide academic details, personal information, and make the course fee payment. Our administrative staff will guide you through the entire process.'
+        category: 'courses',
+        question: 'Is Lakshya Edu the best CA coaching institute in Hyderabad?',
+        answer: 'We are recognized as one of the leading CA, CMA & ACCA institutes in Hyderabad, known for our experienced faculty, comprehensive study materials, and consistently high student success rates in professional examinations.'
     },
     {
         id: 4,
-        category: 'fees',
-        question: 'What are the payment options for course fees?',
-        answer: 'We offer various payment options including lump sum payment with a discount, installment plans, education loans through our partner banks, and scholarship options for meritorious students. You can pay using credit/debit cards, net banking, UPI, or cash at our campus.'
+        category: 'faculty',
+        question: 'How is the faculty at Lakshya Edu?',
+        answer: 'Our faculty consists of experienced professionals and subject matter experts with extensive teaching experience. They focus on concept-based learning and provide personalized attention to ensure student success.'
     },
     {
         id: 5,
-        category: 'exams',
-        question: 'How are the test series structured?',
-        answer: 'Our test series follows a progressive difficulty pattern. It includes subject-wise tests, sectional tests, and full-length mock exams that mirror the actual exam pattern. Each test is followed by comprehensive performance analysis and personalized feedback to help improve your weak areas.'
+        category: 'facilities',
+        question: 'What makes Lakshya Edu different from other coaching institutes?',
+        answer: 'Our concept-based teaching approach, personalized mentorship programs, career-focused guidance, and blend of theoretical and practical learning sets us apart. We also offer flexible learning options and comprehensive study materials.'
     },
     {
         id: 6,
-        category: 'exams',
-        question: 'When are the CA exams conducted?',
-        answer: 'The Institute of Chartered Accountants of India (ICAI) conducts CA exams twice a year - in May and November. Foundation exams are held in June and December, while Intermediate and Final exams are conducted in May and November.'
+        category: 'registration',
+        question: 'Can I take a demo class before enrolling?',
+        answer: 'Yes, we provide free demo classes for all our courses. This allows you to experience our teaching methods, interact with faculty, and make an informed decision before enrolling.'
     },
     {
         id: 7,
-        category: 'faculty',
-        question: 'Who are the faculty members at Lakshya Edu?',
-        answer: 'Our faculty comprises experienced professionals, including practicing CAs, CMAs, and industry experts with extensive teaching experience. Many of our faculty members have over 10+ years of experience and are known for their ability to simplify complex concepts and provide practical insights.'
+        category: 'courses',
+        question: 'Can working professionals join your courses?',
+        answer: 'Yes, we offer flexible timing options including weekend batches and evening classes specifically designed for working professionals. Our online learning platform also allows you to study at your own pace.'
     },
     {
         id: 8,
-        category: 'facilities',
-        question: 'What facilities are available at your campus?',
-        answer: 'Our campus features modern air-conditioned classrooms, a well-stocked library with the latest editions of study materials, computer labs with high-speed internet, discussion rooms for group studies, a cafeteria offering nutritious meals, and dedicated quiet zones for focused self-study.'
+        category: 'books',
+        question: 'Do you provide study materials?',
+        answer: 'Yes, all enrolled students receive comprehensive, exam-oriented study materials designed by our expert faculty. These include course notes, practice questions, case studies, and regular updates based on curriculum changes.'
     },
     {
         id: 9,
-        category: 'books',
-        question: 'Do you provide study materials and books?',
-        answer: 'Yes, we provide comprehensive study materials prepared by our expert faculty. These include concise notes, practice questions, case studies, and revision kits. We also have an extensive library with the latest editions of reference books, journals, and online resources.'
+        category: 'exams',
+        question: 'Do you conduct mock tests?',
+        answer: 'Yes, we regularly conduct mock tests that simulate actual exam conditions. These include subject-wise tests, sectional tests, and full-length mock exams, followed by detailed performance analysis and improvement strategies.'
     },
     {
         id: 10,
-        category: 'online',
-        question: 'Do you offer online classes?',
-        answer: 'Yes, we offer flexible learning options including live online classes, recorded sessions, and a hybrid model where you can attend both physical and virtual classes. Our online platform provides interactive learning experiences, regular assessments, and personalized feedback.'
+        category: 'placements',
+        question: 'Do you provide placement assistance?',
+        answer: 'Yes, we offer comprehensive placement support including career counseling, interview preparation, resume building, and campus recruitment drives. Our strong industry connections help students secure promising career opportunities.'
     },
     {
         id: 11,
-        category: 'placements',
-        question: 'Do you provide placement assistance?',
-        answer: 'Absolutely! We have a dedicated placement cell that organizes campus drives, prepares students for interviews, and maintains strong relationships with top companies and firms. Our alumni network also helps current students with internship and job opportunities.'
+        category: 'fees',
+        question: 'Do you offer scholarships?',
+        answer: 'Yes! We provide merit-based scholarships for high-achieving students. These scholarships can significantly reduce the course fees and are awarded based on academic performance and entrance test results.'
     },
     {
         id: 12,
-        category: 'registration',
-        question: 'What documents are required for admission?',
-        answer: 'For admission, you\'ll need to submit your academic certificates, identity proof (Aadhar, passport, etc.), address proof, passport-sized photographs, and course-specific eligibility documents. For professional courses like CA, you\'ll also need to show your registration with the respective institute.'
+        category: 'courses',
+        question: 'What is the success rate of students?',
+        answer: 'Our students consistently achieve excellent results in professional exams, with many securing top ranks. Our structured learning approach, regular assessments, and personalized attention contribute to our high success rate.'
     },
+    {
+        id: 13,
+        category: 'registration',
+        question: 'How do I enroll in a course?',
+        answer: 'You can enroll by visiting our institute, through our website, or by contacting our admissions team. We\'ll guide you through the process, help you choose the right program, and explain the fee structure and class schedules.'
+    },
+    {
+        id: 14,
+        category: 'online',
+        question: 'Can I switch between offline and online classes?',
+        answer: 'Yes, we offer flexible learning options allowing you to switch between offline and online modes based on your convenience. This hybrid model ensures continuous learning regardless of your circumstances.'
+    },
+    {
+        id: 15,
+        category: 'faculty',
+        question: 'Do you conduct doubt-clearing sessions?',
+        answer: 'Yes! We have dedicated doubt-solving sessions where students can clarify their concepts with faculty members. These sessions can be attended both offline and online, ensuring comprehensive understanding of the subject matter.'
+    }
 ];
 
 // FAQ categories for filtering
