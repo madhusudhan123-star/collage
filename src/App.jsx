@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -10,11 +11,13 @@ import { Test } from './pages/test_series/Test';
 import CA_final from './pages/courses/ca/cafinal/CA_final';
 import Footer from './components/Footer';
 import Faq from './pages/Faq';
+import  Request  from './pages/Request';
 
 function App() {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
+        <Toaster position="top-center" reverseOrder={false} />
         <Navbar />
         <main className="flex-grow">
           <Routes>
@@ -22,6 +25,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/courses/cafinal" element={<CA_final />} />
+            <Route path="/request" element={<Request />} />
             {/* <Route path="/blogs" element={<Blogs />} /> */}
             {/* <Route path="/books" element={<Books />} /> */}
             {/* <Route path="/life" element={<Life />} /> */}

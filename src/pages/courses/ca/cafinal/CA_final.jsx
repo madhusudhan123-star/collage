@@ -19,6 +19,89 @@ const CA_final = () => {
     "Paper_6F": "Multi-Disciplinary Case Study"
   };
 
+  const books = [
+  {
+    "discountPercentage": 18,
+    "title": "CA Final | FR",
+    "instructor": "CA Aakash Kandoi",
+    "pricingOptions": {
+      "min": 10999.00,
+      "max": 11499.00
+    }
+  },
+  {
+    "discountPercentage": 7,
+    "title": "CA Final | Direct Tax DT",
+    "instructor": "CA Bhanwar Borana",
+    "applicableExams": ["May 25", "Nov 25"],
+    "originalPrice": 14999.00,
+    "currentPrice": 13999.00
+  },
+  {
+    "discountPercentage": 9,
+    "title": "CA Final | FR",
+    "instructor": "CA Jai Chawla",
+    "pricingOptions": {
+      "min": 9999.00,
+      "max": 10999.00
+    }
+  },
+  {
+    "discountPercentage": 8,
+    "title": "CA Final | IDT | English | For May & Nov 2025",
+    "instructor": "CMA Tharun Raj",
+    "language": "English",
+    "applicableExams": ["May 2025", "Nov 2025"],
+    "pricingOptions": {
+      "min": 11800.00,
+      "max": 12390.00
+    }
+  },
+  {
+    "discountPercentage": 8,
+    "title": "CA Final | Indirect Tax IDT",
+    "instructor": "CA Vishal Bhattad",
+    "applicableExams": ["May 25", "Nov 25"],
+    "pricingOptions": {
+      "min": 11999.00,
+      "max": 12999.00
+    }
+  },
+  {
+    "title": "CA FINAL || AFM",
+    "instructor": "CA Sankalp Kanstiya",
+    "currentPrice": 10999.00
+  },
+  {
+    "discountPercentage": 50,
+    "title": "CA FINAL || AFM",
+    "instructor": "CA CMA Rajkiran",
+    "pricingOptions": {
+      "min": 6999.00,
+      "max": 8999.00
+    }
+  },
+  {
+    "discountPercentage": 8,
+    "title": "CA Final || Direct Tax DT",
+    "instructor": "CA Vijay Sarda",
+    "pricingOptions": {
+      "min": 10999.00,
+      "max": 11999.00
+    }
+  },
+  {
+    "discountPercentage": 36,
+    "title": "New CA Final | Audit",
+    "instructor": "CA Ravi Taori",
+    "applicableExams": ["May 2025", "Nov 2025"],
+    "pricingOptions": {
+      "min": 6999.00,
+      "max": 7999.00
+    }
+  }
+  ]
+
   const courseStructure = [
     { "Paper": "Financial Reporting", "Marks": 100, "Type_of_Questions": "Subjective" },
     { "Paper": "Strategic Financial Management", "Marks": 100, "Type_of_Questions": "Subjective" },
@@ -82,7 +165,7 @@ const CA_final = () => {
   ];
 
   const facultyMembers = [
-    {
+    { 
       id: 1,
       name: "Prof. Rajiv Kumar",
       expertise: "Financial Reporting & Accounting",
@@ -119,7 +202,7 @@ const CA_final = () => {
             alt="CA Final Course Background" 
             className="w-full h-full object-cover opacity-20" 
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-800 to-blue-600 opacity-90"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-dark to-primary opacity-90"></div>
         </div>
         <div className="relative z-10 py-20 px-10 text-center text-white">
           <div className="flex justify-center mb-6">
@@ -132,22 +215,24 @@ const CA_final = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">CA Final Course</h1>
           <p className="text-xl mb-8 max-w-2xl mx-auto">Master the pinnacle of chartered accountancy with our comprehensive CA Final program</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="bg-orange-500 hover:bg-orange-400 text-white font-bold py-3 px-8 rounded transition-all duration-300 hover:-translate-y-0.5 transform flex items-center">
+            {/* <button className="bg-secondary hover:bg-secondary-light text-primary font-bold py-3 px-8 rounded transition-all duration-300 hover:-translate-y-0.5 transform flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
               </svg>
               Enroll Now
-            </button>
+            </button> */}
+            <a href='/request'>
             <button className="bg-transparent hover:bg-white/10 text-white border-2 border-white font-bold py-3 px-8 rounded transition-all duration-300 flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
               </svg>
               Request Callback
             </button>
+            </a>
           </div>
           <div className="flex justify-center mt-10 space-x-6">
             <div className="text-center">
-              <div className="bg-white/20 rounded-full p-4 mb-2">
+              <div className=" rounded-full p-4 mb-2 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                 </svg>
@@ -155,7 +240,7 @@ const CA_final = () => {
               <span className="block text-sm">Expert Faculty</span>
             </div>
             <div className="text-center">
-              <div className="bg-white/20 rounded-full p-4 mb-2">
+              <div className=" rounded-full p-4 mb-2 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
@@ -163,7 +248,7 @@ const CA_final = () => {
               <span className="block text-sm">Proven Results</span>
             </div>
             <div className="text-center">
-              <div className="bg-white/20 rounded-full p-4 mb-2">
+              <div className=" rounded-full p-4 mb-2 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
@@ -177,27 +262,32 @@ const CA_final = () => {
       {/* Navigation Tabs */}
       <div className="flex flex-wrap border-b-2 border-gray-100 mb-8">
         <button 
-          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'overview' ? 'text-blue-500 after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-blue-500' : 'text-gray-500'}`} 
+          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'overview' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
           onClick={() => setActiveTab('overview')}>
           Overview
         </button>
         <button 
-          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'subjects' ? 'text-blue-500 after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-blue-500' : 'text-gray-500'}`} 
+          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'subjects' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
           onClick={() => setActiveTab('subjects')}>
           Subjects
         </button>
         <button 
-          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'structure' ? 'text-blue-500 after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-blue-500' : 'text-gray-500'}`} 
+          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'books' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
+          onClick={() => setActiveTab('books')}>
+          Books
+        </button>
+        <button 
+          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'structure' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
           onClick={() => setActiveTab('structure')}>
           Course Structure
         </button>
         <button 
-          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'images' ? 'text-blue-500 after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-blue-500' : 'text-gray-500'}`} 
+          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'images' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
           onClick={() => setActiveTab('images')}>
           Images
         </button>
         <button 
-          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'faqs' ? 'text-blue-500 after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-blue-500' : 'text-gray-500'}`}
+          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'faqs' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`}
           onClick={() => setActiveTab('faqs')}>
           FAQs
         </button>
@@ -209,26 +299,26 @@ const CA_final = () => {
         {activeTab === 'overview' && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
-              <h2 className="text-2xl font-bold mb-6 text-blue-700 relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-orange-500">Program Details</h2>
+              <h2 className="text-2xl font-bold mb-6 text-primary relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">Program Details</h2>
               <div className="mb-4 flex items-start">
-                <div className="bg-blue-100 p-2 rounded-full mr-4 mt-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-700" viewBox="0 0 20 20" fill="currentColor">
+                <div className="bg-accent p-2 rounded-full mr-4 mt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg text-blue-700 mb-1">Location</h3>
+                  <h3 className="text-lg text-primary mb-1">Location</h3>
                   <p>Hyderabad & India</p>
                 </div>
               </div>
               <div className="mb-4 flex items-start">
-                <div className="bg-blue-100 p-2 rounded-full mr-4 mt-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-blue-700" viewBox="0 0 20 20" fill="currentColor">
+                <div className="bg-accent p-2 rounded-full mr-4 mt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg text-blue-700 mb-1">Duration</h3>
+                  <h3 className="text-lg text-primary mb-1">Duration</h3>
                   <p>6-8 months intensive program</p>
                 </div>
               </div>
@@ -236,30 +326,32 @@ const CA_final = () => {
             </div>
 
             <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
-              <h2 className="text-2xl font-bold mb-6 text-blue-700 relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-orange-500">Why Choose Lakshya?</h2>
+              <h2 className="text-2xl font-bold mb-6 text-primary relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">Why Choose Lakshya?</h2>
               <p className="text-gray-700">Join us and secure your future as a successful Chartered Accountant. Our expert faculty and interactive sessions ensure a robust foundation for your CA Final journey. At Lakshya, we don't just teach; we empower you to excel. Choose the best – Choose Lakshya for your CA Final preparation. Hurry! Limited seats available. Your Success, Our Priority!</p>
             </div>
 
             <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
-              <h2 className="text-2xl font-bold mb-6 text-blue-700 relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-orange-500">Passing Criteria</h2>
+              <h2 className="text-2xl font-bold mb-6 text-primary relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">Passing Criteria</h2>
               <div className="mb-5">
                 <h3 className="text-lg mb-1 text-gray-600">Minimum Marks Per Subject</h3>
-                <p className="text-3xl font-bold text-orange-500">{passingCriteria.Minimum_Marks_Per_Subject}%</p>
+                <p className="text-3xl font-bold text-secondary">{passingCriteria.Minimum_Marks_Per_Subject}%</p>
               </div>
               <div>
                 <h3 className="text-lg mb-1 text-gray-600">Total Minimum Marks Per Group</h3>
-                <p className="text-3xl font-bold text-orange-500">{passingCriteria.Total_Minimum_Marks_Per_Group} marks</p>
+                <p className="text-3xl font-bold text-secondary">{passingCriteria.Total_Minimum_Marks_Per_Group} marks</p>
               </div>
             </div>
 
             <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
-              <h2 className="text-2xl font-bold mb-6 text-blue-700 relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-orange-500">Join Face-to-Face Batches</h2>
+              <h2 className="text-2xl font-bold mb-6 text-primary relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">Join Face-to-Face Batches</h2>
               <p className="text-gray-700 mb-4">Join our face-to-face batches to immerse yourself in a comprehensive learning experience.</p>
-              <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded transition-all duration-300">Register Now</button>
+              <a href="/request">
+              <button className="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded transition-all duration-300">Register Now</button>
+              </a>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-700 to-blue-900 text-white rounded-lg p-6 shadow-md col-span-1 md:col-span-2 mt-6">
-              <h2 className="text-2xl font-bold mb-6 relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-orange-500">Our Impact</h2>
+            <div className="bg-gradient-to-br from-primary to-primary-dark text-white rounded-lg p-6 shadow-md col-span-1 md:col-span-2 mt-6">
+              <h2 className="text-2xl font-bold mb-6 relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">Our Impact</h2>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div className="text-center">
                   <img src="https://via.placeholder.com/80?text=Trophy" alt="Success Rate" className="mx-auto mb-2" />
@@ -289,11 +381,11 @@ const CA_final = () => {
         {/* Subjects Section */}
         {activeTab === 'subjects' && (
           <div>
-            <h2 className="text-2xl font-bold mb-8 text-blue-700">CA Final Subjects</h2>
+            <h2 className="text-2xl font-bold mb-8 text-primary">CA Final Subjects</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-6">
               {Object.entries(subjects).map(([key, value]) => (
-                <div className="bg-white p-5 rounded-lg shadow-sm border-l-4 border-blue-500 transition-all duration-300 hover:-translate-y-1 hover:shadow-md" key={key}>
-                  <h3 className="text-lg text-blue-700 mb-2">{key.replace('_', ' ')}</h3>
+                <div className="bg-white p-5 rounded-lg shadow-sm border-l-4 border-primary transition-all duration-300 hover:-translate-y-1 hover:shadow-md" key={key}>
+                  <h3 className="text-lg text-primary mb-2">{key.replace('_', ' ')}</h3>
                   <p className="text-gray-700">{value}</p>
                 </div>
               ))}
@@ -301,17 +393,117 @@ const CA_final = () => {
           </div>
         )}
 
+        {/* Books Section */}
+        {activeTab === 'books' && (
+          <div>
+            <h2 className="text-2xl font-bold mb-6 text-primary">CA Final Study Material</h2>
+            {/* Book Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {books.map((book, index) => (
+                <div key={index} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col">
+                  {/* Book Image with Discount Badge */}
+                  <div className="relative h-48 bg-gray-100">
+                    <img 
+                      src={`https://via.placeholder.com/400x240?text=${encodeURIComponent(book.title)}`} 
+                      alt={book.title} 
+                      className="w-full h-full object-cover" 
+                    />
+                    {book.discountPercentage && (
+                      <div className="absolute top-0 right-0 bg-red-500 text-white font-bold py-1 px-3 rounded-bl-lg">
+                        {book.discountPercentage}% OFF
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* Book Info */}
+                  <div className="p-6 flex-grow">
+                    <div className="flex items-center mb-2">
+                      <span className="text-xs font-medium bg-accent text-primary px-2 py-1 rounded">
+                        CA Final
+                      </span>
+                      {book.language && (
+                        <span className="ml-2 text-xs font-medium bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                          {book.language}
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-800 mb-2">{book.title}</h3>
+                    <p className="text-gray-600 mb-3">By {book.instructor}</p>
+                    {book.applicableExams && (
+                      <p className="text-sm text-gray-500 mb-4">
+                        <span className="font-medium">Applicable for:</span> {book.applicableExams.join(", ")}
+                      </p>
+                    )}
+                  </div>
+                  
+                  {/* Price and Buy Button */}
+                  <div className="p-6 pt-0 border-t border-gray-100 mt-auto">
+                    <div className="flex items-center justify-between mb-4">
+                      <div>
+                        {book.originalPrice && (
+                          <span className="text-gray-500 line-through mr-2">₹{book.originalPrice.toLocaleString()}</span>
+                        )}
+                        {book.currentPrice ? (
+                          <span className="text-2xl font-bold text-primary">₹{book.currentPrice.toLocaleString()}</span>
+                        ) : book.pricingOptions ? (
+                          <span className="text-2xl font-bold text-primary">
+                            ₹{book.pricingOptions.min.toLocaleString()} - ₹{book.pricingOptions.max.toLocaleString()}
+                          </span>
+                        ) : null}
+                      </div>
+                      <div className="flex items-center text-yellow-400">
+                        {[...Array(5)].map((_, i) => (
+                          <svg key={i} className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <button className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-2 rounded transition-colors">
+                        Buy Now
+                      </button>
+                      <button className="bg-gray-100 hover:bg-gray-200 p-2 rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+
+            {/* CTA Banner */}
+            <div className="mt-16 bg-gradient-to-r from-primary to-primary-dark rounded-xl overflow-hidden shadow-lg">
+              <div className="flex flex-col md:flex-row items-center">
+                <div className="md:w-2/3 p-8 text-white">
+                  <h3 className="text-2xl font-bold mb-2">Bundle & Save!</h3>
+                  <p className="mb-4">Get all CA Final study materials and save up to 35%. Complete coverage for all subjects.</p>
+                  <button className="bg-white text-primary hover:bg-gray-100 font-bold py-2 px-6 rounded-lg transition-colors">
+                    View Bundles
+                  </button>
+                </div>
+                <div className="md:w-1/3 p-4">
+                  <img src="https://via.placeholder.com/400x300?text=Bundle+Offer" alt="Bundle Offer" className="rounded-lg shadow-md" />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Course Structure */}
         {activeTab === 'structure' && (
           <div>
-            <h2 className="text-2xl font-bold mb-6 text-blue-700">Course Structure</h2>
+            <h2 className="text-2xl font-bold mb-6 text-primary">Course Structure</h2>
             <div className="overflow-x-auto mt-6">
               <table className="w-full">
                 <thead>
                   <tr className="bg-gray-50">
-                    <th className="py-4 px-6 text-left text-blue-700 font-semibold">Paper</th>
-                    <th className="py-4 px-6 text-left text-blue-700 font-semibold">Marks</th>
-                    <th className="py-4 px-6 text-left text-blue-700 font-semibold">Type of Questions</th>
+                    <th className="py-4 px-6 text-left text-primary font-semibold">Paper</th>
+                    <th className="py-4 px-6 text-left text-primary font-semibold">Marks</th>
+                    <th className="py-4 px-6 text-left text-primary font-semibold">Type of Questions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -331,14 +523,14 @@ const CA_final = () => {
         {/* Images Gallery Section */}
         {activeTab === 'images' && (
           <div>
-            <h2 className="text-2xl font-bold mb-6 text-blue-700">CA Final Program Gallery</h2>
+            <h2 className="text-2xl font-bold mb-6 text-primary">CA Final Program Gallery</h2>
             <p className="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-8">
               Take a visual tour of our CA Final program, facilities, and student achievements.
             </p>
 
             {/* Gallery navigation tabs */}
             <div className="flex flex-wrap justify-center mb-8 gap-2">
-              <button className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full font-medium hover:bg-blue-200 transition-colors">All Photos</button>
+              <button className="px-4 py-2 bg-accent text-primary rounded-full font-medium hover:bg-primary transition-colors">All Photos</button>
               <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-medium hover:bg-gray-200 transition-colors">Classroom</button>
               <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-medium hover:bg-gray-200 transition-colors">Facilities</button>
               <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-medium hover:bg-gray-200 transition-colors">Events</button>
@@ -380,12 +572,12 @@ const CA_final = () => {
             </div>
 
             {/* Virtual tour section */}
-            <div className="mt-12 bg-blue-50 rounded-xl p-8">
+            <div className="mt-12 bg-bg-light rounded-xl p-8">
               <div className="flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 mb-6 md:mb-0 md:pr-6">
-                  <h3 className="text-2xl font-bold text-blue-700 mb-2">Take a Virtual Tour</h3>
+                  <h3 className="text-2xl font-bold text-primary mb-2">Take a Virtual Tour</h3>
                   <p className="text-gray-700 mb-4">Experience our campus facilities and classrooms through our interactive virtual tour.</p>
-                  <button className="flex items-center bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-5 py-3 font-medium transition-all">
+                  <button className="flex items-center bg-primary hover:bg-primary-dark text-white rounded-lg px-5 py-3 font-medium transition-all">
                     <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
                     </svg>
@@ -397,7 +589,7 @@ const CA_final = () => {
                     <img src="https://via.placeholder.com/800x450?text=Virtual+Tour" alt="Virtual Tour" className="w-full" />
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="bg-white/90 rounded-full p-4">
-                        <svg className="w-10 h-10 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                        <svg className="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
                         </svg>
                       </div>
@@ -412,7 +604,7 @@ const CA_final = () => {
         {/* FAQs Section */}
         {activeTab === 'faqs' && (
           <div>
-            <h2 className="text-2xl font-bold mb-6 text-blue-700">Frequently Asked Questions</h2>
+            <h2 className="text-2xl font-bold mb-6 text-primary">Frequently Asked Questions</h2>
             <div className="mt-8 space-y-4">
               {Object.entries(faqs).map(([question, answer], index) => (
                 <div className="rounded-lg overflow-hidden shadow-sm" key={index}>
@@ -420,7 +612,7 @@ const CA_final = () => {
                     className={`p-5 flex justify-between items-center cursor-pointer ${activeAccordion === index ? 'bg-gray-50' : 'bg-white'}`}
                     onClick={() => toggleAccordion(index)}>
                     <h3 className="text-base font-medium text-gray-800">{question.replace(/_/g, ' ')}</h3>
-                    <span className="text-2xl text-blue-500">
+                    <span className="text-2xl text-primary">
                       {activeAccordion === index ? '−' : '+'}
                     </span>
                   </div>
@@ -439,7 +631,7 @@ const CA_final = () => {
       {/* Faculty Section */}
       <div className="my-16">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-blue-700 mb-3">Meet Our Expert Faculty</h2>
+          <h2 className="text-3xl font-bold text-primary mb-3">Meet Our Expert Faculty</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">Learn from the best minds in the industry with decades of experience in teaching and professional practice</p>
         </div>
         
@@ -454,7 +646,7 @@ const CA_final = () => {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-blue-700">{faculty.name}</h3>
+                <h3 className="text-xl font-bold text-primary">{faculty.name}</h3>
                 <p className="text-gray-500 mb-2">{faculty.expertise}</p>
                 <div className="flex items-center text-sm text-gray-600">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -469,9 +661,9 @@ const CA_final = () => {
       </div>
 
       {/* Testimonials Section */}
-      <div className="bg-gray-50 rounded-2xl p-8 my-16">
+      <div className="bg-bg-light rounded-2xl p-8 my-16">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-blue-700 mb-3">What Our Students Say</h2>
+          <h2 className="text-3xl font-bold text-primary mb-3">What Our Students Say</h2>
           <p className="text-gray-600 max-w-2xl mx-auto">Hear from our successful students who have transformed their careers with our CA Final program</p>
         </div>
         
@@ -495,7 +687,7 @@ const CA_final = () => {
                 </div>
                 <p className="text-gray-700 italic text-center mb-4">"{testimonial.quote}"</p>
                 <div className="text-center">
-                  <p className="font-bold text-blue-700">{testimonial.name}</p>
+                  <p className="font-bold text-primary">{testimonial.name}</p>
                   <p className="text-sm text-gray-500">{testimonial.position}</p>
                 </div>
               </div>
@@ -512,13 +704,13 @@ const CA_final = () => {
             alt="Success Background" 
             className="w-full h-full object-cover" 
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-800 to-blue-600 opacity-90"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-dark to-primary opacity-90"></div>
         </div>
         <div className="relative z-10 py-16 px-10 text-center text-white">
           <h2 className="text-3xl font-bold mb-4">Ready to Excel in CA Final?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">Join Lakshya Edu for expert guidance and success in your CA journey</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <button className="bg-orange-500 hover:bg-orange-400 text-white font-bold py-3 px-8 rounded transition-all duration-300">Enroll Now</button>
+            <button className="bg-secondary hover:bg-secondary-light text-white font-bold py-3 px-8 rounded transition-all duration-300">Enroll Now</button>
             <button className="bg-transparent hover:bg-white/10 text-white font-bold py-3 px-8 rounded border-2 border-white transition-all duration-300">Contact Us</button>
           </div>
         </div>
