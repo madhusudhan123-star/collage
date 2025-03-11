@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 // Remove CSS import since we'll use Tailwind classes
 
-const CA_final = () => {
+const CA_inter = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [activeAccordion, setActiveAccordion] = useState(null);
-  
+  const [showAllVideos, setShowAllVideos] = useState(false);
+
   const subjects = {
     "Paper_1": "Financial Reporting",
     "Paper_2": "Strategic Financial Management",
@@ -188,6 +189,72 @@ const CA_final = () => {
     }
   ];
 
+  const demoVideos = [
+    {
+      title: "Financial Reporting Concepts",
+      instructor: "Prof. Rajiv Kumar",
+      thumbnail: "https://via.placeholder.com/600x400?text=Financial+Reporting",
+      duration: "15:30",
+      description: "Learn key concepts of Financial Reporting with Prof. Rajiv Kumar"
+    },
+    {
+      title: "Advanced Auditing Principles",
+      instructor: "CA Priti Agarwal",
+      thumbnail: "https://via.placeholder.com/600x400?text=Advanced+Auditing",
+      duration: "12:45",
+      description: "Master Auditing concepts with CA Priti Agarwal"
+    },
+    {
+      title: "Corporate Laws Explained",
+      instructor: "Prof. Sanjay Verma",
+      thumbnail: "https://via.placeholder.com/600x400?text=Corporate+Laws",
+      duration: "18:20",
+      description: "Understanding Corporate Laws with Prof. Sanjay Verma"
+    },
+    {
+      title: "Strategic Financial Management",
+      instructor: "CA Rahul Mehta",
+      thumbnail: "https://via.placeholder.com/600x400?text=Financial+Management",
+      duration: "20:15",
+      description: "Deep dive into Strategic Financial Management concepts"
+    },
+    {
+      title: "Cost Management Strategies",
+      instructor: "CA Sneha Patel",
+      thumbnail: "https://via.placeholder.com/600x400?text=Cost+Management",
+      duration: "16:45",
+      description: "Learn effective cost management techniques"
+    },
+    {
+      title: "Professional Ethics",
+      instructor: "Prof. Amit Singh",
+      thumbnail: "https://via.placeholder.com/600x400?text=Professional+Ethics",
+      duration: "14:30",
+      description: "Understanding professional ethics in CA practice"
+    },
+    {
+      title: "International Taxation",
+      instructor: "CA Deepak Kumar",
+      thumbnail: "https://via.placeholder.com/600x400?text=International+Taxation",
+      duration: "22:10",
+      description: "Comprehensive guide to international taxation"
+    },
+    {
+      title: "Economic Laws Overview",
+      instructor: "Prof. Neha Sharma",
+      thumbnail: "https://via.placeholder.com/600x400?text=Economic+Laws",
+      duration: "19:45",
+      description: "Complete overview of economic laws"
+    },
+    {
+      title: "Risk Management Essentials",
+      instructor: "CA Rajesh Gupta",
+      thumbnail: "https://via.placeholder.com/600x400?text=Risk+Management",
+      duration: "17:30",
+      description: "Essential concepts in risk management"
+    }
+  ];
+
   const toggleAccordion = (index) => {
     setActiveAccordion(activeAccordion === index ? null : index);
   };
@@ -195,102 +262,79 @@ const CA_final = () => {
   return (
     <div className="max-w-7xl mx-auto p-5 font-sans text-gray-800">
       {/* Hero Section with Background Image */}
-      <div className="relative rounded-lg overflow-hidden mb-8 shadow-lg">
+      <div className="relative rounded-xl overflow-hidden mb-12 shadow-2xl">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://via.placeholder.com/1600x900?text=CA+Final+Course" 
-            alt="CA Final Course Background" 
-            className="w-full h-full object-cover opacity-20" 
+            src="https://via.placeholder.com/1600x900?text=CA+Intermediate+Course" 
+            alt="CA Intermediate Course Background" 
+            className="w-full h-full object-cover opacity-30" 
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-dark to-primary opacity-90"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-primary opacity-85"></div>
         </div>
-        <div className="relative z-10 py-20 px-10 text-center text-white">
-          <div className="flex justify-center mb-6">
-            <img 
-              src="https://via.placeholder.com/120?text=CA+Logo" 
-              alt="CA Logo" 
-              className="h-24 w-auto" 
-            />
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">CA Final Course</h1>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">Master the pinnacle of chartered accountancy with our comprehensive CA Final program</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            {/* <button className="bg-secondary hover:bg-secondary-light text-primary font-bold py-3 px-8 rounded transition-all duration-300 hover:-translate-y-0.5 transform flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
-              </svg>
-              Enroll Now
-            </button> */}
-            <a href='/request'>
-            <button className="bg-transparent hover:bg-white/10 text-white border-2 border-white font-bold py-3 px-8 rounded transition-all duration-300 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-              </svg>
-              Request Callback
-            </button>
-            </a>
-          </div>
-          <div className="flex justify-center mt-10 space-x-6">
-            <div className="text-center">
-              <div className=" rounded-full p-4 mb-2 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
+        <div className="relative z-10 py-24 px-8 md:px-16">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+              <div className="text-white md:w-1/2">
+                <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">CA Intermediate Course</h1>
+                <p className="text-xl md:text-2xl mb-8 opacity-90">Take your first step towards becoming a Chartered Accountant with our comprehensive CA Intermediate program</p>
+                <div className="flex flex-wrap gap-4">
+                  <a href='/request'>
+                    <button className="bg-white text-primary hover:bg-gray-100 font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg flex items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                      </svg>
+                      Request Callback
+                    </button>
+                  </a>
+                  {/* <button className="bg-transparent hover:bg-white/10 text-white border-2 border-white font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                    Learn More
+                  </button> */}
+                </div>
               </div>
-              <span className="block text-sm">Expert Faculty</span>
-            </div>
-            <div className="text-center">
-              <div className=" rounded-full p-4 mb-2 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
+              <div className="md:w-1/2">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="text-center text-white p-4 rounded-lg bg-white/5">
+                      <div className="text-4xl font-bold mb-2">85%</div>
+                      <div className="text-sm opacity-80">Success Rate</div>
+                    </div>
+                    <div className="text-center text-white p-4 rounded-lg bg-white/5">
+                      <div className="text-4xl font-bold mb-2">5000+</div>
+                      <div className="text-sm opacity-80">Students</div>
+                    </div>
+                    <div className="text-center text-white p-4 rounded-lg bg-white/5">
+                      <div className="text-4xl font-bold mb-2">25+</div>
+                      <div className="text-sm opacity-80">Expert Faculty</div>
+                    </div>
+                    <div className="text-center text-white p-4 rounded-lg bg-white/5">
+                      <div className="text-4xl font-bold mb-2">100+</div>
+                      <div className="text-sm opacity-80">Rank Holders</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <span className="block text-sm">Proven Results</span>
-            </div>
-            <div className="text-center">
-              <div className=" rounded-full p-4 mb-2 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <span className="block text-sm">Fast-track Learning</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Navigation Tabs */}
-      <div className="flex flex-wrap border-b-2 border-gray-100 mb-8">
-        <button 
-          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'overview' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
-          onClick={() => setActiveTab('overview')}>
-          Overview
-        </button>
-        <button 
-          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'subjects' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
-          onClick={() => setActiveTab('subjects')}>
-          Subjects
-        </button>
-        <button 
-          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'books' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
-          onClick={() => setActiveTab('books')}>
-          Books
-        </button>
-        <button 
-          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'structure' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
-          onClick={() => setActiveTab('structure')}>
-          Course Structure
-        </button>
-        <button 
-          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'images' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
-          onClick={() => setActiveTab('images')}>
-          Images
-        </button>
-        <button 
-          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'faqs' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`}
-          onClick={() => setActiveTab('faqs')}>
-          FAQs
-        </button>
+      {/* Navigation Tabs - Updated design */}
+      <div className="flex flex-wrap justify-center gap-2 mb-12 bg-gray-50 p-2 rounded-lg">
+        {['overview', 'subjects', 'books', 'structure', 'images', 'faqs'].map((tab) => (
+          <button
+            key={tab}
+            className={`py-3 px-6 rounded-lg text-base font-medium transition-all duration-300 ${
+              activeTab === tab 
+              ? 'bg-primary text-white shadow-lg transform -translate-y-0.5' 
+              : 'text-gray-600 hover:bg-gray-100'
+            }`}
+            onClick={() => setActiveTab(tab)}>
+            {tab.charAt(0).toUpperCase() + tab.slice(1)}
+          </button>
+        ))}
       </div>
 
       {/* Content Sections */}
@@ -454,7 +498,7 @@ const CA_final = () => {
                       <div className="flex items-center text-yellow-400">
                         {[...Array(5)].map((_, i) => (
                           <svg key={i} className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8-2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                           </svg>
                         ))}
                       </div>
@@ -579,7 +623,7 @@ const CA_final = () => {
                   <p className="text-gray-700 mb-4">Experience our campus facilities and classrooms through our interactive virtual tour.</p>
                   <button className="flex items-center bg-primary hover:bg-primary-dark text-white rounded-lg px-5 py-3 font-medium transition-all">
                     <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-11a1 1 0 012 0v4a1 1 0 01-.293.707l-2.828 2.829a1 1 0 01-1.415-1.415L9 9.586V6z" clipRule="evenodd" />
                     </svg>
                     Start Virtual Tour
                   </button>
@@ -681,7 +725,7 @@ const CA_final = () => {
                 <div className="flex justify-center mb-4">
                   {[...Array(5)].map((_, i) => (
                     <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8-2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   ))}
                 </div>
@@ -693,6 +737,58 @@ const CA_final = () => {
               </div>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Demo Video Section */}
+      <div className="my-16">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-bold text-primary mb-3">Watch Our Demo Classes</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">Get a glimpse of our teaching methodology and expert faculty through our demo lectures</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Show either first 3 videos or all videos based on showAllVideos state */}
+          {(showAllVideos ? demoVideos : demoVideos.slice(0, 3)).map((video, index) => (
+            <div key={index} className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="relative">
+                <img 
+                  src={video.thumbnail}
+                  alt={video.title}
+                  className="w-full h-48 object-cover"
+                />
+                <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center group">
+                  <button className="bg-white/90 hover:bg-white text-primary rounded-full p-3 transition-transform hover:scale-110 group-hover:scale-110">
+                    <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-lg font-bold text-gray-800 mb-2">{video.title}</h3>
+                <p className="text-gray-600 mb-4">{video.description}</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-500">Duration: {video.duration} mins</span>
+                  <span className="text-sm font-medium text-primary">Free Preview</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Updated View More Videos CTA */}
+        <div className="text-center mt-10">
+          <button 
+            onClick={() => setShowAllVideos(!showAllVideos)}
+            className="inline-flex items-center bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:-translate-y-1"
+          >
+            {showAllVideos ? 'Show Less' : 'View More Demo Classes'}
+            <svg className={`w-5 h-5 ml-2 transition-transform duration-300 ${showAllVideos ? 'rotate-180' : ''}`} 
+                 fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
         </div>
       </div>
 
@@ -723,4 +819,4 @@ const CA_final = () => {
   );
 };
 
-export default CA_final;
+export default CA_inter;

@@ -76,6 +76,9 @@ const Navbar = () => {
     );
   };
 
+  // Increase delay time for smoother transitions
+  const HOVER_DELAY = 400;
+
   // Controlled handling of dropdown hover with delay
   const handleDropdownMouseEnter = (id) => {
     if (closeTimeoutRef.current) {
@@ -85,12 +88,20 @@ const Navbar = () => {
     setActiveDropdown(id);
   };
 
-  const handleDropdownMouseLeave = () => {
-    // Add delay before closing to allow movement to submenu
-    closeTimeoutRef.current = setTimeout(() => {
-      setActiveDropdown(null);
-      setActiveSubmenu(null);
-    }, 300); // 300ms delay gives enough time to move to dropdown
+  const handleDropdownMouseLeave = (e) => {
+    // Check if we're moving to a submenu
+    const relatedTarget = e.relatedTarget;
+    const isMovingToSubmenu = relatedTarget && (
+      relatedTarget.closest('.dropdown-menu') || 
+      relatedTarget.closest('.submenu')
+    );
+    
+    if (!isMovingToSubmenu) {
+      closeTimeoutRef.current = setTimeout(() => {
+        setActiveDropdown(null);
+        setActiveSubmenu(null);
+      }, 100);
+    }
   };
 
   // Toggle dropdown state (for click)
@@ -111,6 +122,18 @@ const Navbar = () => {
       closeTimeoutRef.current = null;
     }
     setActiveSubmenu(id);
+  };
+
+  const handleSubmenuMouseLeave = (e) => {
+    // Check if we're moving back to the main dropdown
+    const relatedTarget = e.relatedTarget;
+    const isMovingToDropdown = relatedTarget && relatedTarget.closest('.dropdown-menu');
+    
+    if (!isMovingToDropdown) {
+      closeTimeoutRef.current = setTimeout(() => {
+        setActiveSubmenu(null);
+      }, 100);
+    }
   };
 
   // Toggle submenu state (for click)
@@ -166,7 +189,7 @@ const Navbar = () => {
                     {/* Desktop Dropdown Menu with hover buffer */}
                     {activeDropdown === item.id && (
                       <div 
-                        className="absolute left-0 top-full z-50" 
+                        className="absolute left-0 top-full z-50 dropdown-menu" 
                         onMouseEnter={() => handleDropdownMouseEnter(item.id)}
                         onMouseLeave={handleDropdownMouseLeave}
                       >
@@ -181,7 +204,7 @@ const Navbar = () => {
                                   <div 
                                     className="relative group"
                                     onMouseEnter={() => handleSubmenuMouseEnter(subItem.id)}
-                                    onMouseLeave={handleDropdownMouseLeave}
+                                    onMouseLeave={handleSubmenuMouseLeave}
                                   >
                                     <button
                                       className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex justify-between items-center"
@@ -195,9 +218,9 @@ const Navbar = () => {
                                     
                                     {activeSubmenu === subItem.id && (
                                       <div 
-                                        className="absolute left-full top-0 z-50"
+                                        className="absolute left-full top-0 z-50 submenu"
                                         onMouseEnter={() => handleSubmenuMouseEnter(subItem.id)}
-                                        onMouseLeave={handleDropdownMouseLeave}
+                                        onMouseLeave={handleSubmenuMouseLeave}
                                       >
                                         {/* Buffer on the left side to connect menus */}
                                         <div className="w-2 h-full absolute -left-2"></div>

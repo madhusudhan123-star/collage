@@ -1,134 +1,74 @@
 import React, { useState } from 'react';
-// Remove CSS import since we'll use Tailwind classes
 
-const CA_final = () => {
+const CA_found = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [activeAccordion, setActiveAccordion] = useState(null);
   
   const subjects = {
-    "Paper_1": "Financial Reporting",
-    "Paper_2": "Strategic Financial Management",
-    "Paper_3": "Advanced Auditing and Professional Ethics",
-    "Paper_4": "Corporate and Economic Laws",
-    "Paper_5": "Strategic Cost Management and Performance Evaluation",
-    "Paper_6A": "Risk Management (Optional)",
-    "Paper_6B": "Financial Services and Capital Markets (Optional)",
-    "Paper_6C": "International Taxation (Optional)",
-    "Paper_6D": "Economic Laws (Optional)",
-    "Paper_6E": "Global Financial Reporting Standards (Optional)",
-    "Paper_6F": "Multi-Disciplinary Case Study"
+    "Paper_1": "Principles and Practice of Accounting",
+    "Paper_2": "Business Laws and Business Correspondence and Reporting",
+    "Paper_3": "Business Mathematics and Logical Reasoning & Statistics",
+    "Paper_4": "Business Economics and Business and Commercial Knowledge"
   };
 
   const books = [
-  {
-    "discountPercentage": 18,
-    "title": "CA Final | FR",
-    "instructor": "CA Aakash Kandoi",
-    "pricingOptions": {
-      "min": 10999.00,
-      "max": 11499.00
+    {
+      "discountPercentage": 15,
+      "title": "CA Foundation | Accounts",
+      "instructor": "CA Anand Kumar",
+      "pricingOptions": {
+        "min": 3999.00,
+        "max": 4499.00
+      }
+    },
+    {
+      "discountPercentage": 10,
+      "title": "CA Foundation | Business Law",
+      "instructor": "CA Raj Kumar",
+      "applicableExams": ["May 24", "Nov 24"],
+      "originalPrice": 4999.00,
+      "currentPrice": 4499.00
+    },
+    {
+      "discountPercentage": 12,
+      "title": "CA Foundation | Business Mathematics",
+      "instructor": "Prof. Amit Shah",
+      "pricingOptions": {
+        "min": 3499.00,
+        "max": 3999.00
+      }
+    },
+    {
+      "discountPercentage": 8,
+      "title": "CA Foundation | Economics",
+      "instructor": "CA Neha Gupta",
+      "pricingOptions": {
+        "min": 3999.00,
+        "max": 4499.00
+      }
     }
-  },
-  {
-    "discountPercentage": 7,
-    "title": "CA Final | Direct Tax DT",
-    "instructor": "CA Bhanwar Borana",
-    "applicableExams": ["May 25", "Nov 25"],
-    "originalPrice": 14999.00,
-    "currentPrice": 13999.00
-  },
-  {
-    "discountPercentage": 9,
-    "title": "CA Final | FR",
-    "instructor": "CA Jai Chawla",
-    "pricingOptions": {
-      "min": 9999.00,
-      "max": 10999.00
-    }
-  },
-  {
-    "discountPercentage": 8,
-    "title": "CA Final | IDT | English | For May & Nov 2025",
-    "instructor": "CMA Tharun Raj",
-    "language": "English",
-    "applicableExams": ["May 2025", "Nov 2025"],
-    "pricingOptions": {
-      "min": 11800.00,
-      "max": 12390.00
-    }
-  },
-  {
-    "discountPercentage": 8,
-    "title": "CA Final | Indirect Tax IDT",
-    "instructor": "CA Vishal Bhattad",
-    "applicableExams": ["May 25", "Nov 25"],
-    "pricingOptions": {
-      "min": 11999.00,
-      "max": 12999.00
-    }
-  },
-  {
-    "title": "CA FINAL || AFM",
-    "instructor": "CA Sankalp Kanstiya",
-    "currentPrice": 10999.00
-  },
-  {
-    "discountPercentage": 50,
-    "title": "CA FINAL || AFM",
-    "instructor": "CA CMA Rajkiran",
-    "pricingOptions": {
-      "min": 6999.00,
-      "max": 8999.00
-    }
-  },
-  {
-    "discountPercentage": 8,
-    "title": "CA Final || Direct Tax DT",
-    "instructor": "CA Vijay Sarda",
-    "pricingOptions": {
-      "min": 10999.00,
-      "max": 11999.00
-    }
-  },
-  {
-    "discountPercentage": 36,
-    "title": "New CA Final | Audit",
-    "instructor": "CA Ravi Taori",
-    "applicableExams": ["May 2025", "Nov 2025"],
-    "pricingOptions": {
-      "min": 6999.00,
-      "max": 7999.00
-    }
-  }
-  ]
+  ];
 
   const courseStructure = [
-    { "Paper": "Financial Reporting", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Strategic Financial Management", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Advanced Auditing and Professional Ethics", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Corporate and Economic Laws", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Strategic Cost Management and Performance Evaluation", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Risk Management (Optional)", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Financial Services and Capital Markets (Optional)", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "International Taxation (Optional)", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Economic Laws (Optional)", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Global Financial Reporting Standards (Optional)", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Multi-Disciplinary Case Study", "Marks": 100, "Type_of_Questions": "Subjective" }
+    { "Paper": "Principles and Practice of Accounting", "Marks": 100, "Type_of_Questions": "Multiple Choice & Descriptive" },
+    { "Paper": "Business Laws and Business Correspondence and Reporting", "Marks": 100, "Type_of_Questions": "Multiple Choice & Descriptive" },
+    { "Paper": "Business Mathematics and Logical Reasoning & Statistics", "Marks": 100, "Type_of_Questions": "Multiple Choice" },
+    { "Paper": "Business Economics and Business and Commercial Knowledge", "Marks": 100, "Type_of_Questions": "Multiple Choice" }
   ];
 
   const passingCriteria = {
     "Minimum_Marks_Per_Subject": 40,
-    "Total_Minimum_Marks_Per_Group": 150
+    "Aggregate_Marks": 50
   };
 
   const faqs = {
-    "What_are_the_key_subjects_included_in_the_new_syllabus?": "The new syllabus includes mandatory subjects such as Financial Reporting, Strategic Financial Management, Advanced Auditing, Corporate and Economic Laws, and more.",
-    "What_is_the_duration_of_the_CA_Final_2024_examination?": "Please contact our counselors for updated information.",
-    "What_will_be_the_examination_mode?": "Please contact our counselors for updated information.",
-    "What_will_be_the_marking_scheme_for_the_CA_Final_Exam?": "Please contact our counselors for updated information.",
-    "Are_CA_final_classes_online_or_offline?": "Please contact our counselors for updated information.",
-    "Is_CA_final_tough?": "Please contact our counselors for updated information.",
-    "What_is_the_age_limit_for_CA?": "Please contact our counselors for updated information."
+    "What_is_CA_Foundation?": "CA Foundation is the entry-level exam for the Chartered Accountancy course. It can be attempted after completing Class 12.",
+    "When_can_I_register_for_CA_Foundation?": "You can register for CA Foundation after completing or appearing in Class 12 examination.",
+    "How_many_attempts_are_allowed?": "There is no limit on the number of attempts for CA Foundation.",
+    "What_is_the_exam_pattern?": "The exam consists of 4 papers with both objective and subjective type questions.",
+    "What_is_the_duration_of_the_course?": "The minimum study period is 4 months after registration.",
+    "Is_articleship_required_for_Foundation?": "No, articleship is not required for CA Foundation level.",
+    "What_are_the_passing_marks?": "40% in each subject and 50% aggregate marks are required to pass."
   };
 
   const galleryImages = [
@@ -198,8 +138,8 @@ const CA_final = () => {
       <div className="relative rounded-lg overflow-hidden mb-8 shadow-lg">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://via.placeholder.com/1600x900?text=CA+Final+Course" 
-            alt="CA Final Course Background" 
+            src="https://via.placeholder.com/1600x900?text=CA+Foundation+Course" 
+            alt="CA Foundation Course Background" 
             className="w-full h-full object-cover opacity-20" 
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary-dark to-primary opacity-90"></div>
@@ -212,8 +152,8 @@ const CA_final = () => {
               className="h-24 w-auto" 
             />
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">CA Final Course</h1>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">Master the pinnacle of chartered accountancy with our comprehensive CA Final program</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">CA Foundation Course</h1>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">Begin your CA journey with a strong foundation. Join our comprehensive CA Foundation program.</p>
           <div className="flex flex-wrap justify-center gap-4">
             {/* <button className="bg-secondary hover:bg-secondary-light text-primary font-bold py-3 px-8 rounded transition-all duration-300 hover:-translate-y-0.5 transform flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
@@ -338,7 +278,7 @@ const CA_final = () => {
               </div>
               <div>
                 <h3 className="text-lg mb-1 text-gray-600">Total Minimum Marks Per Group</h3>
-                <p className="text-3xl font-bold text-secondary">{passingCriteria.Total_Minimum_Marks_Per_Group} marks</p>
+                <p className="text-3xl font-bold text-secondary">{passingCriteria.Aggregate_Marks}%</p>
               </div>
             </div>
 
@@ -381,7 +321,7 @@ const CA_final = () => {
         {/* Subjects Section */}
         {activeTab === 'subjects' && (
           <div>
-            <h2 className="text-2xl font-bold mb-8 text-primary">CA Final Subjects</h2>
+            <h2 className="text-2xl font-bold mb-8 text-primary">CA Foundation Subjects</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-6">
               {Object.entries(subjects).map(([key, value]) => (
                 <div className="bg-white p-5 rounded-lg shadow-sm border-l-4 border-primary transition-all duration-300 hover:-translate-y-1 hover:shadow-md" key={key}>
@@ -396,7 +336,7 @@ const CA_final = () => {
         {/* Books Section */}
         {activeTab === 'books' && (
           <div>
-            <h2 className="text-2xl font-bold mb-6 text-primary">CA Final Study Material</h2>
+            <h2 className="text-2xl font-bold mb-6 text-primary">CA Foundation Study Material</h2>
             {/* Book Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {books.map((book, index) => (
@@ -419,7 +359,7 @@ const CA_final = () => {
                   <div className="p-6 flex-grow">
                     <div className="flex items-center mb-2">
                       <span className="text-xs font-medium bg-accent text-primary px-2 py-1 rounded">
-                        CA Final
+                        CA Foundation
                       </span>
                       {book.language && (
                         <span className="ml-2 text-xs font-medium bg-gray-100 text-gray-700 px-2 py-1 rounded">
@@ -480,7 +420,7 @@ const CA_final = () => {
               <div className="flex flex-col md:flex-row items-center">
                 <div className="md:w-2/3 p-8 text-white">
                   <h3 className="text-2xl font-bold mb-2">Bundle & Save!</h3>
-                  <p className="mb-4">Get all CA Final study materials and save up to 35%. Complete coverage for all subjects.</p>
+                  <p className="mb-4">Get all CA Foundation study materials and save up to 35%. Complete coverage for all subjects.</p>
                   <button className="bg-white text-primary hover:bg-gray-100 font-bold py-2 px-6 rounded-lg transition-colors">
                     View Bundles
                   </button>
@@ -723,4 +663,4 @@ const CA_final = () => {
   );
 };
 
-export default CA_final;
+export default CA_found;
