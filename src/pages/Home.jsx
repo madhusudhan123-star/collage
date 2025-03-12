@@ -1,12 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ImageSlider from '../components/ImageSlider';
-import ca from '../assets/home/ca.jpg';
-import cma from '../assets/home/cma.jpg';
-import acca from '../assets/home/acca.jpg';
-import inter from '../assets/home/intermediate.jpg'
-import graduation from '../assets/home/graduation.jpg'
 
+// Replace relative imports with public URLs
+// Import images from public folder instead of using relative paths
+const ca = '/assets/home/ca.jpg';
+const cma = '/assets/home/cma.jpg';
+const acca = '/assets/home/acca.jpg';
+const inter = '/assets/home/intermediate.jpg';
+const graduation = '/assets/home/graduation.jpg';
 
 // Theme colors
 const theme = {
@@ -828,7 +830,7 @@ const Home = () => {
                                                                 <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
                                     <div className="flex items-center mb-4">
                                         <img
-                                            className="w-12 h-12 rounded-full object-cover mr-4"
+                                            class="w-12 h-12 rounded-full object-cover mr-4"
                                             src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e"
                                             alt="Student testimonial"
                                         />
