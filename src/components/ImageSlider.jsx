@@ -1,41 +1,38 @@
 import React, { useState, useEffect, useRef } from 'react';
+import banner1 from '../assets/home/banner1.jpg';
+import banner2 from '../assets/home/banner2.jpg';
+import banner3 from '../assets/home/banner3.jpg';
+import banner4 from '../assets/home/banner4.jpg';
 
 // Gallery images data
 const galleryImages = [
     {
         id: 1,
-        src: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+        src: banner1,
         alt: "Campus Main Building",
         title: "Modern Campus Architecture",
         description: "Our main campus building features state-of-the-art facilities"
     },
     {
         id: 2,
-        src: "https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=1486&q=80",
+        src: banner2,
         alt: "Library Resources",
         title: "Extensive Library Collection",
         description: "Access to thousands of books, journals, and digital resources"
     },
     {
         id: 3,
-        src: "https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1471&q=80",
+        src: banner3,
         alt: "Research Lab",
         title: "Advanced Research Facilities",
         description: "Equipped with the latest technology for practical learning"
     },
     {
         id: 4,
-        src: "https://images.unsplash.com/photo-1571260899304-425eee4c7efd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80",
+        src: banner4,
         alt: "Student Commons",
         title: "Collaborative Spaces",
         description: "Areas designed to foster teamwork and community"
-    },
-    {
-        id: 5,
-        src: "https://images.unsplash.com/photo-1592066575517-58df903152f2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1469&q=80",
-        alt: "Auditorium",
-        title: "Modern Auditorium",
-        description: "Host to guest lectures and campus events"
     }
 ];
 

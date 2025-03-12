@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import acce from '../../assets/course/acca.jpg';
 
 const ACCA = () => {
   const sections = [
@@ -70,7 +71,7 @@ const ACCA = () => {
 
   const images = {
     hero: "https://www.accaglobal.com/content/dam/ACCA_Global/pro-quote/pro-quote-1920x1080.jpg",
-    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/3/39/ACCA_logo.svg/800px-ACCA_logo.svg.png",
+    logo: acce,
     global: "https://www.accaglobal.com/content/dam/ACCA_Global/Professional-Insights/global-smp-business/pi-global-smp-growth.jpg",
     career: "https://www.accaglobal.com/content/dam/ACCA_Global/Members/Member2020/images/Professional_insights_new.jpg",
     study: "https://www.accaglobal.com/content/dam/acca/global/images/memberquote/member-quote-2-16x9.jpg",
@@ -83,11 +84,6 @@ const ACCA = () => {
       {/* Hero Section with Background Image */}
       <div className="relative bg-red-800 text-white py-20">
         <div className="absolute inset-0 z-0">
-          <img
-            src={images.hero}
-            alt="ACCA Course"
-            className="w-full h-full object-cover opacity-20"
-          />
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between">
@@ -104,7 +100,7 @@ const ACCA = () => {
               <img
                 src={images.logo}
                 alt="ACCA Logo"
-                className="w-full max-w-[300px] mx-auto"
+                className="w-full h-full "
               />
             </div>
           </div>

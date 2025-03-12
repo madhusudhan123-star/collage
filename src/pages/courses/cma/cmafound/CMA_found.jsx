@@ -1,0 +1,666 @@
+import React, { useState } from 'react';
+
+const CMA_found = () => {
+  const [activeTab, setActiveTab] = useState('overview');
+  const [activeAccordion, setActiveAccordion] = useState(null);
+  
+  const subjects = {
+    "Paper_1": "Principles and Practice of Accounting",
+    "Paper_2": "Business Laws and Business Correspondence and Reporting",
+    "Paper_3": "Business Mathematics and Logical Reasoning & Statistics",
+    "Paper_4": "Business Economics and Business and Commercial Knowledge"
+  };
+
+  const books = [
+    {
+      "discountPercentage": 15,
+      "title": "CA Foundation | Accounts",
+      "instructor": "CA Anand Kumar",
+      "pricingOptions": {
+        "min": 3999.00,
+        "max": 4499.00
+      }
+    },
+    {
+      "discountPercentage": 10,
+      "title": "CA Foundation | Business Law",
+      "instructor": "CA Raj Kumar",
+      "applicableExams": ["May 24", "Nov 24"],
+      "originalPrice": 4999.00,
+      "currentPrice": 4499.00
+    },
+    {
+      "discountPercentage": 12,
+      "title": "CA Foundation | Business Mathematics",
+      "instructor": "Prof. Amit Shah",
+      "pricingOptions": {
+        "min": 3499.00,
+        "max": 3999.00
+      }
+    },
+    {
+      "discountPercentage": 8,
+      "title": "CA Foundation | Economics",
+      "instructor": "CA Neha Gupta",
+      "pricingOptions": {
+        "min": 3999.00,
+        "max": 4499.00
+      }
+    }
+  ];
+
+  const courseStructure = [
+    { "Paper": "Principles and Practice of Accounting", "Marks": 100, "Type_of_Questions": "Multiple Choice & Descriptive" },
+    { "Paper": "Business Laws and Business Correspondence and Reporting", "Marks": 100, "Type_of_Questions": "Multiple Choice & Descriptive" },
+    { "Paper": "Business Mathematics and Logical Reasoning & Statistics", "Marks": 100, "Type_of_Questions": "Multiple Choice" },
+    { "Paper": "Business Economics and Business and Commercial Knowledge", "Marks": 100, "Type_of_Questions": "Multiple Choice" }
+  ];
+
+  const passingCriteria = {
+    "Minimum_Marks_Per_Subject": 40,
+    "Aggregate_Marks": 50
+  };
+
+  const faqs = {
+    "What_is_CA_Foundation?": "CA Foundation is the entry-level exam for the Chartered Accountancy course. It can be attempted after completing Class 12.",
+    "When_can_I_register_for_CA_Foundation?": "You can register for CA Foundation after completing or appearing in Class 12 examination.",
+    "How_many_attempts_are_allowed?": "There is no limit on the number of attempts for CA Foundation.",
+    "What_is_the_exam_pattern?": "The exam consists of 4 papers with both objective and subjective type questions.",
+    "What_is_the_duration_of_the_course?": "The minimum study period is 4 months after registration.",
+    "Is_articleship_required_for_Foundation?": "No, articleship is not required for CA Foundation level.",
+    "What_are_the_passing_marks?": "40% in each subject and 50% aggregate marks are required to pass."
+  };
+
+  const galleryImages = [
+    { id: 1, src: "https://via.placeholder.com/400x300?text=Classroom+Sessions", alt: "Classroom Sessions", caption: "Interactive Classroom Sessions" },
+    { id: 2, src: "https://via.placeholder.com/400x300?text=Study+Materials", alt: "Study Materials", caption: "Comprehensive Study Materials" },
+    { id: 3, src: "https://via.placeholder.com/400x300?text=Faculty+Guidance", alt: "Faculty Guidance", caption: "Expert Faculty Guidance" },
+    { id: 4, src: "https://via.placeholder.com/400x300?text=Mock+Exams", alt: "Mock Exams", caption: "Rigorous Mock Exams" },
+    { id: 5, src: "https://via.placeholder.com/400x300?text=Student+Achievements", alt: "Student Achievements", caption: "Our Student Achievements" },
+    { id: 6, src: "https://via.placeholder.com/400x300?text=Campus+Facilities", alt: "Campus Facilities", caption: "State-of-the-art Campus Facilities" }
+  ];
+
+  const testimonials = [
+    {
+      id: 1,
+      name: "Priya Sharma",
+      position: "CA Final Ranker",
+      image: "https://via.placeholder.com/150?text=Priya+S",
+      quote: "The faculty at Lakshya Edu provided exceptional guidance that helped me secure a top rank in CA Final exams."
+    },
+    {
+      id: 2,
+      name: "Rahul Mehta",
+      position: "CA Professional",
+      image: "https://via.placeholder.com/150?text=Rahul+M",
+      quote: "The structured approach and comprehensive study materials at Lakshya made complex topics easier to understand."
+    },
+    {
+      id: 3,
+      name: "Sneha Patel",
+      position: "CA Final Student",
+      image: "https://via.placeholder.com/150?text=Sneha+P",
+      quote: "The mock exams and practice sessions significantly boosted my confidence for the actual CA Final exams."
+    }
+  ];
+
+  const facultyMembers = [
+    { 
+      id: 1,
+      name: "Prof. Rajiv Kumar",
+      expertise: "Financial Reporting & Accounting",
+      image: "https://via.placeholder.com/200?text=Prof.+Kumar",
+      experience: "15+ years"
+    },
+    {
+      id: 2,
+      name: "CA Priti Agarwal",
+      expertise: "Advanced Auditing & Professional Ethics",
+      image: "https://via.placeholder.com/200?text=CA+Agarwal",
+      experience: "12+ years"
+    },
+    {
+      id: 3,
+      name: "Prof. Sanjay Verma",
+      expertise: "Corporate & Economic Laws",
+      image: "https://via.placeholder.com/200?text=Prof.+Verma",
+      experience: "18+ years"
+    }
+  ];
+
+  const toggleAccordion = (index) => {
+    setActiveAccordion(activeAccordion === index ? null : index);
+  };
+
+  return (
+    <div className="max-w-7xl mx-auto p-5 font-sans text-gray-800">
+      {/* Hero Section with Background Image */}
+      <div className="relative rounded-lg overflow-hidden mb-8 shadow-lg">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://via.placeholder.com/1600x900?text=CA+Foundation+Course" 
+            alt="CA Foundation Course Background" 
+            className="w-full h-full object-cover opacity-20" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-dark to-primary opacity-90"></div>
+        </div>
+        <div className="relative z-10 py-20 px-10 text-center text-white">
+          <div className="flex justify-center mb-6">
+            <img 
+              src="https://via.placeholder.com/120?text=CA+Logo" 
+              alt="CA Logo" 
+              className="h-24 w-auto" 
+            />
+          </div>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">CA Foundation Course</h1>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">Begin your CA journey with a strong foundation. Join our comprehensive CA Foundation program.</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            {/* <button className="bg-secondary hover:bg-secondary-light text-primary font-bold py-3 px-8 rounded transition-all duration-300 hover:-translate-y-0.5 transform flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
+              </svg>
+              Enroll Now
+            </button> */}
+            <a href='/request'>
+            <button className="bg-transparent hover:bg-white/10 text-white border-2 border-white font-bold py-3 px-8 rounded transition-all duration-300 flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+              </svg>
+              Request Callback
+            </button>
+            </a>
+          </div>
+          <div className="flex justify-center mt-10 space-x-6">
+            <div className="text-center">
+              <div className=" rounded-full p-4 mb-2 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+              <span className="block text-sm">Expert Faculty</span>
+            </div>
+            <div className="text-center">
+              <div className=" rounded-full p-4 mb-2 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <span className="block text-sm">Proven Results</span>
+            </div>
+            <div className="text-center">
+              <div className=" rounded-full p-4 mb-2 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <span className="block text-sm">Fast-track Learning</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation Tabs */}
+      <div className="flex flex-wrap border-b-2 border-gray-100 mb-8">
+        <button 
+          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'overview' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
+          onClick={() => setActiveTab('overview')}>
+          Overview
+        </button>
+        <button 
+          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'subjects' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
+          onClick={() => setActiveTab('subjects')}>
+          Subjects
+        </button>
+        <button 
+          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'books' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
+          onClick={() => setActiveTab('books')}>
+          Books
+        </button>
+        <button 
+          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'structure' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
+          onClick={() => setActiveTab('structure')}>
+          Course Structure
+        </button>
+        <button 
+          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'images' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
+          onClick={() => setActiveTab('images')}>
+          Images
+        </button>
+        <button 
+          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'faqs' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`}
+          onClick={() => setActiveTab('faqs')}>
+          FAQs
+        </button>
+      </div>
+
+      {/* Content Sections */}
+      <div className="course-content">
+        {/* Overview Section */}
+        {activeTab === 'overview' && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
+              <h2 className="text-2xl font-bold mb-6 text-primary relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">Program Details</h2>
+              <div className="mb-4 flex items-start">
+                <div className="bg-accent p-2 rounded-full mr-4 mt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-lg text-primary mb-1">Location</h3>
+                  <p>Hyderabad & India</p>
+                </div>
+              </div>
+              <div className="mb-4 flex items-start">
+                <div className="bg-accent p-2 rounded-full mr-4 mt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-lg text-primary mb-1">Duration</h3>
+                  <p>6-8 months intensive program</p>
+                </div>
+              </div>
+              <p className="text-gray-700">Our program covers critical subjects including Financial Reporting, Strategic Financial Management, Advanced Auditing, and a range of specialized optional papers. With a focus on in-depth knowledge and professional ethics, our CA Final course is designed to ensure you are fully prepared for the highest level of CA exams.</p>
+            </div>
+
+            <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
+              <h2 className="text-2xl font-bold mb-6 text-primary relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">Why Choose Lakshya?</h2>
+              <p className="text-gray-700">Join us and secure your future as a successful Chartered Accountant. Our expert faculty and interactive sessions ensure a robust foundation for your CA Final journey. At Lakshya, we don't just teach; we empower you to excel. Choose the best – Choose Lakshya for your CA Final preparation. Hurry! Limited seats available. Your Success, Our Priority!</p>
+            </div>
+
+            <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
+              <h2 className="text-2xl font-bold mb-6 text-primary relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">Passing Criteria</h2>
+              <div className="mb-5">
+                <h3 className="text-lg mb-1 text-gray-600">Minimum Marks Per Subject</h3>
+                <p className="text-3xl font-bold text-secondary">{passingCriteria.Minimum_Marks_Per_Subject}%</p>
+              </div>
+              <div>
+                <h3 className="text-lg mb-1 text-gray-600">Total Minimum Marks Per Group</h3>
+                <p className="text-3xl font-bold text-secondary">{passingCriteria.Aggregate_Marks}%</p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
+              <h2 className="text-2xl font-bold mb-6 text-primary relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">Join Face-to-Face Batches</h2>
+              <p className="text-gray-700 mb-4">Join our face-to-face batches to immerse yourself in a comprehensive learning experience.</p>
+              <a href="/request">
+              <button className="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded transition-all duration-300">Register Now</button>
+              </a>
+            </div>
+
+            <div className="bg-gradient-to-br from-primary to-primary-dark text-white rounded-lg p-6 shadow-md col-span-1 md:col-span-2 mt-6">
+              <h2 className="text-2xl font-bold mb-6 relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">Our Impact</h2>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div className="text-center">
+                  <img src="https://via.placeholder.com/80?text=Trophy" alt="Success Rate" className="mx-auto mb-2" />
+                  <p className="text-3xl font-bold">85%</p>
+                  <p className="text-sm opacity-80">Success Rate</p>
+                </div>
+                <div className="text-center">
+                  <img src="https://via.placeholder.com/80?text=Students" alt="Students Trained" className="mx-auto mb-2" />
+                  <p className="text-3xl font-bold">5000+</p>
+                  <p className="text-sm opacity-80">Students Trained</p>
+                </div>
+                <div className="text-center">
+                  <img src="https://via.placeholder.com/80?text=Teacher" alt="Expert Faculty" className="mx-auto mb-2" />
+                  <p className="text-3xl font-bold">25+</p>
+                  <p className="text-sm opacity-80">Expert Faculty</p>
+                </div>
+                <div className="text-center">
+                  <img src="https://via.placeholder.com/80?text=Award" alt="Rank Holders" className="mx-auto mb-2" />
+                  <p className="text-3xl font-bold">100+</p>
+                  <p className="text-sm opacity-80">Rank Holders</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Subjects Section */}
+        {activeTab === 'subjects' && (
+          <div>
+            <h2 className="text-2xl font-bold mb-8 text-primary">CA Foundation Subjects</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-6">
+              {Object.entries(subjects).map(([key, value]) => (
+                <div className="bg-white p-5 rounded-lg shadow-sm border-l-4 border-primary transition-all duration-300 hover:-translate-y-1 hover:shadow-md" key={key}>
+                  <h3 className="text-lg text-primary mb-2">{key.replace('_', ' ')}</h3>
+                  <p className="text-gray-700">{value}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Books Section */}
+        {activeTab === 'books' && (
+          <div>
+            <h2 className="text-2xl font-bold mb-6 text-primary">CA Foundation Study Material</h2>
+            {/* Book Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {books.map((book, index) => (
+                <div key={index} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col">
+                  {/* Book Image with Discount Badge */}
+                  <div className="relative h-48 bg-gray-100">
+                    <img 
+                      src={`https://via.placeholder.com/400x240?text=${encodeURIComponent(book.title)}`} 
+                      alt={book.title} 
+                      className="w-full h-full object-cover" 
+                    />
+                    {book.discountPercentage && (
+                      <div className="absolute top-0 right-0 bg-red-500 text-white font-bold py-1 px-3 rounded-bl-lg">
+                        {book.discountPercentage}% OFF
+                      </div>
+                    )}
+                  </div>
+                  
+                  {/* Book Info */}
+                  <div className="p-6 flex-grow">
+                    <div className="flex items-center mb-2">
+                      <span className="text-xs font-medium bg-accent text-primary px-2 py-1 rounded">
+                        CA Foundation
+                      </span>
+                      {book.language && (
+                        <span className="ml-2 text-xs font-medium bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                          {book.language}
+                        </span>
+                      )}
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-800 mb-2">{book.title}</h3>
+                    <p className="text-gray-600 mb-3">By {book.instructor}</p>
+                    {book.applicableExams && (
+                      <p className="text-sm text-gray-500 mb-4">
+                        <span className="font-medium">Applicable for:</span> {book.applicableExams.join(", ")}
+                      </p>
+                    )}
+                  </div>
+                  
+                  {/* Price and Buy Button */}
+                  <div className="p-6 pt-0 border-t border-gray-100 mt-auto">
+                    <div className="flex items-center justify-between mb-4">
+                      <div>
+                        {book.originalPrice && (
+                          <span className="text-gray-500 line-through mr-2">₹{book.originalPrice.toLocaleString()}</span>
+                        )}
+                        {book.currentPrice ? (
+                          <span className="text-2xl font-bold text-primary">₹{book.currentPrice.toLocaleString()}</span>
+                        ) : book.pricingOptions ? (
+                          <span className="text-2xl font-bold text-primary">
+                            ₹{book.pricingOptions.min.toLocaleString()} - ₹{book.pricingOptions.max.toLocaleString()}
+                          </span>
+                        ) : null}
+                      </div>
+                      <div className="flex items-center text-yellow-400">
+                        {[...Array(5)].map((_, i) => (
+                          <svg key={i} className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <button className="w-full bg-primary hover:bg-primary-dark text-white font-bold py-2 rounded transition-colors">
+                        Buy Now
+                      </button>
+                      <button className="bg-gray-100 hover:bg-gray-200 p-2 rounded">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+
+            {/* CTA Banner */}
+            <div className="mt-16 bg-gradient-to-r from-primary to-primary-dark rounded-xl overflow-hidden shadow-lg">
+              <div className="flex flex-col md:flex-row items-center">
+                <div className="md:w-2/3 p-8 text-white">
+                  <h3 className="text-2xl font-bold mb-2">Bundle & Save!</h3>
+                  <p className="mb-4">Get all CA Foundation study materials and save up to 35%. Complete coverage for all subjects.</p>
+                  <button className="bg-white text-primary hover:bg-gray-100 font-bold py-2 px-6 rounded-lg transition-colors">
+                    View Bundles
+                  </button>
+                </div>
+                <div className="md:w-1/3 p-4">
+                  <img src="https://via.placeholder.com/400x300?text=Bundle+Offer" alt="Bundle Offer" className="rounded-lg shadow-md" />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Course Structure */}
+        {activeTab === 'structure' && (
+          <div>
+            <h2 className="text-2xl font-bold mb-6 text-primary">Course Structure</h2>
+            <div className="overflow-x-auto mt-6">
+              <table className="w-full">
+                <thead>
+                  <tr className="bg-gray-50">
+                    <th className="py-4 px-6 text-left text-primary font-semibold">Paper</th>
+                    <th className="py-4 px-6 text-left text-primary font-semibold">Marks</th>
+                    <th className="py-4 px-6 text-left text-primary font-semibold">Type of Questions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {courseStructure.map((item, index) => (
+                    <tr key={index} className="hover:bg-gray-50 border-b border-gray-100">
+                      <td className="py-4 px-6">{item.Paper}</td>
+                      <td className="py-4 px-6">{item.Marks}</td>
+                      <td className="py-4 px-6">{item.Type_of_Questions}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {/* Images Gallery Section */}
+        {activeTab === 'images' && (
+          <div>
+            <h2 className="text-2xl font-bold mb-6 text-primary">CA Final Program Gallery</h2>
+            <p className="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-8">
+              Take a visual tour of our CA Final program, facilities, and student achievements.
+            </p>
+
+            {/* Gallery navigation tabs */}
+            <div className="flex flex-wrap justify-center mb-8 gap-2">
+              <button className="px-4 py-2 bg-accent text-primary rounded-full font-medium hover:bg-primary transition-colors">All Photos</button>
+              <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-medium hover:bg-gray-200 transition-colors">Classroom</button>
+              <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-medium hover:bg-gray-200 transition-colors">Facilities</button>
+              <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-medium hover:bg-gray-200 transition-colors">Events</button>
+              <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full font-medium hover:bg-gray-200 transition-colors">Achievements</button>
+            </div>
+
+            {/* Enhanced gallery with different image sizes */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="md:col-span-2 md:row-span-2">
+                <div className="rounded-lg overflow-hidden shadow-sm h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                  <div className="relative overflow-hidden h-full">
+                    <img 
+                      src="https://via.placeholder.com/800x600?text=Campus+Overview" 
+                      alt="Campus Overview"
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" 
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+                      <h3 className="text-white text-xl font-bold">Campus Overview</h3>
+                      <p className="text-white/80">Our state-of-the-art campus facilities</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {galleryImages.slice(0, 4).map(image => (
+                <div className="rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg" key={image.id}>
+                  <div className="relative overflow-hidden pt-[75%]">
+                    <img 
+                      src={image.src} 
+                      alt={image.alt}
+                      className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-500 hover:scale-105" 
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                      <p className="text-white font-medium">{image.caption}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Virtual tour section */}
+            <div className="mt-12 bg-bg-light rounded-xl p-8">
+              <div className="flex flex-col md:flex-row items-center">
+                <div className="md:w-1/2 mb-6 md:mb-0 md:pr-6">
+                  <h3 className="text-2xl font-bold text-primary mb-2">Take a Virtual Tour</h3>
+                  <p className="text-gray-700 mb-4">Experience our campus facilities and classrooms through our interactive virtual tour.</p>
+                  <button className="flex items-center bg-primary hover:bg-primary-dark text-white rounded-lg px-5 py-3 font-medium transition-all">
+                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                    </svg>
+                    Start Virtual Tour
+                  </button>
+                </div>
+                <div className="md:w-1/2">
+                  <div className="relative rounded-lg overflow-hidden shadow-md">
+                    <img src="https://via.placeholder.com/800x450?text=Virtual+Tour" alt="Virtual Tour" className="w-full" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="bg-white/90 rounded-full p-4">
+                        <svg className="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* FAQs Section */}
+        {activeTab === 'faqs' && (
+          <div>
+            <h2 className="text-2xl font-bold mb-6 text-primary">Frequently Asked Questions</h2>
+            <div className="mt-8 space-y-4">
+              {Object.entries(faqs).map(([question, answer], index) => (
+                <div className="rounded-lg overflow-hidden shadow-sm" key={index}>
+                  <div 
+                    className={`p-5 flex justify-between items-center cursor-pointer ${activeAccordion === index ? 'bg-gray-50' : 'bg-white'}`}
+                    onClick={() => toggleAccordion(index)}>
+                    <h3 className="text-base font-medium text-gray-800">{question.replace(/_/g, ' ')}</h3>
+                    <span className="text-2xl text-primary">
+                      {activeAccordion === index ? '−' : '+'}
+                    </span>
+                  </div>
+                  {activeAccordion === index && (
+                    <div className="p-5 bg-white border-t border-gray-100">
+                      <p className="text-gray-700">{answer || "Please contact our counselors for updated information."}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Faculty Section */}
+      <div className="my-16">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-bold text-primary mb-3">Meet Our Expert Faculty</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">Learn from the best minds in the industry with decades of experience in teaching and professional practice</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {facultyMembers.map(faculty => (
+            <div className="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg" key={faculty.id}>
+              <div className="h-64 overflow-hidden">
+                <img 
+                  src={faculty.image} 
+                  alt={faculty.name} 
+                  className="w-full h-full object-cover object-center" 
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-primary">{faculty.name}</h3>
+                <p className="text-gray-500 mb-2">{faculty.expertise}</p>
+                <div className="flex items-center text-sm text-gray-600">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  {faculty.experience} of teaching experience
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Testimonials Section */}
+      <div className="bg-bg-light rounded-2xl p-8 my-16">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-bold text-primary mb-3">What Our Students Say</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">Hear from our successful students who have transformed their careers with our CA Final program</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map(testimonial => (
+            <div className="bg-white rounded-xl p-6 shadow-sm relative" key={testimonial.id}>
+              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
+                <img 
+                  src={testimonial.image} 
+                  alt={testimonial.name}
+                  className="w-16 h-16 rounded-full border-4 border-white object-cover" 
+                />
+              </div>
+              <div className="pt-10">
+                <div className="flex justify-center mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-700 italic text-center mb-4">"{testimonial.quote}"</p>
+                <div className="text-center">
+                  <p className="font-bold text-primary">{testimonial.name}</p>
+                  <p className="text-sm text-gray-500">{testimonial.position}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Call to Action */}
+      <div className="relative rounded-xl overflow-hidden my-16">
+        <div className="absolute inset-0">
+          <img 
+            src="https://via.placeholder.com/1600x600?text=CA+Final+Success" 
+            alt="Success Background" 
+            className="w-full h-full object-cover" 
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-dark to-primary opacity-90"></div>
+        </div>
+        <div className="relative z-10 py-16 px-10 text-center text-white">
+          <h2 className="text-3xl font-bold mb-4">Ready to Excel in CA Final?</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">Join Lakshya Edu for expert guidance and success in your CA journey</p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a href='/enroll'>
+            <button className="bg-secondary hover:bg-secondary-light text-white font-bold py-3 px-8 rounded transition-all duration-300">Enroll Now</button>
+            </a>
+            <a href='/contact'>
+            <button className="bg-transparent hover:bg-white/10 text-white font-bold py-3 px-8 rounded border-2 border-white transition-all duration-300">Contact Us</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CMA_found;

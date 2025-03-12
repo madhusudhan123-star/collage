@@ -1,6 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ImageSlider from '../components/ImageSlider';
+import ca from '../assets/home/ca.jpg';
+import cma from '../assets/home/cma.jpg';
+import acca from '../assets/home/acca.jpg';
+import inter from '../assets/home/intermediate.jpg'
+import graduation from '../assets/home/graduation.jpg'
+
 
 // Theme colors
 const theme = {
@@ -242,53 +248,11 @@ const Home = () => {
                 <div className="absolute inset-0">
                     <ImageSlider autoPlay={true} infiniteLoop={true} showArrows={false} showStatus={false} showThumbs={false} />
                     {/* Overlay to darken images and make text more readable */}
-                    <div className="absolute inset-0 bg-black opacity-40 z-20"></div>
+                    {/* <div className="absolute inset-0 bg-black opacity-40 z-20"></div> */}
                 </div>
 
                 {/* Hero Content */}
-                <div className="relative h-full flex flex-col justify-center items-center text-center px-4 sm:px-6 lg:px-8 z-20">
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-white">
-                        <span>Welcome to Lakshya Edu</span>
-                        <br />
-                        <span className="mt-3 block text-[#A6192E]">Your Path to Success!</span>
-                    </h1>
-
-                    <p className="text-xl sm:text-2xl md:text-3xl text-white mb-10 max-w-3xl">
-                        Excellence in education for CA, CMA, and professional courses
-                    </p>
-
-                    <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6">
-                        <Link
-                            to="/courses"
-                            className="px-8 py-3 bg-[#A6192E] text-white font-semibold rounded-md shadow-lg hover:bg-[#8B1425] transform hover:-translate-y-1 transition-all duration-300"
-                        >
-                            Explore Courses
-                        </Link>
-                        <Link
-                            to="/about"
-                            className="px-8 py-3 bg-white text-[#A6192E] font-semibold rounded-md shadow-lg hover:bg-[#FAF3E0] transform hover:-translate-y-1 transition-all duration-300"
-                        >
-                            Learn More
-                        </Link>
-                    </div>
-
-                    {/* Scrolling indicator */}
-                    <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-                        <svg
-                            className="w-10 h-10 text-[#FFD700]"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                            />
-                        </svg>
-                    </div>
-                </div>
+                
             </section>
 
             {/* Third Section with Course Cards */}
@@ -309,7 +273,7 @@ const Home = () => {
                             <div className="absolute top-0 left-0 w-full h-1 bg-[#A6192E] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                             <div className="relative">
                                 <img
-                                    src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                                    src={ca}
                                     alt="CA Course"
                                     className="w-full h-52 object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
                                 />
@@ -357,7 +321,7 @@ const Home = () => {
                             <div className="absolute top-0 left-0 w-full h-1 bg-[#A6192E] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                             <div className="relative">
                                 <img
-                                    src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                                    src={cma}
                                     alt="CMA Course"
                                     className="w-full h-52 object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
                                 />
@@ -399,7 +363,7 @@ const Home = () => {
                             <div className="absolute top-0 left-0 w-full h-1 bg-[#FFD700] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
                             <div className="relative">
                                 <img
-                                    src="https://images.unsplash.com/photo-1560439513-74b037a25d84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                                    src={acca}
                                     alt="ACCA Course"
                                     className="w-full h-52 object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
                                 />
@@ -468,7 +432,7 @@ const Home = () => {
                                 <div className="flex flex-col md:flex-row h-full">
                                     <div className="md:w-2/5 relative overflow-hidden">
                                         <img
-                                            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80"
+                                            src={graduation}
                                             alt="BBA & B.Com"
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                         />
@@ -511,7 +475,7 @@ const Home = () => {
                                 <div className="flex flex-col md:flex-row h-full">
                                     <div className="md:w-2/5 relative overflow-hidden">
                                         <img
-                                            src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80"
+                                            src={inter}
                                             alt="Intermediate Coaching"
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                         />
@@ -638,18 +602,6 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-
-            {/* Images slide section */}
-            <section className="py-16 bg-[#ECECEC]">
-                <div className="container mx-auto px-4">
-                    <h2 className="text-4xl font-bold text-center mb-12 text-[#A6192E]">
-                        Our Campus Gallery
-                    </h2>
-
-                    <ImageSlider />
-                </div>
-            </section>
-
             {/* Testimonials Section */}
             <section className="py-20 bg-white">
                 <div className="container mx-auto px-4">

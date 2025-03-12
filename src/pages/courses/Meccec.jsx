@@ -13,12 +13,21 @@ const Meccec = () => {
                         className="w-full h-full object-cover"
                     />
                 </div>
-                <div className="relative z-10">
-                    <h1 className="text-4xl font-bold mb-4">MEC/CEC Courses in Hyderabad</h1>
-                    <p className="text-xl mb-6">Excellence in Commerce & Economics Education</p>
-                    <Link to="/enroll" className="bg-white text-red-600 px-6 py-2 rounded-md font-semibold hover:bg-gray-100 transition-colors">
-                        Enroll Now
-                    </Link>
+                <div className="grid md:grid-cols-2 gap-8 relative z-10">
+                    <div>
+                        <h1 className="text-4xl font-bold mb-4">MEC/CEC Courses in Hyderabad</h1>
+                        <p className="text-xl mb-6">Excellence in Commerce & Economics Education</p>
+                        <Link to="/enroll" className="bg-white text-red-600 px-6 py-2 rounded-md font-semibold hover:bg-gray-100 transition-colors">
+                            Enroll Now
+                        </Link>
+                    </div>
+                    <div className="flex justify-center items-center">
+                        <img 
+                            src="/images/students-studying.jpg" 
+                            alt="Students in classroom" 
+                            className="rounded-lg shadow-lg max-h-64 object-cover"
+                        />
+                    </div>
                 </div>
             </div>
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import profile from '../assets/about/about.jpg'
 
 const About = () => {
     const [activeTab, setActiveTab] = useState('mission');
@@ -37,7 +38,7 @@ const About = () => {
             id: 1,
             name: "Dr. Rajiv Sharma",
             role: "Director & Chief Academic Officer",
-            image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+            image: profile,
             bio: "Dr. Sharma holds a Ph.D in Finance from Delhi University with over 20 years of experience in accounting education. He has authored several books on advanced accounting principles and serves on the board of multiple educational institutions.",
             achievements: ["Published 15+ Research Papers", "Excellence in Teaching Award (2019)", "Chartered Accountant of the Year (2015)"]
         },
@@ -505,7 +506,7 @@ const About = () => {
                                     className={`relative overflow-hidden rounded-lg shadow-lg transition-all duration-500 ease-in-out ${teamHover === member.id ? 'rotate-y-180 opacity-0' : 'opacity-100'
                                         }`}
                                 >
-                                    <div className="relative h-80">
+                                    <div className="relative h-96">
                                         <img
                                             src={member.image}
                                             alt={member.name}

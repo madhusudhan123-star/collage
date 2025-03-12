@@ -19,6 +19,9 @@ import Meccec from './pages/courses/Meccec';
 import Degree from './pages/courses/Degree';
 import ACCA from './pages/courses/ACCA';
 import CA_found from './pages/courses/ca/cafound/CA_found';
+import CMA_final from './pages/courses/cma/cmafinal/CMA_final';
+import CMA_inter from './pages/courses/cma/cmainter/CMA_inter';
+import CMA_found from './pages/courses/cma/cmafound/CMA_found';
 
 
 function App() {
@@ -35,6 +38,9 @@ function App() {
             <Route path="/courses/cafinal" element={<CA_final />} />
             <Route path="/courses/cainter" element={<CA_inter />} />
             <Route path="/courses/cafoundation" element={<CA_found />} />
+            <Route path="/courses/cmafinal" element={<CMA_final />} />
+            <Route path="/courses/cmainter" element={<CMA_inter />} />
+            <Route path="/courses/cmafoundation" element={<CMA_found />} />
             <Route path="/request" element={<Request />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/enroll" element={<Enroll />} />
