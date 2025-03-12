@@ -22,6 +22,7 @@ import CA_found from './pages/courses/ca/cafound/CA_found';
 import CMA_final from './pages/courses/cma/cmafinal/CMA_final';
 import CMA_inter from './pages/courses/cma/cmainter/CMA_inter';
 import CMA_found from './pages/courses/cma/cmafound/CMA_found';
+import CA_test from './pages/test_series/CA_test';
 
 
 function App() {
@@ -47,7 +48,7 @@ function App() {
             <Route path="/courses/mec" element={<Meccec />} />
             <Route path="/courses/degree" element={<Degree />} />
             <Route path="/courses/acca" element={<ACCA />} />
-
+            <Route path="/test/cafinal" element={<CA_test />} />
             {/* <Route path="/blogs" element={<Blogs />} />
             <Route path="/life" element={<Life />} />
             <Route path="/rankers" element={<Rankers />} />
