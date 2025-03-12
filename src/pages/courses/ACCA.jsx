@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import acce from '../../assets/course/acca.jpg';
+
+// Replace relative imports with public URLs
+const acca = '/assets/course/acca.jpg';
 
 const ACCA = () => {
   const sections = [
@@ -71,7 +73,7 @@ const ACCA = () => {
 
   const images = {
     hero: "https://www.accaglobal.com/content/dam/ACCA_Global/pro-quote/pro-quote-1920x1080.jpg",
-    logo: acce,
+    logo: acca,
     global: "https://www.accaglobal.com/content/dam/ACCA_Global/Professional-Insights/global-smp-business/pi-global-smp-growth.jpg",
     career: "https://www.accaglobal.com/content/dam/ACCA_Global/Members/Member2020/images/Professional_insights_new.jpg",
     study: "https://www.accaglobal.com/content/dam/acca/global/images/memberquote/member-quote-2-16x9.jpg",

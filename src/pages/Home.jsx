@@ -1,48 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ImageSlider from '../components/ImageSlider';
+import ca from '../assets/home/CA.jpg';
+import cma from '../assets/home/CMA.jpg';
+import acca from '../assets/home/ACCA.jpg';
+import inter from '../assets/home/intermediate.jpg';
+import graduation from '../assets/home/graduation.jpg';
 
-// Replace relative imports with public URLs
-// Import images from public folder instead of using relative paths
-const ca = '/assets/home/ca.jpg';
-const cma = '/assets/home/cma.jpg';
-const acca = '/assets/home/acca.jpg';
-const inter = '/assets/home/intermediate.jpg';
-const graduation = '/assets/home/graduation.jpg';
 
-// Theme colors
-const theme = {
-    primary: '#A6192E',    // Deep Red
-    secondary: '#FFD700',  // Gold
-    accent: '#FAF3E0',     // Off-white
-    background: '#ECECEC', // Soft Grey
-    darkPrimary: '#8B1425', // Darker shade of primary
-    lightSecondary: '#FFF0A3', // Lighter shade of gold
-};
-
-// Dropdown items data
-// const faqItems = [
-//     {
-//         id: 1,
-//         question: "What professional courses do you offer?",
-//         answer: "A student who wants to pursue CA or CMA he/she can start the course after completion of their intermediate (i.e 12 th ) or During their Degree"
-//     },
-//     {
-//         id: 2,
-//         question: "How are your placement services structured?",
-//         answer: "Our placement cell maintains strong connections with leading companies across industries. We provide career counseling, resume building workshops, interview preparation sessions, and campus recruitment drives. Our placement record consistently shows high success rates with students securing positions in top firms."
-//     },
-//     {
-//         id: 3,
-//         question: "What is your teaching methodology?",
-//         answer: "We employ a blend of traditional and modern teaching approaches. Our methodology includes interactive classroom sessions, case studies, practical assignments, industry projects, and digital learning resources. We focus on concept clarity, practical application, and exam preparation techniques."
-//     },
-//     {
-//         id: 4,
-//         question: "What facilities are available on campus?",
-//         answer: "Our campus features state-of-the-art classrooms, a comprehensive library with digital resources, computer labs with latest software, discussion rooms for group studies, cafeteria, sports facilities, and dedicated spaces for extracurricular activities. All facilities are designed to provide a conducive learning environment."
-//     }
-// ];
 const faqItems = [
     {
         id: 1,
@@ -681,8 +646,6 @@ const Home = () => {
                             {/* Gradient overlay to indicate more content */}
                             <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent pointer-events-none"></div>
                         </div>
-                        
-                        {/* Text Testimonials */}
                         <div className="relative">
                             {/* Testimonial Controls */}
                             <div className="absolute -top-12 right-4 flex items-center space-x-2 z-10">
@@ -830,7 +793,7 @@ const Home = () => {
                                                                 <div className="bg-gray-50 rounded-xl p-6 shadow-lg transform transition-transform duration-300 hover:-translate-y-1">
                                     <div className="flex items-center mb-4">
                                         <img
-                                            class="w-12 h-12 rounded-full object-cover mr-4"
+                                            className="w-12 h-12 rounded-full object-cover mr-4"
                                             src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e"
                                             alt="Student testimonial"
                                         />
