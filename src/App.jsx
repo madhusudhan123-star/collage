@@ -19,6 +19,7 @@ import CMA_inter from './pages/courses/cma/cmainter/CMA_inter';
 import CMA_found from './pages/courses/cma/cmafound/CMA_found';
 import CA_test from './pages/test_series/CA_test';
 import Cma from './pages/courses/Cma';
+import Ca from './pages/courses/Ca'
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
             <Route path="/courses/acca" element={<ACCA />} />
             <Route path="/test/cafinal" element={<CA_test />} />
             <Route path='/cma' element={<Cma />} />
+            <Route path='/ca' element={<Ca />} />
             
           </Routes>
         </main>

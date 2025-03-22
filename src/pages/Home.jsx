@@ -95,7 +95,7 @@ const Home = () => {
         "Accounting, Taxation, Auditing & Law",
         "Expert Faculty with Industry Experience"
       ],
-      link: "/courses/ca",
+      link: "/ca",
       buttonText: "Explore CA Program"
     },
     {
@@ -134,7 +134,7 @@ const Home = () => {
         "Specialization in Accounting & Finance",
         "Industry Exposure & Practical Training"
         ],
-        link: "/courses/bba",
+        link: "/courses/degree",
         buttonText: "Explore BBA Program"
     },
     // {
@@ -160,7 +160,7 @@ const Home = () => {
         "Emphasis on Management & Commerce Studies",
         "Bridge to Professional Certifications"
         ],
-        link: "/courses/intermediate",
+        link: "/courses/mec",
         buttonText: "Explore Intermediate Program"
     },
     // {

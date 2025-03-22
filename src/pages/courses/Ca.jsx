@@ -117,49 +117,6 @@ const Ca = () => {
         </div>
       </div>
 
-      {/* CA vs Other Courses Quick Comparison */}
-      <div className="mt-16 bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">CA vs Other Finance Courses</h2>
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white">
-            <thead>
-              <tr className="bg-primary text-white text-left">
-                <th className="py-3 px-4 uppercase font-semibold text-sm">Features</th>
-                <th className="py-3 px-4 uppercase font-semibold text-sm">CA</th>
-                <th className="py-3 px-4 uppercase font-semibold text-sm">CMA</th>
-                <th className="py-3 px-4 uppercase font-semibold text-sm">MBA Finance</th>
-              </tr>
-            </thead>
-            <tbody className="text-gray-700">
-              <tr className="border-b">
-                <td className="py-3 px-4 font-medium">Focus Area</td>
-                <td className="py-3 px-4">Accounting, Auditing, Taxation</td>
-                <td className="py-3 px-4">Cost Management, Financial Analysis</td>
-                <td className="py-3 px-4">General Management, Finance</td>
-              </tr>
-              <tr className="border-b bg-gray-50">
-                <td className="py-3 px-4 font-medium">Career Options</td>
-                <td className="py-3 px-4">Auditing, Taxation, Corporate Finance</td>
-                <td className="py-3 px-4">Cost Analysis, Production Planning</td>
-                <td className="py-3 px-4">Banking, Investment, General Management</td>
-              </tr>
-              <tr className="border-b">
-                <td className="py-3 px-4 font-medium">Duration</td>
-                <td className="py-3 px-4">3-5 years</td>
-                <td className="py-3 px-4">2-3 years</td>
-                <td className="py-3 px-4">2 years</td>
-              </tr>
-              <tr className="bg-gray-50">
-                <td className="py-3 px-4 font-medium">Professional Body</td>
-                <td className="py-3 px-4">ICAI</td>
-                <td className="py-3 px-4">ICMAI</td>
-                <td className="py-3 px-4">Various Universities</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
       {/* CTA Section */}
       <div className="mt-16 text-center">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">Ready to Start Your CA Journey?</h2>

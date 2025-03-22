@@ -297,7 +297,7 @@ const CA_final = () => {
                 <div className="">
                   <table className=" w-[90vw] bg-white border border-gray-300 shadow-lg">
                     <thead>
-                      <tr className="bg-blue-700 text-white">
+                      <tr className="bg-primary text-white">
                         <th className="py-3 px-6 text-left">Paper</th>
                         <th className="py-3 px-6 text-left">Subject</th>
                         <th className="py-3 px-6 text-left">Marks</th>
@@ -319,7 +319,7 @@ const CA_final = () => {
                         ["6E", "Global Financial Reporting Standards", "100", "Subjective"],
                         ["6F", "Multi-Disciplinary Case Study", "100", "Subjective"]
                       ].map(([paper, subject, marks, type], index) => (
-                        <tr key={index} className={`${index % 2 === 0 ? "bg-gray-100" : "bg-white"} border-b`}>
+                        <tr key={index} className={`${index % 2 === 0 ? "bg-primary/5" : "bg-white"} border-b hover:bg-primary/10 transition-colors`}>
                           <td className="py-3 px-6">{paper}</td>
                           <td className="py-3 px-6">{subject}</td>
                           <td className="py-3 px-6">{marks}</td>

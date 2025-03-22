@@ -195,7 +195,7 @@ const Degree = () => {
         {/* College Introduction Section */}
         <section className="mb-16">
           <div className="bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-3xl font-bold text-red-600 mb-6">Best Degree Colleges in Hyderabad for BBA & BCA</h2>
+            <h2 className="text-3xl font-bold text-red-600 mb-6">Best Degree Colleges in Hyderabad for BBA & B.com</h2>
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
                 <p className="text-lg text-gray-700 mb-4">

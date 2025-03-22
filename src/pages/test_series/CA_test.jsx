@@ -142,7 +142,7 @@ const CA_test = () => {
                         {/* Key Benefits */}
                         <div className="grid md:grid-cols-2 gap-6 mt-10">
                             <div className="bg-white bg-opacity-95 p-6 rounded-lg shadow-md">
-                                <div className="flex items-center justify-center w-12 h-12 mx-auto bg-blue-100 text-blue-600 rounded-full mb-4">
+                                <div className="flex items-center justify-center w-12 h-12 mx-auto bg-red-100 text-[#A6192E] rounded-full mb-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
@@ -151,7 +151,7 @@ const CA_test = () => {
                                 <p className="text-gray-600">Get your answer sheets evaluated within 48 hours, providing quick feedback to improve your preparation.</p>
                             </div>
                             <div className="bg-white bg-opacity-95 p-6 rounded-lg shadow-md">
-                                <div className="flex items-center justify-center w-12 h-12 mx-auto bg-blue-100 text-blue-600 rounded-full mb-4">
+                                <div className="flex items-center justify-center w-12 h-12 mx-auto bg-red-100 text-[#A6192E] rounded-full mb-4">
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                                     </svg>
@@ -163,7 +163,7 @@ const CA_test = () => {
                         
                         {/* CTA Button */}
                         <a href='/enroll'>
-                        <button className="mt-10 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-md transition duration-300 shadow-lg">
+                        <button className="mt-10 bg-[#A6192E] hover:bg-[#8a142a] text-white font-medium py-3 px-8 rounded-md transition duration-300 shadow-lg">
                             Enroll Now
                         </button>
                         </a>
@@ -181,7 +181,7 @@ const CA_test = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
                         {/* Feature 1: Fast Valuation */}
                         <div className="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center text-center">
-                            <div className="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full text-blue-600 mb-4">
+                            <div className="w-16 h-16 flex items-center justify-center bg-red-100 rounded-full text-[#A6192E] mb-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
@@ -192,7 +192,7 @@ const CA_test = () => {
 
                         {/* Feature 2: Detailed Solutions */}
                         <div className="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center text-center">
-                            <div className="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full text-blue-600 mb-4">
+                            <div className="w-16 h-16 flex items-center justify-center bg-red-100 rounded-full text-[#A6192E] mb-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                                 </svg>
@@ -203,7 +203,7 @@ const CA_test = () => {
 
                         {/* Feature 3: Exam-Oriented */}
                         <div className="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center text-center">
-                            <div className="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full text-blue-600 mb-4">
+                            <div className="w-16 h-16 flex items-center justify-center bg-red-100 rounded-full text-[#A6192E] mb-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
                                 </svg>
@@ -214,7 +214,7 @@ const CA_test = () => {
 
                         {/* Feature 4: Flexible Selection */}
                         <div className="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:scale-105 flex flex-col items-center text-center">
-                            <div className="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-full text-blue-600 mb-4">
+                            <div className="w-16 h-16 flex items-center justify-center bg-red-100 rounded-full text-[#A6192E] mb-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
@@ -241,8 +241,8 @@ const CA_test = () => {
                         <table className="w-full bg-white divide-y divide-gray-200">
                             <thead>
                                 <tr>
-                                    <th className="px-4 sm:px-6 py-3 text-left text-xs sm:text-sm font-semibold text-blue-700 uppercase tracking-wider bg-gray-50 border-b">Group</th>
-                                    <th className="px-4 sm:px-6 py-3 text-left text-xs sm:text-sm font-semibold text-blue-700 uppercase tracking-wider bg-gray-50 border-b">Subjects</th>
+                                    <th className="px-4 sm:px-6 py-3 text-left text-xs sm:text-sm font-semibold text-[#A6192E] uppercase tracking-wider bg-gray-50 border-b">Group</th>
+                                    <th className="px-4 sm:px-6 py-3 text-left text-xs sm:text-sm font-semibold text-[#A6192E] uppercase tracking-wider bg-gray-50 border-b">Subjects</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-200">
@@ -283,9 +283,9 @@ const CA_test = () => {
                         <table className="w-full bg-white divide-y divide-gray-200">
                             <thead>
                                 <tr>
-                                    <th className="px-4 sm:px-6 py-3 text-left text-xs sm:text-sm font-semibold text-blue-700 uppercase tracking-wider bg-gray-50 border-b">Package</th>
-                                    <th className="px-4 sm:px-6 py-3 text-left text-xs sm:text-sm font-semibold text-blue-700 uppercase tracking-wider bg-gray-50 border-b">Description</th>
-                                    <th className="px-4 sm:px-6 py-3 text-right text-xs sm:text-sm font-semibold text-blue-700 uppercase tracking-wider bg-gray-50 border-b">Price</th>
+                                    <th className="px-4 sm:px-6 py-3 text-left text-xs sm:text-sm font-semibold text-[#A6192E] uppercase tracking-wider bg-gray-50 border-b">Package</th>
+                                    <th className="px-4 sm:px-6 py-3 text-left text-xs sm:text-sm font-semibold text-[#A6192E] uppercase tracking-wider bg-gray-50 border-b">Description</th>
+                                    <th className="px-4 sm:px-6 py-3 text-right text-xs sm:text-sm font-semibold text-[#A6192E] uppercase tracking-wider bg-gray-50 border-b">Price</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-200">
@@ -318,7 +318,7 @@ const CA_test = () => {
                         </p>
                         <div className="mt-8 space-x-4">
                             <a href='/enroll'>
-                            <button className="bg-blue-500 hover:bg-blue-600 text-white rounded-lg px-6 py-3 font-medium transition duration-300">
+                            <button className="bg-[#A6192E] hover:bg-[#8a142a] text-white rounded-lg px-6 py-3 font-medium transition duration-300">
                                 Enroll Now
                             </button>
                             </a>
@@ -349,7 +349,7 @@ const CA_test = () => {
                                     />
                                 </div>
                                 
-                                <div className="bg-blue-600 py-4 px-6">
+                                <div className="bg-[#A6192E] py-4 px-6">
                                     <h3 className="text-xl font-bold text-white">{series.name}</h3>
                                 </div>
                                 <div className="p-6">
@@ -365,7 +365,7 @@ const CA_test = () => {
                                         ))}
                                     </ul>
                                     <div className="flex justify-center pt-2">
-                                        <button className="bg-blue-500 hover:bg-blue-600 text-white rounded-lg px-4 py-2 font-medium transition duration-300 text-sm">
+                                        <button className="bg-[#A6192E] hover:bg-[#8a142a] text-white rounded-lg px-4 py-2 font-medium transition duration-300 text-sm">
                                             View Details
                                         </button>
                                     </div>

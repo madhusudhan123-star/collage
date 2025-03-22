@@ -142,16 +142,6 @@ const About = () => {
                                     <p className="text-gray-600 text-sm mb-4">
                                         {program.description}
                                     </p>
-                                    <Link 
-                                        to={`/programs/${program.title.toLowerCase().replace(/\s+/g, '-')}`}
-                                        className="text-sm font-medium inline-flex items-center"
-                                        style={{ color: theme.primary }}
-                                    >
-                                        Learn more
-                                        <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                                        </svg>
-                                    </Link>
                                 </div>
                             </div>
                         ))}
@@ -207,16 +197,11 @@ const About = () => {
                         </div>
                     </div>
                     
-                    <div className="text-center mt-10">
-                        <Link to="/campus-tour" className="inline-block px-6 py-3 rounded-md text-white font-medium transition-all" style={{ backgroundColor: theme.primary }}>
-                            Take a Virtual Tour
-                        </Link>
-                    </div>
                 </div>
             </section>
             
             {/* Faculty Section */}
-            <section className="py-16 bg-white">
+            {/* <section className="py-16 bg-white">
                 <div className="container mx-auto px-4">
                     <h2 className="text-3xl font-bold text-center mb-12" style={{ color: theme.primary }}>
                         Our Faculty
@@ -254,7 +239,9 @@ const About = () => {
                     </div>
                 </div>
             </section>
-            
+             */}
+
+
             {/* Contact CTA Section */}
             <section className="py-16 bg-gray-900 text-white">
                 <div className="container mx-auto px-4 text-center">
@@ -263,7 +250,7 @@ const About = () => {
                         Our admissions team is ready to help you explore your options and find the perfect program for your career goals.
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">
-                        <Link to="/admissions" className="px-6 py-3 bg-white text-gray-900 rounded-md font-semibold hover:bg-gray-100 transition">
+                        <Link to="/enroll" className="px-6 py-3 bg-white text-gray-900 rounded-md font-semibold hover:bg-gray-100 transition">
                             Apply Now
                         </Link>
                         <Link to="/contact" className="px-6 py-3 bg-transparent border border-white rounded-md font-semibold hover:bg-white/10 transition">
