@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { mainNavigation } from '../data/navigationData';
+import logo from '../assets/logo-removebg.png';
 
 const Footer = () => {
     const [email, setEmail] = useState('');
@@ -56,106 +57,51 @@ const Footer = () => {
         }
     };
 
-    // Enhanced renderNavLinks function to handle all nested structures
-    const renderNavLinks = (navItem) => {
-        if (navItem.dropdownItems && navItem.dropdownItems.length > 0) {
-            return (
-                <div key={navItem.id} className="mb-8">
-                    <h3 className="text-lg font-bold mb-6">{navItem.label}</h3>
-                    <ul className="space-y-3">
-                        {navItem.dropdownItems.map((item) => {
-                            // Check if this item has its own dropdown items
-                            if (item.dropdownItems && item.dropdownItems.length > 0) {
-                                return (
-                                    <li key={item.id} className="mb-4">
-                                        <Link
-                                            to={item.path}
-                                            className="text-yellow-300 font-semibold hover:underline transition-colors duration-200 flex items-center"
-                                        >
-                                            {item.label}
-                                        </Link>
+    // A flattened version of navigation for the footer
+    const footerNavLinks = mainNavigation.map(item => {
+        return {
+            id: item.id,
+            label: item.label,
+            path: item.path,
+            hasDropdown: item.hasDropdown
+        };
+    });
 
-                                        <ul className="pl-4 mt-2 space-y-2 border-l-2 border-white/20">
-                                            {item.dropdownItems.map(subItem => (
-                                                <li key={subItem.id}>
-                                                    <Link
-                                                        to={subItem.path}
-                                                        className="text-sm hover:text-yellow-300 transition-colors duration-200 flex items-center"
-                                                    >
-                                                        <svg className="w-2 h-2 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                                            <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                                                        </svg>
-                                                        {subItem.label}
-                                                    </Link>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </li>
-                                );
-                            }
-
-                            // Regular dropdown item without nested items
-                            return (
-                                <li key={item.id}>
-                                    <Link
-                                        to={item.path}
-                                        className="hover:text-yellow-300 transition-colors duration-200 flex items-center"
-                                    >
-                                        <svg className="w-3 h-3 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                                        </svg>
-                                        {item.label}
-                                    </Link>
-                                </li>
-                            );
-                        })}
-                    </ul>
-                </div>
-            );
+    // Get a simplified list of courses from navigation data
+    const getCoursesList = () => {
+        const coursesItem = mainNavigation.find(item => item.id === 'courses');
+        if (coursesItem && coursesItem.dropdownItems) {
+            return coursesItem.dropdownItems.map(item => ({
+                id: item.id,
+                label: item.label,
+                path: item.path
+            }));
         }
-        return null;
+        return [];
     };
-
-    // Filter navigation items with any dropdown items for the footer menu section
-    const footerNavItems = mainNavigation.filter(item =>
-        item.dropdownItems && item.dropdownItems.length > 0
-    );
 
     return (
         <footer style={{ backgroundColor: theme.primary }} className="text-white">
             {/* Main Footer Content */}
-            <div className="container mx-auto px-4 py-16">
+            <div className="container mx-auto px-4 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {/* Institute Information */}
+                    {/* Column 1: Logo and info */}
                     <div>
-                        <h3 className="text-2xl font-bold mb-6">Institute of Science & Nutrition</h3>
-                        <p className="mb-4">Empowering future leaders through quality education and comprehensive training in professional accounting and finance courses.</p>
-
-                        {/* Navigation Quick Links - Non-dropdown items */}
-                        <div className="mt-6">
-                            <h4 className="text-md font-semibold mb-3">Quick Links</h4>
-                            <div className="flex flex-wrap gap-3">
-                                {mainNavigation.filter(item => !item.hasDropdown).map(item => (
-                                    <Link
-                                        key={item.id}
-                                        to={item.path}
-                                        className="text-sm bg-white/10 px-3 py-1 rounded hover:bg-white/20 transition-colors duration-300"
-                                    >
-                                        {item.label}
-                                    </Link>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="flex items-center space-x-4 mt-6">
+                        <Link to="/" className="inline-block mb-6">
+                            <img src={logo} alt="Lakshya Edu Logo" className="h-16 bg-white p-2 rounded-md" />
+                        </Link>
+                        <p className="text-sm mb-6">
+                            Empowering future professionals through excellent education in accounting and finance.
+                        </p>
+                        <div className="flex space-x-3">
                             {socialLinks.map((link, index) => (
                                 <a
                                     key={index}
                                     href={link.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="p-2 rounded-full bg-white hover:bg-yellow-300 transition-colors duration-300"
-                                    style={{ color: theme.primary }}
+                                    className="w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300"
+                                    style={{ backgroundColor: theme.secondary, color: theme.primary }}
                                     aria-label={link.name}
                                 >
                                     {link.icon}
@@ -164,89 +110,96 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    {/* Navigation Links from mainNavigation */}
-                    {footerNavItems.map(navItem => renderNavLinks(navItem))}
-
-                    {/* Newsletter Subscription */}
+                    {/* Column 2: Quick Links */}
                     <div>
-                        <h3 className="text-lg font-bold mb-6">Stay Updated</h3>
-                        <p className="mb-4">Subscribe to our newsletter for the latest updates, exam tips, and special offers.</p>
+                        <h3 className="text-lg font-bold mb-6 border-b border-white/20 pb-2">Quick Links</h3>
+                        <ul className="space-y-2">
+                            {footerNavLinks.filter(item => !item.hasDropdown).map(item => (
+                                <li key={item.id}>
+                                    <Link 
+                                        to={item.path} 
+                                        className="text-sm hover:text-yellow-300 transition-colors duration-200"
+                                    >
+                                        {item.label}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
 
-                        <form onSubmit={handleSubmit} className="mt-4">
-                            <div className="flex flex-col space-y-3">
+                    {/* Column 3: Our Courses */}
+                    <div>
+                        <h3 className="text-lg font-bold mb-6 border-b border-white/20 pb-2">Our Courses</h3>
+                        <ul className="space-y-2">
+                            {getCoursesList().map(course => (
+                                <li key={course.id}>
+                                    <Link 
+                                        to={course.path} 
+                                        className="text-sm hover:text-yellow-300 transition-colors duration-200"
+                                    >
+                                        {course.label}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Column 4: Contact & Subscribe */}
+                    <div>
+                        <h3 className="text-lg font-bold mb-6 border-b border-white/20 pb-2">Contact Us</h3>
+                        <div className="space-y-4 mb-6">
+                            <div className="flex items-start">
+                                <svg className="w-5 h-5 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                                <span className="text-sm">123 Education Street, Knowledge City, 302001</span>
+                            </div>
+                            <div className="flex items-start">
+                                <svg className="w-5 h-5 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                </svg>
+                                <span className="text-sm">+91 98765 43210</span>
+                            </div>
+                            <div className="flex items-start">
+                                <svg className="w-5 h-5 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                <span className="text-sm">admissions@isn.edu</span>
+                            </div>
+                        </div>
+                        
+                        <div className="mt-6">
+                            <h4 className="text-md font-semibold mb-3">Subscribe for Updates</h4>
+                            <form onSubmit={handleSubmit} className="flex">
                                 <input
                                     type="email"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    placeholder="Your email address"
-                                    className="px-4 py-2 rounded bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2"
-                                    style={{ focusRing: theme.secondary }}
+                                    placeholder="Your email"
+                                    className="px-3 py-2 text-sm rounded-l bg-white/20 border-none text-white placeholder-white/70 focus:outline-none flex-grow"
                                     required
                                 />
                                 <button
                                     type="submit"
-                                    className="px-4 py-2 font-bold rounded hover:bg-white transition-colors duration-300"
-                                    style={{
-                                        backgroundColor: theme.secondary,
-                                        color: theme.primary
-                                    }}
+                                    className="px-3 py-2 rounded-r text-sm font-medium"
+                                    style={{ backgroundColor: theme.secondary, color: theme.primary }}
                                 >
-                                    Subscribe
+                                    Go
                                 </button>
-                            </div>
-                        </form>
-
-                        {subscribed && (
-                            <div className="mt-3 p-2 bg-green-600 text-white text-sm rounded">
-                                Thank you for subscribing!
-                            </div>
-                        )}
-                    </div>
-                </div>
-
-                {/* Contact Information Strip */}
-                <div className="mt-12 pt-8 border-t border-white/20 grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="flex items-center">
-                        <div className="p-3 mr-4 rounded-full" style={{ backgroundColor: theme.secondary, color: theme.primary }}>
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <h4 className="font-semibold">Our Location</h4>
-                            <p className="text-sm text-white/80">123 Education Street, Knowledge City, 302001</p>
-                        </div>
-                    </div>
-
-                    <div className="flex items-center">
-                        <div className="p-3 mr-4 rounded-full" style={{ backgroundColor: theme.secondary, color: theme.primary }}>
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <h4 className="font-semibold">Contact Us</h4>
-                            <p className="text-sm text-white/80">+91 98765 43210 | admissions@isn.edu</p>
-                        </div>
-                    </div>
-
-                    <div className="flex items-center">
-                        <div className="p-3 mr-4 rounded-full" style={{ backgroundColor: theme.secondary, color: theme.primary }}>
-                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </div>
-                        <div>
-                            <h4 className="font-semibold">Office Hours</h4>
-                            <p className="text-sm text-white/80">Monday - Saturday: 9:00 AM - 6:00 PM</p>
+                            </form>
+                            {subscribed && (
+                                <div className="mt-2 text-xs text-green-300">
+                                    Thank you for subscribing!
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
             </div>
 
             {/* Footer Bottom / Copyright */}
-            <div style={{ backgroundColor: theme.darkPrimary }} className="py-6">
+            <div style={{ backgroundColor: theme.darkPrimary }} className="py-4">
                 <div className="container mx-auto px-4">
                     <div className="flex flex-col md:flex-row justify-between items-center">
                         <p className="text-sm text-white/70">
@@ -254,9 +207,9 @@ const Footer = () => {
                         </p>
 
                         <div className="mt-4 md:mt-0 flex space-x-6">
-                            <Link to="/privacy-policy" className="text-sm text-white/70 hover:text-white">Privacy Policy</Link>
-                            <Link to="/terms-of-use" className="text-sm text-white/70 hover:text-white">Terms of Use</Link>
-                            <Link to="/sitemap" className="text-sm text-white/70 hover:text-white">Sitemap</Link>
+                            <Link to="/privacy-policy" className="text-xs text-white/70 hover:text-white">Privacy Policy</Link>
+                            <Link to="/terms-of-use" className="text-xs text-white/70 hover:text-white">Terms of Use</Link>
+                            <Link to="/sitemap" className="text-xs text-white/70 hover:text-white">Sitemap</Link>
                         </div>
                     </div>
                 </div>

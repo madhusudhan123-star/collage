@@ -1,135 +1,94 @@
 import React, { useState } from 'react';
-// Remove CSS import since we'll use Tailwind classes
+import { FileText, Briefcase, Shield, BarChart, Globe, ClipboardList } from "lucide-react"; // Icons for Subjects
+
+
+
 
 const CA_final = () => {
   const [activeTab, setActiveTab] = useState('overview');
-  const [activeAccordion, setActiveAccordion] = useState(null);
   
-  const subjects = {
-    "Paper_1": "Financial Reporting",
-    "Paper_2": "Strategic Financial Management",
-    "Paper_3": "Advanced Auditing and Professional Ethics",
-    "Paper_4": "Corporate and Economic Laws",
-    "Paper_5": "Strategic Cost Management and Performance Evaluation",
-    "Paper_6A": "Risk Management (Optional)",
-    "Paper_6B": "Financial Services and Capital Markets (Optional)",
-    "Paper_6C": "International Taxation (Optional)",
-    "Paper_6D": "Economic Laws (Optional)",
-    "Paper_6E": "Global Financial Reporting Standards (Optional)",
-    "Paper_6F": "Multi-Disciplinary Case Study"
-  };
-
   const books = [
-  {
-    "discountPercentage": 18,
-    "title": "CA Final | FR",
-    "instructor": "CA Aakash Kandoi",
-    "pricingOptions": {
-      "min": 10999.00,
-      "max": 11499.00
+    {
+      "discountPercentage": 18,
+      "title": "CA Final | FR",
+      "instructor": "CA Aakash Kandoi",
+      "pricingOptions": {
+        "min": 10999.00,
+        "max": 11499.00
+      }
+    },
+    {
+      "discountPercentage": 7,
+      "title": "CA Final | Direct Tax DT",
+      "instructor": "CA Bhanwar Borana",
+      "applicableExams": ["May 25", "Nov 25"],
+      "originalPrice": 14999.00,
+      "currentPrice": 13999.00
+    },
+    {
+      "discountPercentage": 9,
+      "title": "CA Final | FR",
+      "instructor": "CA Jai Chawla",
+      "pricingOptions": {
+        "min": 9999.00,
+        "max": 10999.00
+      }
+    },
+    {
+      "discountPercentage": 8,
+      "title": "CA Final | IDT | English | For May & Nov 2025",
+      "instructor": "CMA Tharun Raj",
+      "language": "English",
+      "applicableExams": ["May 2025", "Nov 2025"],
+      "pricingOptions": {
+        "min": 11800.00,
+        "max": 12390.00
+      }
+    },
+    {
+      "discountPercentage": 8,
+      "title": "CA Final | Indirect Tax IDT",
+      "instructor": "CA Vishal Bhattad",
+      "applicableExams": ["May 25", "Nov 25"],
+      "pricingOptions": {
+        "min": 11999.00,
+        "max": 12999.00
+      }
+    },
+    {
+      "title": "CA FINAL || AFM",
+      "instructor": "CA Sankalp Kanstiya",
+      "currentPrice": 10999.00
+    },
+    {
+      "discountPercentage": 50,
+      "title": "CA FINAL || AFM",
+      "instructor": "CA CMA Rajkiran",
+      "pricingOptions": {
+        "min": 6999.00,
+        "max": 8999.00
+      }
+    },
+    {
+      "discountPercentage": 8,
+      "title": "CA Final || Direct Tax DT",
+      "instructor": "CA Vijay Sarda",
+      "pricingOptions": {
+        "min": 10999.00,
+        "max": 11999.00
+      }
+    },
+    {
+      "discountPercentage": 36,
+      "title": "New CA Final | Audit",
+      "instructor": "CA Ravi Taori",
+      "applicableExams": ["May 2025", "Nov 2025"],
+      "pricingOptions": {
+        "min": 6999.00,
+        "max": 7999.00
+      }
     }
-  },
-  {
-    "discountPercentage": 7,
-    "title": "CA Final | Direct Tax DT",
-    "instructor": "CA Bhanwar Borana",
-    "applicableExams": ["May 25", "Nov 25"],
-    "originalPrice": 14999.00,
-    "currentPrice": 13999.00
-  },
-  {
-    "discountPercentage": 9,
-    "title": "CA Final | FR",
-    "instructor": "CA Jai Chawla",
-    "pricingOptions": {
-      "min": 9999.00,
-      "max": 10999.00
-    }
-  },
-  {
-    "discountPercentage": 8,
-    "title": "CA Final | IDT | English | For May & Nov 2025",
-    "instructor": "CMA Tharun Raj",
-    "language": "English",
-    "applicableExams": ["May 2025", "Nov 2025"],
-    "pricingOptions": {
-      "min": 11800.00,
-      "max": 12390.00
-    }
-  },
-  {
-    "discountPercentage": 8,
-    "title": "CA Final | Indirect Tax IDT",
-    "instructor": "CA Vishal Bhattad",
-    "applicableExams": ["May 25", "Nov 25"],
-    "pricingOptions": {
-      "min": 11999.00,
-      "max": 12999.00
-    }
-  },
-  {
-    "title": "CA FINAL || AFM",
-    "instructor": "CA Sankalp Kanstiya",
-    "currentPrice": 10999.00
-  },
-  {
-    "discountPercentage": 50,
-    "title": "CA FINAL || AFM",
-    "instructor": "CA CMA Rajkiran",
-    "pricingOptions": {
-      "min": 6999.00,
-      "max": 8999.00
-    }
-  },
-  {
-    "discountPercentage": 8,
-    "title": "CA Final || Direct Tax DT",
-    "instructor": "CA Vijay Sarda",
-    "pricingOptions": {
-      "min": 10999.00,
-      "max": 11999.00
-    }
-  },
-  {
-    "discountPercentage": 36,
-    "title": "New CA Final | Audit",
-    "instructor": "CA Ravi Taori",
-    "applicableExams": ["May 2025", "Nov 2025"],
-    "pricingOptions": {
-      "min": 6999.00,
-      "max": 7999.00
-    }
-  }
   ]
-
-  const courseStructure = [
-    { "Paper": "Financial Reporting", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Strategic Financial Management", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Advanced Auditing and Professional Ethics", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Corporate and Economic Laws", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Strategic Cost Management and Performance Evaluation", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Risk Management (Optional)", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Financial Services and Capital Markets (Optional)", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "International Taxation (Optional)", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Economic Laws (Optional)", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Global Financial Reporting Standards (Optional)", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Multi-Disciplinary Case Study", "Marks": 100, "Type_of_Questions": "Subjective" }
-  ];
-
-  const passingCriteria = {
-    "Minimum_Marks_Per_Subject": 40,
-    "Total_Minimum_Marks_Per_Group": 150
-  };
-
-  const faqs = {
-    "What_are_the_key_subjects_included_in_the_new_syllabus?": "The new syllabus includes mandatory subjects such as Financial Reporting, Strategic Financial Management, Advanced Auditing, Corporate and Economic Laws, and more.",
-    "What_is_the_duration_of_the_CA_Final_2024_examination?": "Please contact our counselors for updated information.",
-    "What_will_be_the_examination_mode?": "Please contact our counselors for updated information.",
-    "What_will_be_the_marking_scheme_for_the_CA_Final_Exam?": "Please contact our counselors for updated information.",
-    "Are_CA_final_classes_online_or_offline?": "Please contact our counselors for updated information.",
-    "Is_CA_final_tough?": "Please contact our counselors for updated information.",
-    "What_is_the_age_limit_for_CA?": "Please contact our counselors for updated information."
-  };
 
   const galleryImages = [
     { id: 1, src: "https://via.placeholder.com/400x300?text=Classroom+Sessions", alt: "Classroom Sessions", caption: "Interactive Classroom Sessions" },
@@ -188,39 +147,28 @@ const CA_final = () => {
     }
   ];
 
-  const toggleAccordion = (index) => {
-    setActiveAccordion(activeAccordion === index ? null : index);
-  };
+
 
   return (
-    <div className="max-w-7xl mx-auto p-5 font-sans text-gray-800">
+    <div className=" overflow-x-hidden p-5 font-sans text-gray-800">
       {/* Hero Section with Background Image */}
       <div className="relative rounded-lg overflow-hidden mb-8 shadow-lg">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://via.placeholder.com/1600x900?text=CA+Final+Course" 
+            src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80"
+            // Alternative options:
+            // "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80" - Students studying
+            // "https://images.unsplash.com/photo-1560264280-88b68371db39?auto=format&fit=crop&q=80" - Modern classroom
+            // "https://images.unsplash.com/photo-1491975474562-1f4e30bc9468?auto=format&fit=crop&q=80" - Finance focused
             alt="CA Final Course Background" 
-            className="w-full h-full object-cover opacity-20" 
+            className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-dark to-primary opacity-90"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary-dark to-primary opacity-60"></div>
         </div>
         <div className="relative z-10 py-20 px-10 text-center text-white">
-          <div className="flex justify-center mb-6">
-            <img 
-              src="https://via.placeholder.com/120?text=CA+Logo" 
-              alt="CA Logo" 
-              className="h-24 w-auto" 
-            />
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">CA Final Course</h1>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">Master the pinnacle of chartered accountancy with our comprehensive CA Final program</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Best CA Final Institute in India </h1>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">welcome to Lakshya – Your Gateway to Success in CA Final</p>
           <div className="flex flex-wrap justify-center gap-4">
-            {/* <button className="bg-secondary hover:bg-secondary-light text-primary font-bold py-3 px-8 rounded transition-all duration-300 hover:-translate-y-0.5 transform flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
-              </svg>
-              Enroll Now
-            </button> */}
             <a href='/request'>
             <button className="bg-transparent hover:bg-white/10 text-white border-2 border-white font-bold py-3 px-8 rounded transition-all duration-300 flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
@@ -267,132 +215,123 @@ const CA_final = () => {
           Overview
         </button>
         <button 
-          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'subjects' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
-          onClick={() => setActiveTab('subjects')}>
-          Subjects
-        </button>
-        <button 
           className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'books' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
           onClick={() => setActiveTab('books')}>
           Books
-        </button>
-        <button 
-          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'structure' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
-          onClick={() => setActiveTab('structure')}>
-          Course Structure
         </button>
         <button 
           className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'images' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
           onClick={() => setActiveTab('images')}>
           Images
         </button>
-        <button 
-          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'faqs' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`}
-          onClick={() => setActiveTab('faqs')}>
-          FAQs
-        </button>
+
       </div>
 
       {/* Content Sections */}
       <div className="course-content">
         {/* Overview Section */}
         {activeTab === 'overview' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
-              <h2 className="text-2xl font-bold mb-6 text-primary relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">Program Details</h2>
-              <div className="mb-4 flex items-start">
-                <div className="bg-accent p-2 rounded-full mr-4 mt-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-lg text-primary mb-1">Location</h3>
-                  <p>Hyderabad & India</p>
-                </div>
-              </div>
-              <div className="mb-4 flex items-start">
-                <div className="bg-accent p-2 rounded-full mr-4 mt-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-lg text-primary mb-1">Duration</h3>
-                  <p>6-8 months intensive program</p>
-                </div>
-              </div>
-              <p className="text-gray-700">Our program covers critical subjects including Financial Reporting, Strategic Financial Management, Advanced Auditing, and a range of specialized optional papers. With a focus on in-depth knowledge and professional ethics, our CA Final course is designed to ensure you are fully prepared for the highest level of CA exams.</p>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
-              <h2 className="text-2xl font-bold mb-6 text-primary relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">Why Choose Lakshya?</h2>
-              <p className="text-gray-700">Join us and secure your future as a successful Chartered Accountant. Our expert faculty and interactive sessions ensure a robust foundation for your CA Final journey. At Lakshya, we don't just teach; we empower you to excel. Choose the best – Choose Lakshya for your CA Final preparation. Hurry! Limited seats available. Your Success, Our Priority!</p>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
-              <h2 className="text-2xl font-bold mb-6 text-primary relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">Passing Criteria</h2>
-              <div className="mb-5">
-                <h3 className="text-lg mb-1 text-gray-600">Minimum Marks Per Subject</h3>
-                <p className="text-3xl font-bold text-secondary">{passingCriteria.Minimum_Marks_Per_Subject}%</p>
-              </div>
-              <div>
-                <h3 className="text-lg mb-1 text-gray-600">Total Minimum Marks Per Group</h3>
-                <p className="text-3xl font-bold text-secondary">{passingCriteria.Total_Minimum_Marks_Per_Group} marks</p>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
-              <h2 className="text-2xl font-bold mb-6 text-primary relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">Join Face-to-Face Batches</h2>
-              <p className="text-gray-700 mb-4">Join our face-to-face batches to immerse yourself in a comprehensive learning experience.</p>
-              <a href="/request">
-              <button className="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded transition-all duration-300">Register Now</button>
-              </a>
-            </div>
-
-            <div className="bg-gradient-to-br from-primary to-primary-dark text-white rounded-lg p-6 shadow-md col-span-1 md:col-span-2 mt-6">
-              <h2 className="text-2xl font-bold mb-6 relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">Our Impact</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div className="text-center">
-                  <img src="https://via.placeholder.com/80?text=Trophy" alt="Success Rate" className="mx-auto mb-2" />
-                  <p className="text-3xl font-bold">85%</p>
-                  <p className="text-sm opacity-80">Success Rate</p>
-                </div>
-                <div className="text-center">
-                  <img src="https://via.placeholder.com/80?text=Students" alt="Students Trained" className="mx-auto mb-2" />
-                  <p className="text-3xl font-bold">5000+</p>
-                  <p className="text-sm opacity-80">Students Trained</p>
-                </div>
-                <div className="text-center">
-                  <img src="https://via.placeholder.com/80?text=Teacher" alt="Expert Faculty" className="mx-auto mb-2" />
-                  <p className="text-3xl font-bold">25+</p>
-                  <p className="text-sm opacity-80">Expert Faculty</p>
-                </div>
-                <div className="text-center">
-                  <img src="https://via.placeholder.com/80?text=Award" alt="Rank Holders" className="mx-auto mb-2" />
-                  <p className="text-3xl font-bold">100+</p>
-                  <p className="text-sm opacity-80">Rank Holders</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Subjects Section */}
-        {activeTab === 'subjects' && (
           <div>
-            <h2 className="text-2xl font-bold mb-8 text-primary">CA Final Subjects</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-6">
-              {Object.entries(subjects).map(([key, value]) => (
-                <div className="bg-white p-5 rounded-lg shadow-sm border-l-4 border-primary transition-all duration-300 hover:-translate-y-1 hover:shadow-md" key={key}>
-                  <h3 className="text-lg text-primary mb-2">{key.replace('_', ' ')}</h3>
-                  <p className="text-gray-700">{value}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
+                <h2 className="text-2xl font-bold mb-6 text-primary relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">OverView</h2>
+                <p className="text-gray-700">At Lakshya Edu, we provide expert-led CA Final coaching, covering essential subjects like Financial Reporting, Strategic Financial Management, Advanced Auditing, and Professional Ethics. Our curriculum also includes specialized elective papers tailored to your career goals.</p>
+              </div>
 
+              <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
+                <h2 className="text-2xl font-bold mb-6 text-primary relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">CA Final Passing Criteria – What You Need to Qualify</h2>
+                <ul className="text-gray-700 list-disc list-inside mt-4">
+                  <li>Minimum 40 marks in each subject.</li>
+                  <li>Aggregate of at least 150 marks in each group.</li>
+                </ul>
+                <p className='text-primary'>This ensures a strong understanding of core subjects while maintaining high standards of professional knowledge.</p>
+              </div>
+
+              <div className="bg-white w-screen rounded-lg p-6 shadow-sm mb-6">
+                <h2 className="text-2xl font-bold mb-6 text-primary relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">Why Choose Lakshya Edu for CA Final?</h2>
+                <ul className='list-disc list-inside mt-4 text-gray-700'>
+                  <li>Comprehensive Study Material – Access detailed color-coded notes and concept-based explanations.</li>
+                  <li>Experienced Faculty – Learn from industry experts and top-ranked CAs.</li>
+                  <li>Mock Tests & Assessments – Regular tests to track your progress & improve accuracy.</li>
+                  <li>Flexible Learning Options – Choose between Live Online, Pen drive, and Classroom Coaching.</li>
+                  <li>Personalized Mentorship – Get one-on-one guidance to resolve doubts and improve performance.</li>
+                  <li>Strong Track Record – Join the ranks of our top achievers and successful CAs.</li>
+                </ul>
+                <p className='text-primary'>Take the final step towards your CA success! Join Lakshya Edu today and crack the CA Final with confidence.</p>
+              </div>
+
+            </div>
+            <div className="bg-white w-screen rounded-lg p-6 shadow-sm mb-6">
+                <div className="my-16 w-screen px-6 md:px-12 lg:px-24">
+                  {/* Section Heading */}
+                  <div className="text-center mb-10">
+                    <h2 className="text-3xl font-bold text-blue-700 mb-3">
+                      CA Final Course Structure & Subjects
+                    </h2>
+                  </div>
+                </div>
+
+                {/* CA Final Subjects Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                  {[
+                    { icon: FileText, title: "Financial Reporting", optional: false },
+                    { icon: Briefcase, title: "Strategic Financial Management", optional: false },
+                    { icon: Shield, title: "Advanced Auditing & Professional Ethics", optional: false },
+                    { icon: BarChart, title: "Corporate & Economic Laws", optional: false },
+                    { icon: BarChart, title: "Strategic Cost Management & Performance Evaluation", optional: false },
+                    { icon: ClipboardList, title: "Multi-Disciplinary Case Study", optional: false },
+                    { icon: Globe, title: "Risk Management (Optional)", optional: true },
+                    { icon: Globe, title: "Financial Services & Capital Markets (Optional)", optional: true },
+                    { icon: Globe, title: "International Taxation (Optional)", optional: true },
+                    { icon: Globe, title: "Economic Laws (Optional)", optional: true },
+                    { icon: Globe, title: "Global Financial Reporting Standards (Optional)", optional: true }
+                  ].map(({ icon: Icon, title, optional }, index) => (
+                    <div key={index} className={`p-6 rounded-lg shadow-md border-l-4 ${optional ? "border-yellow-500 bg-yellow-50" : "border-blue-600 bg-blue-50"} flex items-start`}>
+                      <Icon className={`w-8 h-8 mr-4 ${optional ? "text-yellow-700" : "text-blue-700"}`} />
+                      <h3 className={`text-lg font-semibold ${optional ? "text-yellow-700" : "text-blue-700"}`}>{title}</h3>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Course Structure Table */}
+                <div className="">
+                  <table className=" w-[90vw] bg-white border border-gray-300 shadow-lg">
+                    <thead>
+                      <tr className="bg-blue-700 text-white">
+                        <th className="py-3 px-6 text-left">Paper</th>
+                        <th className="py-3 px-6 text-left">Subject</th>
+                        <th className="py-3 px-6 text-left">Marks</th>
+                        <th className="py-3 px-6 text-left">Type of Questions</th>
+                      </tr>
+                    </thead>
+                    <tbody className="text-gray-700">
+                      {[
+                        ["Paper 1", "Financial Reporting", "100", "Subjective"],
+                        ["Paper 2", "Strategic Financial Management", "100", "Subjective"],
+                        ["Paper 3", "Advanced Auditing & Professional Ethics", "100", "Subjective"],
+                        ["Paper 4", "Corporate & Economic Laws", "100", "Subjective"],
+                        ["Paper 5", "Strategic Cost Management & Performance Evaluation", "100", "Subjective"],
+                        ["Paper 6", "Elective Paper (Choose One)", "100", "Subjective"],
+                        ["6A", "Risk Management", "100", "Subjective"],
+                        ["6B", "Financial Services & Capital Markets", "100", "Subjective"],
+                        ["6C", "International Taxation", "100", "Subjective"],
+                        ["6D", "Economic Laws", "100", "Subjective"],
+                        ["6E", "Global Financial Reporting Standards", "100", "Subjective"],
+                        ["6F", "Multi-Disciplinary Case Study", "100", "Subjective"]
+                      ].map(([paper, subject, marks, type], index) => (
+                        <tr key={index} className={`${index % 2 === 0 ? "bg-gray-100" : "bg-white"} border-b`}>
+                          <td className="py-3 px-6">{paper}</td>
+                          <td className="py-3 px-6">{subject}</td>
+                          <td className="py-3 px-6">{marks}</td>
+                          <td className="py-3 px-6">{type}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+            </div>
+        </div>
+        )}
         {/* Books Section */}
         {activeTab === 'books' && (
           <div>
@@ -492,34 +431,6 @@ const CA_final = () => {
             </div>
           </div>
         )}
-
-        {/* Course Structure */}
-        {activeTab === 'structure' && (
-          <div>
-            <h2 className="text-2xl font-bold mb-6 text-primary">Course Structure</h2>
-            <div className="overflow-x-auto mt-6">
-              <table className="w-full">
-                <thead>
-                  <tr className="bg-gray-50">
-                    <th className="py-4 px-6 text-left text-primary font-semibold">Paper</th>
-                    <th className="py-4 px-6 text-left text-primary font-semibold">Marks</th>
-                    <th className="py-4 px-6 text-left text-primary font-semibold">Type of Questions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {courseStructure.map((item, index) => (
-                    <tr key={index} className="hover:bg-gray-50 border-b border-gray-100">
-                      <td className="py-4 px-6">{item.Paper}</td>
-                      <td className="py-4 px-6">{item.Marks}</td>
-                      <td className="py-4 px-6">{item.Type_of_Questions}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        )}
-
         {/* Images Gallery Section */}
         {activeTab === 'images' && (
           <div>
@@ -600,65 +511,8 @@ const CA_final = () => {
             </div>
           </div>
         )}
-
-        {/* FAQs Section */}
-        {activeTab === 'faqs' && (
-          <div>
-            <h2 className="text-2xl font-bold mb-6 text-primary">Frequently Asked Questions</h2>
-            <div className="mt-8 space-y-4">
-              {Object.entries(faqs).map(([question, answer], index) => (
-                <div className="rounded-lg overflow-hidden shadow-sm" key={index}>
-                  <div 
-                    className={`p-5 flex justify-between items-center cursor-pointer ${activeAccordion === index ? 'bg-gray-50' : 'bg-white'}`}
-                    onClick={() => toggleAccordion(index)}>
-                    <h3 className="text-base font-medium text-gray-800">{question.replace(/_/g, ' ')}</h3>
-                    <span className="text-2xl text-primary">
-                      {activeAccordion === index ? '−' : '+'}
-                    </span>
-                  </div>
-                  {activeAccordion === index && (
-                    <div className="p-5 bg-white border-t border-gray-100">
-                      <p className="text-gray-700">{answer || "Please contact our counselors for updated information."}</p>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
 
-      {/* Faculty Section */}
-      <div className="my-16">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-primary mb-3">Meet Our Expert Faculty</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">Learn from the best minds in the industry with decades of experience in teaching and professional practice</p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {facultyMembers.map(faculty => (
-            <div className="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg" key={faculty.id}>
-              <div className="h-64 overflow-hidden">
-                <img 
-                  src={faculty.image} 
-                  alt={faculty.name} 
-                  className="w-full h-full object-cover object-center" 
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-primary">{faculty.name}</h3>
-                <p className="text-gray-500 mb-2">{faculty.expertise}</p>
-                <div className="flex items-center text-sm text-gray-600">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  {faculty.experience} of teaching experience
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* Testimonials Section */}
       <div className="bg-bg-light rounded-2xl p-8 my-16">
@@ -724,3 +578,7 @@ const CA_final = () => {
 };
 
 export default CA_final;
+
+
+
+

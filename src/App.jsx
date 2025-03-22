@@ -3,11 +3,6 @@ import { Toaster } from 'react-hot-toast';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
-import Blogs from './pages/Blogs';
-import Books from './pages/Books';
-import Life from './pages/Life';
-import Rankers from './pages/Rankers';
-import { Test } from './pages/test_series/Test';
 import CA_final from './pages/courses/ca/cafinal/CA_final';
 import Footer from './components/Footer';
 import Faq from './pages/Faq';
@@ -23,6 +18,7 @@ import CMA_final from './pages/courses/cma/cmafinal/CMA_final';
 import CMA_inter from './pages/courses/cma/cmainter/CMA_inter';
 import CMA_found from './pages/courses/cma/cmafound/CMA_found';
 import CA_test from './pages/test_series/CA_test';
+import Cma from './pages/courses/Cma';
 
 
 function App() {
@@ -49,11 +45,8 @@ function App() {
             <Route path="/courses/degree" element={<Degree />} />
             <Route path="/courses/acca" element={<ACCA />} />
             <Route path="/test/cafinal" element={<CA_test />} />
-            {/* <Route path="/blogs" element={<Blogs />} />
-            <Route path="/life" element={<Life />} />
-            <Route path="/rankers" element={<Rankers />} />
-            <Route path="/test-series" element={<Test />} /> */}
-            {/* <Route path="/ca-final" element={<CA_final />} /> */}
+            <Route path='/cma' element={<Cma />} />
+            
           </Routes>
         </main>
         <Footer />

@@ -1,135 +1,91 @@
 import React, { useState } from 'react';
-// Remove CSS import since we'll use Tailwind classes
 
 const CMA_final = () => {
   const [activeTab, setActiveTab] = useState('overview');
-  const [activeAccordion, setActiveAccordion] = useState(null);
+  const [showAllVideos, setShowAllVideos] = useState(false);
   
-  const subjects = {
-    "Paper_1": "Financial Reporting",
-    "Paper_2": "Strategic Financial Management",
-    "Paper_3": "Advanced Auditing and Professional Ethics",
-    "Paper_4": "Corporate and Economic Laws",
-    "Paper_5": "Strategic Cost Management and Performance Evaluation",
-    "Paper_6A": "Risk Management (Optional)",
-    "Paper_6B": "Financial Services and Capital Markets (Optional)",
-    "Paper_6C": "International Taxation (Optional)",
-    "Paper_6D": "Economic Laws (Optional)",
-    "Paper_6E": "Global Financial Reporting Standards (Optional)",
-    "Paper_6F": "Multi-Disciplinary Case Study"
-  };
-
   const books = [
-  {
-    "discountPercentage": 18,
-    "title": "CA Final | FR",
-    "instructor": "CA Aakash Kandoi",
-    "pricingOptions": {
-      "min": 10999.00,
-      "max": 11499.00
+    {
+      "discountPercentage": 18,
+      "title": "CA Final | FR",
+      "instructor": "CA Aakash Kandoi",
+      "pricingOptions": {
+        "min": 10999.00,
+        "max": 11499.00
+      }
+    },
+    {
+      "discountPercentage": 7,
+      "title": "CA Final | Direct Tax DT",
+      "instructor": "CA Bhanwar Borana",
+      "applicableExams": ["May 25", "Nov 25"],
+      "originalPrice": 14999.00,
+      "currentPrice": 13999.00
+    },
+    {
+      "discountPercentage": 9,
+      "title": "CA Final | FR",
+      "instructor": "CA Jai Chawla",
+      "pricingOptions": {
+        "min": 9999.00,
+        "max": 10999.00
+      }
+    },
+    {
+      "discountPercentage": 8,
+      "title": "CA Final | IDT | English | For May & Nov 2025",
+      "instructor": "CMA Tharun Raj",
+      "language": "English",
+      "applicableExams": ["May 2025", "Nov 2025"],
+      "pricingOptions": {
+        "min": 11800.00,
+        "max": 12390.00
+      }
+    },
+    {
+      "discountPercentage": 8,
+      "title": "CA Final | Indirect Tax IDT",
+      "instructor": "CA Vishal Bhattad",
+      "applicableExams": ["May 25", "Nov 25"],
+      "pricingOptions": {
+        "min": 11999.00,
+        "max": 12999.00
+      }
+    },
+    {
+      "title": "CA FINAL || AFM",
+      "instructor": "CA Sankalp Kanstiya",
+      "currentPrice": 10999.00
+    },
+    {
+      "discountPercentage": 50,
+      "title": "CA FINAL || AFM",
+      "instructor": "CA CMA Rajkiran",
+      "pricingOptions": {
+        "min": 6999.00,
+        "max": 8999.00
+      }
+    },
+    {
+      "discountPercentage": 8,
+      "title": "CA Final || Direct Tax DT",
+      "instructor": "CA Vijay Sarda",
+      "pricingOptions": {
+        "min": 10999.00,
+        "max": 11999.00
+      }
+    },
+    {
+      "discountPercentage": 36,
+      "title": "New CA Final | Audit",
+      "instructor": "CA Ravi Taori",
+      "applicableExams": ["May 2025", "Nov 2025"],
+      "pricingOptions": {
+        "min": 6999.00,
+        "max": 7999.00
+      }
     }
-  },
-  {
-    "discountPercentage": 7,
-    "title": "CA Final | Direct Tax DT",
-    "instructor": "CA Bhanwar Borana",
-    "applicableExams": ["May 25", "Nov 25"],
-    "originalPrice": 14999.00,
-    "currentPrice": 13999.00
-  },
-  {
-    "discountPercentage": 9,
-    "title": "CA Final | FR",
-    "instructor": "CA Jai Chawla",
-    "pricingOptions": {
-      "min": 9999.00,
-      "max": 10999.00
-    }
-  },
-  {
-    "discountPercentage": 8,
-    "title": "CA Final | IDT | English | For May & Nov 2025",
-    "instructor": "CMA Tharun Raj",
-    "language": "English",
-    "applicableExams": ["May 2025", "Nov 2025"],
-    "pricingOptions": {
-      "min": 11800.00,
-      "max": 12390.00
-    }
-  },
-  {
-    "discountPercentage": 8,
-    "title": "CA Final | Indirect Tax IDT",
-    "instructor": "CA Vishal Bhattad",
-    "applicableExams": ["May 25", "Nov 25"],
-    "pricingOptions": {
-      "min": 11999.00,
-      "max": 12999.00
-    }
-  },
-  {
-    "title": "CA FINAL || AFM",
-    "instructor": "CA Sankalp Kanstiya",
-    "currentPrice": 10999.00
-  },
-  {
-    "discountPercentage": 50,
-    "title": "CA FINAL || AFM",
-    "instructor": "CA CMA Rajkiran",
-    "pricingOptions": {
-      "min": 6999.00,
-      "max": 8999.00
-    }
-  },
-  {
-    "discountPercentage": 8,
-    "title": "CA Final || Direct Tax DT",
-    "instructor": "CA Vijay Sarda",
-    "pricingOptions": {
-      "min": 10999.00,
-      "max": 11999.00
-    }
-  },
-  {
-    "discountPercentage": 36,
-    "title": "New CA Final | Audit",
-    "instructor": "CA Ravi Taori",
-    "applicableExams": ["May 2025", "Nov 2025"],
-    "pricingOptions": {
-      "min": 6999.00,
-      "max": 7999.00
-    }
-  }
   ]
-
-  const courseStructure = [
-    { "Paper": "Financial Reporting", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Strategic Financial Management", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Advanced Auditing and Professional Ethics", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Corporate and Economic Laws", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Strategic Cost Management and Performance Evaluation", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Risk Management (Optional)", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Financial Services and Capital Markets (Optional)", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "International Taxation (Optional)", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Economic Laws (Optional)", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Global Financial Reporting Standards (Optional)", "Marks": 100, "Type_of_Questions": "Subjective" },
-    { "Paper": "Multi-Disciplinary Case Study", "Marks": 100, "Type_of_Questions": "Subjective" }
-  ];
-
-  const passingCriteria = {
-    "Minimum_Marks_Per_Subject": 40,
-    "Total_Minimum_Marks_Per_Group": 150
-  };
-
-  const faqs = {
-    "What_are_the_key_subjects_included_in_the_new_syllabus?": "The new syllabus includes mandatory subjects such as Financial Reporting, Strategic Financial Management, Advanced Auditing, Corporate and Economic Laws, and more.",
-    "What_is_the_duration_of_the_CA_Final_2024_examination?": "Please contact our counselors for updated information.",
-    "What_will_be_the_examination_mode?": "Please contact our counselors for updated information.",
-    "What_will_be_the_marking_scheme_for_the_CA_Final_Exam?": "Please contact our counselors for updated information.",
-    "Are_CA_final_classes_online_or_offline?": "Please contact our counselors for updated information.",
-    "Is_CA_final_tough?": "Please contact our counselors for updated information.",
-    "What_is_the_age_limit_for_CA?": "Please contact our counselors for updated information."
-  };
 
   const galleryImages = [
     { id: 1, src: "https://via.placeholder.com/400x300?text=Classroom+Sessions", alt: "Classroom Sessions", caption: "Interactive Classroom Sessions" },
@@ -140,260 +96,289 @@ const CMA_final = () => {
     { id: 6, src: "https://via.placeholder.com/400x300?text=Campus+Facilities", alt: "Campus Facilities", caption: "State-of-the-art Campus Facilities" }
   ];
 
-  const testimonials = [
-    {
-      id: 1,
-      name: "Priya Sharma",
-      position: "CA Final Ranker",
-      image: "https://via.placeholder.com/150?text=Priya+S",
-      quote: "The faculty at Lakshya Edu provided exceptional guidance that helped me secure a top rank in CA Final exams."
-    },
-    {
-      id: 2,
-      name: "Rahul Mehta",
-      position: "CA Professional",
-      image: "https://via.placeholder.com/150?text=Rahul+M",
-      quote: "The structured approach and comprehensive study materials at Lakshya made complex topics easier to understand."
-    },
-    {
-      id: 3,
-      name: "Sneha Patel",
-      position: "CA Final Student",
-      image: "https://via.placeholder.com/150?text=Sneha+P",
-      quote: "The mock exams and practice sessions significantly boosted my confidence for the actual CA Final exams."
-    }
-  ];
 
-  const facultyMembers = [
-    { 
-      id: 1,
-      name: "Prof. Rajiv Kumar",
-      expertise: "Financial Reporting & Accounting",
-      image: "https://via.placeholder.com/200?text=Prof.+Kumar",
-      experience: "15+ years"
-    },
-    {
-      id: 2,
-      name: "CA Priti Agarwal",
-      expertise: "Advanced Auditing & Professional Ethics",
-      image: "https://via.placeholder.com/200?text=CA+Agarwal",
-      experience: "12+ years"
-    },
-    {
-      id: 3,
-      name: "Prof. Sanjay Verma",
-      expertise: "Corporate & Economic Laws",
-      image: "https://via.placeholder.com/200?text=Prof.+Verma",
-      experience: "18+ years"
-    }
-  ];
-
-  const toggleAccordion = (index) => {
-    setActiveAccordion(activeAccordion === index ? null : index);
-  };
 
   return (
     <div className="max-w-7xl mx-auto p-5 font-sans text-gray-800">
       {/* Hero Section with Background Image */}
-      <div className="relative rounded-lg overflow-hidden mb-8 shadow-lg">
+      <div className="relative rounded-xl overflow-hidden mb-12 shadow-2xl">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://via.placeholder.com/1600x900?text=CA+Final+Course" 
-            alt="CA Final Course Background" 
-            className="w-full h-full object-cover opacity-20" 
+            src="https://via.placeholder.com/1600x900?text=CMA+Final+Course" 
+            alt="CMA Final Course Background" 
+            className="w-full h-full object-cover opacity-30" 
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-dark to-primary opacity-90"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-dark to-primary opacity-85"></div>
         </div>
-        <div className="relative z-10 py-20 px-10 text-center text-white">
-          <div className="flex justify-center mb-6">
-            <img 
-              src="https://via.placeholder.com/120?text=CA+Logo" 
-              alt="CA Logo" 
-              className="h-24 w-auto" 
-            />
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">CA Final Course</h1>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">Master the pinnacle of chartered accountancy with our comprehensive CA Final program</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            {/* <button className="bg-secondary hover:bg-secondary-light text-primary font-bold py-3 px-8 rounded transition-all duration-300 hover:-translate-y-0.5 transform flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
-              </svg>
-              Enroll Now
-            </button> */}
-            <a href='/request'>
-            <button className="bg-transparent hover:bg-white/10 text-white border-2 border-white font-bold py-3 px-8 rounded transition-all duration-300 flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-              </svg>
-              Request Callback
-            </button>
-            </a>
-          </div>
-          <div className="flex justify-center mt-10 space-x-6">
-            <div className="text-center">
-              <div className=" rounded-full p-4 mb-2 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                </svg>
+        <div className="relative z-10 py-24 px-8 md:px-16">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+              <div className="text-white md:w-1/2">
+                <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">CMA Final Course</h1>
+                <p className="text-xl md:text-2xl mb-8 opacity-90">Take the final step toward becoming a distinguished Cost & Management Accountant with our comprehensive program</p>
+                <div className="flex flex-wrap gap-4">
+                  <a href='#contact-form'>
+                    <button className="bg-white text-primary hover:bg-gray-100 font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg flex items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                      </svg>
+                      Request Callback
+                    </button>
+                  </a>
+                </div>
               </div>
-              <span className="block text-sm">Expert Faculty</span>
-            </div>
-            <div className="text-center">
-              <div className=" rounded-full p-4 mb-2 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
+              <div className="md:w-1/2">
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-xl">
+                  <div className="grid grid-cols-2 gap-6">
+                    <div className="text-center text-white p-4 rounded-lg bg-white/5">
+                      <div className="text-4xl font-bold mb-2">85%</div>
+                      <div className="text-sm opacity-80">Success Rate</div>
+                    </div>
+                    <div className="text-center text-white p-4 rounded-lg bg-white/5">
+                      <div className="text-4xl font-bold mb-2">5000+</div>
+                      <div className="text-sm opacity-80">Students</div>
+                    </div>
+                    <div className="text-center text-white p-4 rounded-lg bg-white/5">
+                      <div className="text-4xl font-bold mb-2">25+</div>
+                      <div className="text-sm opacity-80">Expert Faculty</div>
+                    </div>
+                    <div className="text-center text-white p-4 rounded-lg bg-white/5">
+                      <div className="text-4xl font-bold mb-2">100+</div>
+                      <div className="text-sm opacity-80">Rank Holders</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <span className="block text-sm">Proven Results</span>
-            </div>
-            <div className="text-center">
-              <div className=" rounded-full p-4 mb-2 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <span className="block text-sm">Fast-track Learning</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex flex-wrap border-b-2 border-gray-100 mb-8">
-        <button 
-          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'overview' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
-          onClick={() => setActiveTab('overview')}>
-          Overview
-        </button>
-        <button 
-          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'subjects' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
-          onClick={() => setActiveTab('subjects')}>
-          Subjects
-        </button>
-        <button 
-          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'books' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
-          onClick={() => setActiveTab('books')}>
-          Books
-        </button>
-        <button 
-          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'structure' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
-          onClick={() => setActiveTab('structure')}>
-          Course Structure
-        </button>
-        <button 
-          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'images' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`} 
-          onClick={() => setActiveTab('images')}>
-          Images
-        </button>
-        <button 
-          className={`py-4 px-5 text-base font-medium cursor-pointer relative ${activeTab === 'faqs' ? 'text-primary after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-primary' : 'text-gray-500'}`}
-          onClick={() => setActiveTab('faqs')}>
-          FAQs
-        </button>
+      <div className="flex flex-wrap justify-center gap-2 mb-12 bg-gray-50 p-2 rounded-lg">
+        {['overview', 'books', 'images'].map((tab) => (
+          <button
+            key={tab}
+            className={`py-3 px-6 rounded-lg text-base font-medium transition-all duration-300 ${
+              activeTab === tab 
+              ? 'bg-primary text-white shadow-lg transform -translate-y-0.5' 
+              : 'text-gray-600 hover:bg-gray-100'
+            }`}
+            onClick={() => setActiveTab(tab)}>
+            {tab.charAt(0).toUpperCase() + tab.slice(1)}
+          </button>
+        ))}
       </div>
 
       {/* Content Sections */}
       <div className="course-content">
         {/* Overview Section */}
         {activeTab === 'overview' && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
-              <h2 className="text-2xl font-bold mb-6 text-primary relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">Program Details</h2>
-              <div className="mb-4 flex items-start">
-                <div className="bg-accent p-2 rounded-full mr-4 mt-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-lg text-primary mb-1">Location</h3>
-                  <p>Hyderabad & India</p>
-                </div>
-              </div>
-              <div className="mb-4 flex items-start">
-                <div className="bg-accent p-2 rounded-full mr-4 mt-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-lg text-primary mb-1">Duration</h3>
-                  <p>6-8 months intensive program</p>
-                </div>
-              </div>
-              <p className="text-gray-700">Our program covers critical subjects including Financial Reporting, Strategic Financial Management, Advanced Auditing, and a range of specialized optional papers. With a focus on in-depth knowledge and professional ethics, our CA Final course is designed to ensure you are fully prepared for the highest level of CA exams.</p>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
-              <h2 className="text-2xl font-bold mb-6 text-primary relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">Why Choose Lakshya?</h2>
-              <p className="text-gray-700">Join us and secure your future as a successful Chartered Accountant. Our expert faculty and interactive sessions ensure a robust foundation for your CA Final journey. At Lakshya, we don't just teach; we empower you to excel. Choose the best – Choose Lakshya for your CA Final preparation. Hurry! Limited seats available. Your Success, Our Priority!</p>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
-              <h2 className="text-2xl font-bold mb-6 text-primary relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">Passing Criteria</h2>
-              <div className="mb-5">
-                <h3 className="text-lg mb-1 text-gray-600">Minimum Marks Per Subject</h3>
-                <p className="text-3xl font-bold text-secondary">{passingCriteria.Minimum_Marks_Per_Subject}%</p>
-              </div>
-              <div>
-                <h3 className="text-lg mb-1 text-gray-600">Total Minimum Marks Per Group</h3>
-                <p className="text-3xl font-bold text-secondary">{passingCriteria.Total_Minimum_Marks_Per_Group} marks</p>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-lg p-6 shadow-sm mb-6">
-              <h2 className="text-2xl font-bold mb-6 text-primary relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">Join Face-to-Face Batches</h2>
-              <p className="text-gray-700 mb-4">Join our face-to-face batches to immerse yourself in a comprehensive learning experience.</p>
-              <a href="/request">
-              <button className="bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded transition-all duration-300">Register Now</button>
-              </a>
-            </div>
-
-            <div className="bg-gradient-to-br from-primary to-primary-dark text-white rounded-lg p-6 shadow-md col-span-1 md:col-span-2 mt-6">
-              <h2 className="text-2xl font-bold mb-6 relative after:absolute after:content-[''] after:bottom-[-8px] after:left-0 after:w-12 after:h-0.5 after:bg-secondary">Our Impact</h2>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div className="text-center">
-                  <img src="https://via.placeholder.com/80?text=Trophy" alt="Success Rate" className="mx-auto mb-2" />
-                  <p className="text-3xl font-bold">85%</p>
-                  <p className="text-sm opacity-80">Success Rate</p>
-                </div>
-                <div className="text-center">
-                  <img src="https://via.placeholder.com/80?text=Students" alt="Students Trained" className="mx-auto mb-2" />
-                  <p className="text-3xl font-bold">5000+</p>
-                  <p className="text-sm opacity-80">Students Trained</p>
-                </div>
-                <div className="text-center">
-                  <img src="https://via.placeholder.com/80?text=Teacher" alt="Expert Faculty" className="mx-auto mb-2" />
-                  <p className="text-3xl font-bold">25+</p>
-                  <p className="text-sm opacity-80">Expert Faculty</p>
-                </div>
-                <div className="text-center">
-                  <img src="https://via.placeholder.com/80?text=Award" alt="Rank Holders" className="mx-auto mb-2" />
-                  <p className="text-3xl font-bold">100+</p>
-                  <p className="text-sm opacity-80">Rank Holders</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Subjects Section */}
-        {activeTab === 'subjects' && (
           <div>
-            <h2 className="text-2xl font-bold mb-8 text-primary">CA Final Subjects</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-6">
-              {Object.entries(subjects).map(([key, value]) => (
-                <div className="bg-white p-5 rounded-lg shadow-sm border-l-4 border-primary transition-all duration-300 hover:-translate-y-1 hover:shadow-md" key={key}>
-                  <h3 className="text-lg text-primary mb-2">{key.replace('_', ' ')}</h3>
-                  <p className="text-gray-700">{value}</p>
+            {/* CMA Final Header */}
+            <div className="text-center mb-10">
+              <h2 className="text-3xl font-bold mb-3 text-primary">CMA Final</h2>
+              <p className="text-xl text-gray-700 font-medium">Best CMA Final Institute in India</p>
+              <p className="mt-4 text-gray-600">
+                Welcome to Lakshya - Your Gateway to success in CMA Final.<br />
+              </p>
+            </div>
+
+            {/* Contact Form */}
+            <div className="bg-white rounded-lg shadow-md p-6 mb-8" id="contact-form">
+              <h3 className="text-xl font-bold mb-4 text-primary">Get in Touch</h3>
+              <form className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-gray-700 mb-1">Name</label>
+                  <input type="text" className="w-full p-2 border rounded" />
                 </div>
-              ))}
+                <div>
+                  <label className="block text-gray-700 mb-1">Phone</label>
+                  <input type="tel" className="w-full p-2 border rounded" />
+                </div>
+                <div>
+                  <label className="block text-gray-700 mb-1">Email Address</label>
+                  <input type="email" className="w-full p-2 border rounded" />
+                </div>
+                <div>
+                  <label className="block text-gray-700 mb-1">City</label>
+                  <input type="text" className="w-full p-2 border rounded" />
+                </div>
+                <div className="md:col-span-2">
+                  <button type="submit" className="bg-primary text-white font-bold py-2 px-4 rounded">Submit</button>
+                </div>
+              </form>
+            </div>
+
+            {/* CMA Final Subjects */}
+            <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+              <h3 className="text-xl font-bold mb-4 text-primary">CMA Final Subjects</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+                <div className="flex items-start p-3 border-l-4 border-primary bg-gray-50">
+                  <span className="text-primary font-medium">Paper 1:</span>
+                  <span className="ml-2">Advanced Financial Management</span>
+                </div>
+                <div className="flex items-start p-3 border-l-4 border-primary bg-gray-50">
+                  <span className="text-primary font-medium">Paper 2:</span>
+                  <span className="ml-2">Corporate Financial Reporting</span>
+                </div>
+                <div className="flex items-start p-3 border-l-4 border-primary bg-gray-50">
+                  <span className="text-primary font-medium">Paper 3:</span>
+                  <span className="ml-2">Strategic Financial Management</span>
+                </div>
+                <div className="flex items-start p-3 border-l-4 border-primary bg-gray-50">
+                  <span className="text-primary font-medium">Paper 4:</span>
+                  <span className="ml-2">Business Strategy and Strategic Cost Management</span>
+                </div>
+              </div>
+
+              <div className="overflow-x-auto mt-4">
+                <table className="w-full border-collapse">
+                  <thead>
+                    <tr className="bg-gray-100">
+                      <th className="border p-2 text-left">Sr. No</th>
+                      <th className="border p-2 text-left">CMA Final Subjects</th>
+                      <th className="border p-2 text-left">Marks</th>
+                      <th className="border p-2 text-left">Types of Questions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td className="border p-2">Paper 1</td>
+                      <td className="border p-2">Advanced Financial Management</td>
+                      <td className="border p-2">100 Marks</td>
+                      <td className="border p-2">Descriptive</td>
+                    </tr>
+                    <tr>
+                      <td className="border p-2">Paper 2</td>
+                      <td className="border p-2">Corporate Financial Reporting</td>
+                      <td className="border p-2">100 Marks</td>
+                      <td className="border p-2">Descriptive</td>
+                    </tr>
+                    <tr>
+                      <td className="border p-2">Paper 3</td>
+                      <td className="border p-2">Strategic Financial Management</td>
+                      <td className="border p-2">100 Marks</td>
+                      <td className="border p-2">Descriptive</td>
+                    </tr>
+                    <tr>
+                      <td className="border p-2">Paper 4</td>
+                      <td className="border p-2">Business Strategy and Strategic Cost Management</td>
+                      <td className="border p-2">100 Marks</td>
+                      <td className="border p-2">Descriptive</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* Passing Criteria */}
+            <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+              <h3 className="text-xl font-bold mb-4 text-primary">Passing Criteria for CMA Final:</h3>
+              <ul className="list-disc pl-5 space-y-2 mb-4">
+                <li>Candidates must score at least 40 marks in each subject.</li>
+                <li>The total score for each group must be 150 marks or more to qualify.</li>
+              </ul>
+              <p className="text-gray-700">
+                The table above provides a detailed overview of the subjects, groups, individual paper marks, and the exam pattern for the CMA Final course.
+              </p>
+            </div>
+
+            {/* CMA Final Online-Pendrive Classes */}
+            <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+              <h3 className="text-xl font-bold mb-4 text-primary">CMA Final Online & Pendrive Classes – Available Across Hyderabad & India</h3>
+              <p className="mb-4">
+                Take your CMA career to the next level with Lakshya Edu's expertly designed CMA Final Online Classes. 
+                Our program provides in-depth training, expert mentorship, and structured guidance to help you master key subjects, including:
+              </p>
+              <ul className="space-y-2 mb-4">
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Advanced Financial Management</span>
+                </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Corporate Financial Reporting</span>
+                </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Strategic Financial Management</span>
+                </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Business Strategy & Strategic Cost Management</span>
+                </li>
+              </ul>
+              <p className="mb-4">
+                With experienced faculty, comprehensive study materials, and interactive learning sessions, we ensure you're fully equipped for success in your CMA Final exams.
+              </p>
+              <p className="font-medium">
+                Join Lakshya Edu – Hyderabad's trusted institute for CMA Final preparation – and take the final step toward becoming a distinguished Cost & Management Accountant!
+              </p>
+            </div>
+
+            {/* Why Choose Lakshya for CMA Final */}
+            <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+              <h3 className="text-xl font-bold mb-4 text-primary">Why Choose Lakshya Edu for CMA Final?</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <div className="bg-primary rounded-full p-1 mr-3 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <span className="font-medium">Expert Faculty:</span>
+                    <span className="ml-1">Learn from industry-leading professionals with vast experience in CMA training.</span>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <div className="bg-primary rounded-full p-1 mr-3 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <span className="font-medium">Personalized Guidance:</span>
+                    <span className="ml-1">Get one-on-one mentorship and tailored study plans to maximize your success.</span>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <div className="bg-primary rounded-full p-1 mr-3 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <span className="font-medium">Comprehensive Courses:</span>
+                    <span className="ml-1">Access in-depth study materials, live sessions, and recorded lectures for flexible learning.</span>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <div className="bg-primary rounded-full p-1 mr-3 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <span className="font-medium">Proven Success:</span>
+                    <span className="ml-1">Join a community of successful CMA candidates who have excelled with our structured approach.</span>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
         )}
-
-        {/* Books Section */}
+        
+        {/* Books section */}
         {activeTab === 'books' && (
           <div>
             <h2 className="text-2xl font-bold mb-6 text-primary">CA Final Study Material</h2>
@@ -473,50 +458,6 @@ const CMA_final = () => {
                 </div>
               ))}
             </div>
-
-
-            {/* CTA Banner */}
-            <div className="mt-16 bg-gradient-to-r from-primary to-primary-dark rounded-xl overflow-hidden shadow-lg">
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="md:w-2/3 p-8 text-white">
-                  <h3 className="text-2xl font-bold mb-2">Bundle & Save!</h3>
-                  <p className="mb-4">Get all CA Final study materials and save up to 35%. Complete coverage for all subjects.</p>
-                  <button className="bg-white text-primary hover:bg-gray-100 font-bold py-2 px-6 rounded-lg transition-colors">
-                    View Bundles
-                  </button>
-                </div>
-                <div className="md:w-1/3 p-4">
-                  <img src="https://via.placeholder.com/400x300?text=Bundle+Offer" alt="Bundle Offer" className="rounded-lg shadow-md" />
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Course Structure */}
-        {activeTab === 'structure' && (
-          <div>
-            <h2 className="text-2xl font-bold mb-6 text-primary">Course Structure</h2>
-            <div className="overflow-x-auto mt-6">
-              <table className="w-full">
-                <thead>
-                  <tr className="bg-gray-50">
-                    <th className="py-4 px-6 text-left text-primary font-semibold">Paper</th>
-                    <th className="py-4 px-6 text-left text-primary font-semibold">Marks</th>
-                    <th className="py-4 px-6 text-left text-primary font-semibold">Type of Questions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {courseStructure.map((item, index) => (
-                    <tr key={index} className="hover:bg-gray-50 border-b border-gray-100">
-                      <td className="py-4 px-6">{item.Paper}</td>
-                      <td className="py-4 px-6">{item.Marks}</td>
-                      <td className="py-4 px-6">{item.Type_of_Questions}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
           </div>
         )}
 
@@ -570,157 +511,14 @@ const CMA_final = () => {
                 </div>
               ))}
             </div>
-
-            {/* Virtual tour section */}
-            <div className="mt-12 bg-bg-light rounded-xl p-8">
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="md:w-1/2 mb-6 md:mb-0 md:pr-6">
-                  <h3 className="text-2xl font-bold text-primary mb-2">Take a Virtual Tour</h3>
-                  <p className="text-gray-700 mb-4">Experience our campus facilities and classrooms through our interactive virtual tour.</p>
-                  <button className="flex items-center bg-primary hover:bg-primary-dark text-white rounded-lg px-5 py-3 font-medium transition-all">
-                    <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                    </svg>
-                    Start Virtual Tour
-                  </button>
-                </div>
-                <div className="md:w-1/2">
-                  <div className="relative rounded-lg overflow-hidden shadow-md">
-                    <img src="https://via.placeholder.com/800x450?text=Virtual+Tour" alt="Virtual Tour" className="w-full" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="bg-white/90 rounded-full p-4">
-                        <svg className="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         )}
 
-        {/* FAQs Section */}
-        {activeTab === 'faqs' && (
-          <div>
-            <h2 className="text-2xl font-bold mb-6 text-primary">Frequently Asked Questions</h2>
-            <div className="mt-8 space-y-4">
-              {Object.entries(faqs).map(([question, answer], index) => (
-                <div className="rounded-lg overflow-hidden shadow-sm" key={index}>
-                  <div 
-                    className={`p-5 flex justify-between items-center cursor-pointer ${activeAccordion === index ? 'bg-gray-50' : 'bg-white'}`}
-                    onClick={() => toggleAccordion(index)}>
-                    <h3 className="text-base font-medium text-gray-800">{question.replace(/_/g, ' ')}</h3>
-                    <span className="text-2xl text-primary">
-                      {activeAccordion === index ? '−' : '+'}
-                    </span>
-                  </div>
-                  {activeAccordion === index && (
-                    <div className="p-5 bg-white border-t border-gray-100">
-                      <p className="text-gray-700">{answer || "Please contact our counselors for updated information."}</p>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Faculty Section */}
-      <div className="my-16">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-primary mb-3">Meet Our Expert Faculty</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">Learn from the best minds in the industry with decades of experience in teaching and professional practice</p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {facultyMembers.map(faculty => (
-            <div className="bg-white rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-lg" key={faculty.id}>
-              <div className="h-64 overflow-hidden">
-                <img 
-                  src={faculty.image} 
-                  alt={faculty.name} 
-                  className="w-full h-full object-cover object-center" 
-                />
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-primary">{faculty.name}</h3>
-                <p className="text-gray-500 mb-2">{faculty.expertise}</p>
-                <div className="flex items-center text-sm text-gray-600">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  {faculty.experience} of teaching experience
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Testimonials Section */}
-      <div className="bg-bg-light rounded-2xl p-8 my-16">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-primary mb-3">What Our Students Say</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">Hear from our successful students who have transformed their careers with our CA Final program</p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map(testimonial => (
-            <div className="bg-white rounded-xl p-6 shadow-sm relative" key={testimonial.id}>
-              <div className="absolute -top-6 left-1/2 transform -translate-x-1/2">
-                <img 
-                  src={testimonial.image} 
-                  alt={testimonial.name}
-                  className="w-16 h-16 rounded-full border-4 border-white object-cover" 
-                />
-              </div>
-              <div className="pt-10">
-                <div className="flex justify-center mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-gray-700 italic text-center mb-4">"{testimonial.quote}"</p>
-                <div className="text-center">
-                  <p className="font-bold text-primary">{testimonial.name}</p>
-                  <p className="text-sm text-gray-500">{testimonial.position}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Call to Action */}
-      <div className="relative rounded-xl overflow-hidden my-16">
-        <div className="absolute inset-0">
-          <img 
-            src="https://via.placeholder.com/1600x600?text=CA+Final+Success" 
-            alt="Success Background" 
-            className="w-full h-full object-cover" 
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-dark to-primary opacity-90"></div>
-        </div>
-        <div className="relative z-10 py-16 px-10 text-center text-white">
-          <h2 className="text-3xl font-bold mb-4">Ready to Excel in CA Final?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">Join Lakshya Edu for expert guidance and success in your CA journey</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a href='/enroll'>
-            <button className="bg-secondary hover:bg-secondary-light text-white font-bold py-3 px-8 rounded transition-all duration-300">Enroll Now</button>
-            </a>
-            <a href='/contact'>
-            <button className="bg-transparent hover:bg-white/10 text-white font-bold py-3 px-8 rounded border-2 border-white transition-all duration-300">Contact Us</button>
-            </a>
-          </div>
-        </div>
       </div>
     </div>
   );
 };
 
 export default CMA_final;
+
+

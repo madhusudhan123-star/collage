@@ -144,7 +144,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-md relative z-50" ref={navRef}>
+    <nav className="bg-white relative z-50" ref={navRef}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}

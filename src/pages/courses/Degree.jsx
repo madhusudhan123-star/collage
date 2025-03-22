@@ -192,6 +192,35 @@ const Degree = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        {/* College Introduction Section */}
+        <section className="mb-16">
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <h2 className="text-3xl font-bold text-red-600 mb-6">Best Degree Colleges in Hyderabad for BBA & BCA</h2>
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <p className="text-lg text-gray-700 mb-4">
+                  Lakshya College of Commerce & Management - Your Launchpad to Success!
+                  Established in 2021 as a subsidiary of Lakshya Educational College, we have earned the title 
+                  of Best Commerce College in South India through our commitment to excellence.
+                </p>
+                <div className="space-y-2">
+                  <h3 className="text-xl font-semibold">Why Choose Lakshya?</h3>
+                  <ul className="list-disc list-inside text-gray-600">
+                    <li>Ranked among the best degree colleges in Hyderabad</li>
+                    <li>Perfect blend of traditional education and modern innovation</li>
+                    <li>Focus on career-driven learning with real-world applications</li>
+                  </ul>
+                </div>
+              </div>
+              <img 
+                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1" 
+                alt="Campus" 
+                className="rounded-lg h-64 w-full object-cover"
+              />
+            </div>
+          </div>
+        </section>
+
         {/* Program Highlights */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold text-gray-800 mb-8">Program Highlights</h2>
@@ -362,6 +391,64 @@ const Degree = () => {
                   </li>
                 ))}
               </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Traditional Day Section */}
+        <section className="mb-16">
+          <h2 className="text-3xl font-bold text-gray-800 mb-8">Traditional Day Celebration</h2>
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-xl font-semibold mb-4">A Celebration of Culture & Heritage</h3>
+                <p className="text-gray-700 mb-4">
+                  Our Traditional Day brings students together to honor India's rich cultural diversity 
+                  through traditional attire, regional language introductions, and cultural activities.
+                </p>
+                <div className="bg-red-50 p-4 rounded-lg">
+                  <h4 className="font-semibold mb-2">Why It Matters:</h4>
+                  <ul className="list-disc list-inside text-gray-600">
+                    <li>Celebrates cultural heritage from different regions</li>
+                    <li>Encourages unity in diversity</li>
+                    <li>Creates lasting memories and college spirit</li>
+                  </ul>
+                </div>
+              </div>
+              <img 
+                src="https://images.unsplash.com/photo-1543269865-cbf427effbad" 
+                alt="Traditional Day" 
+                className="rounded-lg h-64 w-full object-cover"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Guest Lecture Section */}
+        <section className="mb-16">
+          <div className="bg-gray-100 rounded-xl p-8">
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">Expert Guest Lectures</h2>
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <img 
+                src="https://images.unsplash.com/photo-1503676382389-4809596d5290" 
+                alt="Guest Lecture" 
+                className="rounded-lg h-64 w-full object-cover"
+              />
+              <div>
+                <h3 className="text-xl font-semibold mb-4">Learning from Industry Leaders</h3>
+                <p className="text-gray-700 mb-4">
+                  We regularly host distinguished experts like Wing Commander G. Srinivasu (Retd.) 
+                  for insights on cybersecurity, leadership, and national security.
+                </p>
+                <div className="space-y-2">
+                  <p className="font-semibold">Key Discussion Areas:</p>
+                  <ul className="list-disc list-inside text-gray-600">
+                    <li>Cybersecurity fundamentals</li>
+                    <li>Career opportunities in national security</li>
+                    <li>Leadership in challenging environments</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </section>

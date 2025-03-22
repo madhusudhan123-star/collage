@@ -71,10 +71,6 @@ const videoData = [
 
 const Home = () => {
     const [openItem, setOpenItem] = useState(null);
-    const [showMoreContent, setShowMoreContent] = useState(false);
-    const [currentVideo, setCurrentVideo] = useState(0);
-    const [isPlaying, setIsPlaying] = useState(false);
-    const videoRef = useRef(null);
     const [isAutoScrolling, setIsAutoScrolling] = useState(true);
     const testimonialContainerRef = useRef(null);
     const videoTestimonialContainerRef = useRef(null);
@@ -85,32 +81,138 @@ const Home = () => {
     const scrollSpeedRef = useRef(0.5); // pixels per frame
     const [isVideoAutoScrolling, setIsVideoAutoScrolling] = useState(true);
 
+    const [currentSlide, setCurrentSlide] = useState(0);
+  
+  // Course data - 9 cards total (original 3 + 6 new ones)
+  const courses = [
+    {
+      id: 1,
+      title: "CA (Chartered Accountant)",
+      image: ca, // This will need to be replaced with the actual import
+      color: "#A6192E",
+      features: [
+        "Foundation, Intermediate & Final Levels",
+        "Accounting, Taxation, Auditing & Law",
+        "Expert Faculty with Industry Experience"
+      ],
+      link: "/courses/ca",
+      buttonText: "Explore CA Program"
+    },
+    {
+      id: 2,
+      title: "CMA (Cost & Management)",
+      image: cma,
+      color: "#A6192E",
+      features: [
+        "Foundation, Intermediate & Final Levels",
+        "Costing, Financial Management & Strategy",
+        "Real-time Practice & Mock Exams"
+      ],
+      link: "/cma",
+      buttonText: "Explore CMA Program"
+    },
+    {
+      id: 3,
+      title: "ACCA Certification",
+      image: acca,
+      color: "#A6192E",
+      features: [
+        "F1 to F9 & Strategic Level Papers",
+        "Globally Recognized Qualification",
+        "International Career Opportunities"
+      ],
+      link: "/courses/acca",
+      buttonText: "Explore ACCA Program"
+    },
+    {
+        id: 4,
+        title: "BBA/B.com",
+        image: graduation,
+        color: "#A6192E",
+        features: [
+        "Comprehensive Management Education",
+        "Specialization in Accounting & Finance",
+        "Industry Exposure & Practical Training"
+        ],
+        link: "/courses/bba",
+        buttonText: "Explore BBA Program"
+    },
+    // {
+    //     id: 5,
+    //     title: "B.com",
+    //     image: graduation,
+    //     color: "#A6192E",
+    //     features: [
+    //     "Core Commerce Curriculum",
+    //     "Specialization in Accounting & Finance",
+    //     "Insights into Corporate Laws & Governance"
+    //     ],
+    //     link: "/courses/bcom",
+    //     buttonText: "Explore B.com Program"
+    // },
+    {
+        id: 6,
+        title: "Intermediate (MEC & CEC)",
+        image: inter,
+        color: "#A6192E",
+        features: [
+        "Focused Intermediate Level Preparation",
+        "Emphasis on Management & Commerce Studies",
+        "Bridge to Professional Certifications"
+        ],
+        link: "/courses/intermediate",
+        buttonText: "Explore Intermediate Program"
+    },
+    // {
+    //   id: 7,
+    //   title: "CMA-US (Certified Management Accountant)",
+    //   image: "cma-us",
+    //   color: "#A6192E",
+    //   features: [
+    //     "Part 1 & 2 Exam Preparation",
+    //     "Financial Planning & Analysis",
+    //     "Strategic Management & Decision Making"
+    //   ],
+    //   link: "/courses/cma-us",
+    //   buttonText: "Explore CMA-US Program"
+    // },
+    // {
+    //   id: 8,
+    //   title: "IFRS Certification",
+    //   image: "ifrs",
+    //   color: "#A6192E",
+    //   features: [
+    //     "International Financial Reporting Standards",
+    //     "Financial Statement Preparation & Analysis",
+    //     "Compliance & Regulatory Requirements"
+    //   ],
+    //   link: "/courses/ifrs",
+    //   buttonText: "Explore IFRS Program"
+    // },
+    // {
+    //   id: 9,
+    //   title: "GST Certification",
+    //   image: "gst",
+    //   color: "#A6192E",
+    //   features: [
+    //     "Comprehensive GST Framework",
+    //     "Return Filing & Compliance",
+    //     "Input Tax Credit & E-Way Bill"
+    //   ],
+    //   link: "/courses/gst",
+    //   buttonText: "Explore GST Program"
+    // }
+  ];
+
+  // Calculate total number of slides
+    const totalSlides = Math.ceil(courses.length / 3);
+
+  // Get current visible courses
+  const visibleCourses = courses.slice(currentSlide * 3, currentSlide * 3 + 3);
+
+
     const toggleItem = (id) => {
         setOpenItem(openItem === id ? null : id);
-    };
-
-    const toggleMoreContent = () => {
-        setShowMoreContent(!showMoreContent);
-    };
-
-    const handleVideoNav = (index) => {
-        setCurrentVideo(index);
-        setIsPlaying(false);
-        if (videoRef.current) {
-            videoRef.current.pause();
-            videoRef.current.currentTime = 0;
-        }
-    };
-
-    const handlePlayPause = () => {
-        if (videoRef.current) {
-            if (isPlaying) {
-                videoRef.current.pause();
-            } else {
-                videoRef.current.play();
-            }
-            setIsPlaying(!isPlaying);
-        }
     };
 
     // Auto-scrolling effect for testimonials
@@ -212,7 +314,7 @@ const Home = () => {
             {/* Hero Section with Image Slider Background */}
             <section className="relative h-screen w-full overflow-hidden">
                 {/* Image Slider Background */}
-                <div className="absolute inset-0">
+                <div className="relative h-full">
                     <ImageSlider autoPlay={true} infiniteLoop={true} showArrows={false} showStatus={false} showThumbs={false} />
                     {/* Overlay to darken images and make text more readable */}
                     {/* <div className="absolute inset-0 bg-black opacity-40 z-20"></div> */}
@@ -222,361 +324,154 @@ const Home = () => {
                 
             </section>
 
-            {/* Third Section with Course Cards */}
+            {/* Two Section with Course Cards */}
             <section className="py-20 bg-[#ECECEC]">
-                <div className="container mx-auto px-4">
-                    <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-[#A6192E]">
-                        Explore Our <span className="relative inline-block">
-                            Courses
-                            <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FFD700] rounded-full"></span>
-                        </span>
-                    </h2>
-
-                    {/* Course Cards */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {/* CA Course Card */}
-                        <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            <div className="absolute top-0 left-0 w-full h-1 bg-[#A6192E] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                            <div className="relative">
-                                <img
-                                    src={ca}
-                                    alt="CA Course"
-                                    className="w-full h-52 object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
-                                />
-                                <div className="absolute top-4 right-4 px-3 py-1 bg-[#FFD700] text-gray-800 font-medium rounded-full shadow-lg flex items-center gap-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-                                    </svg>
-                                    <span>Popular</span>
-                                </div>
-                                <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black/70 to-transparent"></div>
-                            </div>
-                            <div className="p-6 relative">
-                                <div className="absolute -top-12 left-6 w-12 h-12 rounded-full bg-[#A6192E] shadow-lg flex items-center justify-center text-white">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                                    </svg>
-                                </div>
-                                <h3 className="text-2xl font-bold mb-3 mt-2 text-[#A6192E]">CA (Chartered Accountant)</h3>
-                                <ul className="mb-6 space-y-3">
-                                    <li className="flex items-start">
-                                        <span className="flex-shrink-0 mr-2 text-[#FFD700] text-lg">✓</span>
-                                        <span className="text-gray-700">Foundation, Intermediate & Final Levels</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <span className="flex-shrink-0 mr-2 text-[#FFD700] text-lg">✓</span>
-                                        <span className="text-gray-700">Accounting, Taxation, Auditing & Law</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <span className="flex-shrink-0 mr-2 text-[#FFD700] text-lg">✓</span>
-                                        <span className="text-gray-700">Expert Faculty with Industry Experience</span>
-                                    </li>
-                                </ul>
-                                <Link
-                                    to="/courses/ca"
-                                    className="relative overflow-hidden w-full block text-center px-4 py-3 rounded-lg font-semibold bg-[#A6192E] text-white shadow-md hover:shadow-xl transition-all duration-300 before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-white/20 before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300 before:origin-left"
-                                >
-                                    <span className="relative text-black z-10">Explore CA Program</span>
-                                </Link>
-                            </div>
+                <div className="flex justify-between items-center mb-6">
+                    <h2 className="text-3xl font-bold text-gray-800">Our Professional Courses</h2>
+                    {/* <div className="flex space-x-2">
+                    <button 
+                        onClick={prevSlide}
+                        className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-all"
+                        aria-label="Previous slide"
+                    >
+                        <ChevronLeft size={24} />
+                    </button>
+                    <button 
+                        onClick={nextSlide}
+                        className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-all"
+                        aria-label="Next slide"
+                    >
+                        <ChevronRight size={24} />
+                    </button>
+                    </div> */}
+                </div>
+                
+                {/* Slider Indicator */}
+                <div className="flex justify-center mb-8">
+                    {Array.from({ length: totalSlides }).map((_, index) => (
+                    <button 
+                        key={index}
+                        onClick={() => setCurrentSlide(index)}
+                        className={`mx-1 w-3 h-3 rounded-full transition-all ${
+                        currentSlide === index ? 'bg-[#A6192E] w-6' : 'bg-gray-300'
+                        }`}
+                        aria-label={`Go to slide ${index + 1}`}
+                    />
+                    ))}
+                </div>
+                
+                {/* Course Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {visibleCourses.map((course) => (
+                    <div 
+                        key={course.id}
+                        className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+                    >
+                        <div className="relative">
+                        <img
+                            src={`${course.image}`} 
+                            alt={`${course.title} Course`}
+                            className="w-full transition-transform duration-700 ease-in-out group-hover:scale-105"
+                        />
                         </div>
-
-                        {/* CMA Course Card */}
-                        <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            <div className="absolute top-0 left-0 w-full h-1 bg-[#A6192E] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                            <div className="relative">
-                                <img
-                                    src={cma}
-                                    alt="CMA Course"
-                                    className="w-full h-52 object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
-                                />
-                                <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black/70 to-transparent"></div>
-                            </div>
-                            <div className="p-6 relative">
-                                <div className="absolute -top-12 left-6 w-12 h-12 rounded-full bg-[#A6192E] shadow-lg flex items-center justify-center text-white">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                                    </svg>
-                                </div>
-                                <h3 className="text-2xl font-bold mb-3 mt-2 text-[#A6192E]">CMA (Cost & Management)</h3>
-                                <ul className="mb-6 space-y-3">
-                                    <li className="flex items-start">
-                                        <span className="flex-shrink-0 mr-2 text-[#FFD700] text-lg">✓</span>
-                                        <span className="text-gray-700">Foundation, Intermediate & Final Levels</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <span className="flex-shrink-0 mr-2 text-[#FFD700] text-lg">✓</span>
-                                        <span className="text-gray-700">Costing, Financial Management & Strategy</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <span className="flex-shrink-0 mr-2 text-[#FFD700] text-lg">✓</span>
-                                        <span className="text-gray-700">Real-time Practice & Mock Exams</span>
-                                    </li>
-                                </ul>
-                                <Link
-                                    to="/courses/cma"
-                                    className="relative overflow-hidden w-full block text-center px-4 py-3 rounded-lg font-semibold bg-[#A6192E] text-white shadow-md hover:shadow-xl transition-all duration-300 before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-white/20 before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300 before:origin-left"
-                                >
-                                    <span className="relative text-black z-10">Explore CMA Program</span>
-                                </Link>
-                            </div>
-                        </div>
-
-                        {/* ACCA Course Card */}
-                        <div className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
-                            <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                            <div className="absolute top-0 left-0 w-full h-1 bg-[#FFD700] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-                            <div className="relative">
-                                <img
-                                    src={acca}
-                                    alt="ACCA Course"
-                                    className="w-full h-52 object-cover transition-transform duration-700 ease-in-out group-hover:scale-105"
-                                />
-                                <div className="absolute top-4 right-4 px-3 py-1 bg-[#A6192E] text-white font-medium rounded-full shadow-lg flex items-center gap-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h.5A2.5 2.5 0 0020 5.5v-1.5" />
-                                    </svg>
-                                    <span>International</span>
-                                </div>
-                                <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black/70 to-transparent"></div>
-                            </div>
-                            <div className="p-6 relative">
-                                <div className="absolute -top-12 left-6 w-12 h-12 rounded-full bg-[#FFD700] shadow-lg flex items-center justify-center text-gray-800">
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                                    </svg>
-                                </div>
-                                <h3 className="text-2xl font-bold mb-3 mt-2 text-[#A6192E]">ACCA Certification</h3>
-                                <ul className="mb-6 space-y-3">
-                                    <li className="flex items-start">
-                                        <span className="flex-shrink-0 mr-2 text-[#FFD700] text-lg">✓</span>
-                                        <span className="text-gray-700">F1 to F9 & Strategic Level Papers</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <span className="flex-shrink-0 mr-2 text-[#FFD700] text-lg">✓</span>
-                                        <span className="text-gray-700">Globally Recognized Qualification</span>
-                                    </li>
-                                    <li className="flex items-start">
-                                        <span className="flex-shrink-0 mr-2 text-[#FFD700] text-lg">✓</span>
-                                        <span className="text-gray-700">International Career Opportunities</span>
-                                    </li>
-                                </ul>
-                                <Link
-                                    to="/courses/acca"
-                                    className="relative overflow-hidden w-full block text-center px-4 py-3 rounded-lg font-semibold bg-[#A6192E] text-white shadow-md hover:shadow-xl transition-all duration-300 before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-white/20 before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300 before:origin-left"
-                                >
-                                    <span className="relative text-black z-10">Explore ACCA Program</span>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Centered Dropdown Button */}
-                    <div className="flex justify-center mt-16">
-                        <button
-                            onClick={toggleMoreContent}
-                            className="group flex items-center gap-2 px-8 py-4 rounded-full bg-white border-2 border-[#A6192E] text-[#A6192E] font-bold shadow-lg hover:bg-[#A6192E] hover:text-white transition-all duration-300"
+                        <div className="p-6 relative">
+                        <h3 className="text-2xl font-bold mb-3 mt-2 text-[#A6192E]">{course.title}</h3>
+                        <ul className="mb-4">
+                            {course.features.map((feature, index) => (
+                            <li key={index} className="flex items-start mb-2">
+                                <span className="flex-shrink-0 mr-2 text-[#FFD700] text-lg">✓</span>
+                                <span className="text-gray-700">{feature}</span>
+                            </li>
+                            ))}
+                        </ul>
+                        <Link
+                            to={course.link}
+                            className="relative overflow-hidden w-full block text-center px-4 py-3 rounded-lg font-semibold bg-[#A6192E] text-white shadow-md hover:shadow-xl transition-all duration-300 before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-white/20 before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-300 before:origin-left"
                         >
-                            <span>{showMoreContent ? 'Show Less' : 'Discover More Programs'}</span>
-                            <svg
-                                className={`w-5 h-5 transition-transform duration-300 ${showMoreContent ? 'transform rotate-180' : ''}`}
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-                    </div>
-
-                    {/* Expandable Content Area */}
-                    <div className={`mt-12 transition-all duration-500 ease-in-out overflow-hidden ${showMoreContent ? 'max-h-[400vh] opacity-100' : 'max-h-0 opacity-0'}`}>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                            {/* BBA & B.Com Card */}
-                            <div className="group relative bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300">
-                                <div className="flex flex-col md:flex-row h-full">
-                                    <div className="md:w-2/5 relative overflow-hidden">
-                                        <img
-                                            src={graduation}
-                                            alt="BBA & B.Com"
-                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent md:bg-gradient-to-t md:from-black/50 md:to-transparent"></div>
-                                        <div className="absolute bottom-4 left-4 md:bottom-auto md:left-auto md:top-4 md:right-4 px-3 py-1 bg-[#FFD700] text-gray-800 font-medium rounded-full shadow-lg">
-                                            Undergraduate
-                                        </div>
-                                    </div>
-                                    <div className="md:w-3/5 p-6 flex flex-col justify-center relative">
-                                        <div className="hidden md:block absolute -left-6 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-[#A6192E] rotate-45"></div>
-                                        <div className="relative">
-                                            <h3 className="text-2xl font-bold mb-4 text-[#A6192E]">BBA & B.Com Coaching</h3>
-                                            <div className="space-y-3 mb-6">
-                                                <p className="flex items-start">
-                                                    <span className="flex-shrink-0 mr-2 text-[#FFD700] font-bold text-xl">✓</span>
-                                                    <span className="text-gray-700">Business Management, Economics & Accounting</span>
-                                                </p>
-                                                <p className="flex items-start">
-                                                    <span className="flex-shrink-0 mr-2 text-[#FFD700] font-bold text-xl">✓</span>
-                                                    <span className="text-gray-700">University exam-focused coaching</span>
-                                                </p>
-                                                <p className="flex items-start">
-                                                    <span className="flex-shrink-0 mr-2 text-[#FFD700] font-bold text-xl">✓</span>
-                                                    <span className="text-gray-700">Real-world business applications</span>
-                                                </p>
-                                            </div>
-                                            <Link
-                                                to="/courses/bba-bcom"
-                                                className="inline-block px-6 py-3 rounded-lg bg-[#A6192E] text-white font-medium hover:bg-[#8B1425] transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
-                                            >
-                                                Learn More
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Intermediate Card */}
-                            <div className="group relative bg-white rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300">
-                                <div className="flex flex-col md:flex-row h-full">
-                                    <div className="md:w-2/5 relative overflow-hidden">
-                                        <img
-                                            src={inter}
-                                            alt="Intermediate Coaching"
-                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                        />
-                                        <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent md:bg-gradient-to-t md:from-black/50 md:to-transparent"></div>
-                                        <div className="absolute bottom-4 left-4 md:bottom-auto md:left-auto md:top-4 md:right-4 px-3 py-1 bg-[#A6192E] text-white font-medium rounded-full shadow-lg">
-                                            Foundation
-                                        </div>
-                                    </div>
-                                    <div className="md:w-3/5 p-6 flex flex-col justify-center relative">
-                                        <div className="hidden md:block absolute -left-6 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-[#A6192E] rotate-45"></div>
-                                        <div className="relative">
-                                            <h3 className="text-2xl font-bold mb-4 text-[#A6192E]">Intermediate (MEC & CEC)</h3>
-                                            <div className="space-y-3 mb-6">
-                                                <p className="flex items-start">
-                                                    <span className="flex-shrink-0 mr-2 text-[#FFD700] font-bold text-xl">✓</span>
-                                                    <span className="text-gray-700">Foundation courses for commerce & business</span>
-                                                </p>
-                                                <p className="flex items-start">
-                                                    <span className="flex-shrink-0 mr-2 text-[#FFD700] font-bold text-xl">✓</span>
-                                                    <span className="text-gray-700">Board exam preparation with in-depth training</span>
-                                                </p>
-                                                <p className="flex items-start">
-                                                    <span className="flex-shrink-0 mr-2 text-[#FFD700] font-bold text-xl">✓</span>
-                                                    <span className="text-gray-700">Subject expertise & conceptual clarity</span>
-                                                </p>
-                                            </div>
-                                            <Link
-                                                to="/courses/intermediate"
-                                                className="inline-block px-6 py-3 rounded-lg bg-[#A6192E] text-white font-medium hover:bg-[#8B1425] transform hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
-                                            >
-                                                Learn More
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <span className="relative text-white z-10">{course.buttonText}</span>
+                        </Link>
                         </div>
                     </div>
+                    ))}
                 </div>
             </section>
 
-            {/* Fourth Section with video slider */}
+            {/* Three Section with content and images */}
             <section className="py-20 bg-[#FAF3E0]">
                 <div className="container mx-auto px-4">
                     <h2 className="text-4xl font-bold text-center mb-12 text-[#A6192E]">
                         Experience Our Institute
                     </h2>
 
-                    <div className="flex flex-col lg:flex-row gap-8 items-center">
-                        {/* Main Video Display */}
-                        <div className="w-full lg:w-3/5 relative rounded-xl overflow-hidden shadow-2xl">
-                            {/* Video Overlay when not playing */}
-                            {!isPlaying && (
-                                <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center z-10">
-                                    <button
-                                        onClick={handlePlayPause}
-                                        className="w-20 h-20 rounded-full bg-[#A6192E] bg-opacity-90 flex items-center justify-center transform transition-transform hover:scale-110"
-                                    >
-                                        <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                            <path d="M8 5v14l11-7z" />
-                                        </svg>
-                                    </button>
-                                </div>
-                            )}
-
-                            {/* Video Element */}
-                            <video
-                                ref={videoRef}
-                                className="w-full h-full object-cover aspect-video"
-                                src={videoData[currentVideo].videoUrl}
-                                poster={videoData[currentVideo].thumbnail}
-                                onEnded={() => setIsPlaying(false)}
-                                controls={isPlaying}
-                            />
-
-                            {/* Video Info */}
-                            <div className={`absolute bottom-0 left-0 right-0 p-6 ${isPlaying ? 'bg-transparent' : 'bg-gradient-to-t from-black to-transparent'}`}>
-                                <h3 className="text-2xl font-bold text-white mb-2">{videoData[currentVideo].title}</h3>
-                                {!isPlaying && (
-                                    <p className="text-white text-opacity-90">{videoData[currentVideo].description}</p>
-                                )}
+                    <div className="space-y-12">
+                        {/* First Content Block */}
+                        <div className="flex flex-col lg:flex-row items-center gap-8">
+                            <div className="lg:w-1/2">
+                                <h3 className="text-3xl font-bold text-[#A6192E] mb-4">Concept-Based Teaching</h3>
+                                <p className="text-gray-700 mb-6">We simplify complex topics with real-world examples</p>
+                            </div>
+                            <div className="lg:w-1/2">
+                                <img
+                                    src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                                    alt="Campus Tour"
+                                    className="w-full rounded-lg shadow-lg"
+                                />
                             </div>
                         </div>
-                        {/* Video Thumbnails */}
-                        <div className="w-full lg:w-2/5">
-                            <div className="flex flex-col space-y-4">
-                                {videoData.map((video, index) => (
-                                    <div
-                                        key={video.id}
-                                        className={`flex cursor-pointer rounded-lg overflow-hidden shadow-md ${currentVideo === index ? 'ring-2 ring-[#A6192E]' : 'hover:bg-gray-100'}`}
-                                        onClick={() => handleVideoNav(index)}
-                                    >
-                                        {/* Thumbnail */}
-                                        <div className="w-1/3 relative">
-                                            <img
-                                                src={video.thumbnail}
-                                                alt={video.title}
-                                                className="w-full h-24 object-cover"
-                                            />
-                                            <div className={`absolute inset-0 flex items-center justify-center ${currentVideo === index ? 'bg-black bg-opacity-60' : 'bg-black bg-opacity-30'}`}>
-                                                <svg className={`w-8 h-8 ${currentVideo === index ? 'text-[#FFD700]' : 'text-white'}`} fill="currentColor" viewBox="0 0 24 24">
-                                                    <path d="M8 5v14l11-7z" />
-                                                </svg>
-                                            </div>
-                                        </div>
 
-                                        {/* Video Info */}
-                                        <div className={`w-2/3 p-4 ${currentVideo === index ? 'bg-[#ECECEC]' : 'bg-white'}`}>
-                                            <h4 className={`font-bold ${currentVideo === index ? 'text-[#A6192E]' : 'text-gray-800'}`}>{video.title}</h4>
-                                            <p className="text-sm text-gray-600">{video.description}</p>
-                                        </div>
-                                    </div>
-                                ))}
+                        {/* Second Content Block */}
+                        <div className="flex flex-col lg:flex-row-reverse items-center gap-8">
+                            <div className="lg:w-1/2">
+                                <h3 className="text-3xl font-bold text-[#A6192E] mb-4">Personalized Mentorship</h3>
+                                <p className="text-gray-700 mb-6">Every student receives dedicated guidance.</p>
+                            </div>
+                            <div className="lg:w-1/2">
+                                <img
+                                    src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                                    alt="Student Testimonials"
+                                    className="w-full rounded-lg shadow-lg"
+                                />
+                            </div>
+                        </div>
 
-                                {/* More Videos Button */}
-                                <Link
-                                    to="/videos"
-                                    className="mt-4 text-center py-3 bg-white border border-[#A6192E] text-[#A6192E] rounded-lg hover:bg-[#A6192E] hover:text-white transition-colors"
-                                >
-                                    View All Videos
-                                </Link>
+                        {/* Third Content Block */}
+                        <div className="flex flex-col lg:flex-row items-center gap-8">
+                            <div className="lg:w-1/2">
+                                <h3 className="text-3xl font-bold text-[#A6192E] mb-4">Proven Success Strategies</h3>
+                                <p className="text-gray-700 mb-6">Mock tests, industry insights, and result-driven methods.</p>
+                            </div>
+                            <div className="lg:w-1/2">
+                                <img
+                                    src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                                    alt="Faculty Insights"
+                                    className="w-full rounded-lg shadow-lg"
+                                />
+                            </div>
+                        </div>
+
+                        {/* Fourth Content Block */}
+                        <div className="flex flex-col lg:flex-row-reverse items-center gap-8">
+                            <div className="lg:w-1/2">
+                                <h3 className="text-3xl font-bold text-[#A6192E] mb-4">Career-Focused Learning</h3>
+                                <p className="text-gray-700 mb-6"> Practical knowledge that goes beyond textbooks.</p>
+                            </div>
+                            <div className="lg:w-1/2">
+                                <img
+                                    src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                                    alt="Placement Success Stories"
+                                    className="w-full rounded-lg shadow-lg"
+                                />
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
+
             {/* Testimonials Section */}
             <section className="py-20 bg-white">
                 <div className="container mx-auto px-4">
                     <h2 className="text-4xl font-bold text-center mb-16 text-[#A6192E]">
-                        Student <span className="relative inline-block">
-                            Testimonials
-                            <span className="absolute bottom-0 left-0 w-full h-2 bg-[#FFD700] rounded-full"></span>
-                        </span>
+                        Student <span className="relative inline-block">Testimonials</span>
                     </h2>
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import banner1 from '../assets/home/banner1.jpg';
 import banner2 from '../assets/home/banner2.jpg';
 import banner3 from '../assets/home/banner3.jpg';
@@ -42,10 +42,6 @@ const ImageSlider = () => {
     const [paused, setPaused] = useState(false);
     const timerRef = useRef(null);
 
-    // Colors
-    const primary = '#A6192E';
-    const secondary = '#FFD700';
-
     // Handle slide navigation
     const goToSlide = (index) => {
         if (isTransitioning) return;
@@ -56,7 +52,7 @@ const ImageSlider = () => {
         // Reset transition state after animation completes
         setTimeout(() => {
             setIsTransitioning(false);
-        }, 600);
+        }, 300); // Reduced from 600 to 300
     };
 
     const nextSlide = () => {
@@ -75,7 +71,7 @@ const ImageSlider = () => {
 
         timerRef.current = setTimeout(() => {
             nextSlide();
-        }, 5000);
+        }, 3000); // Reduced from 5000 to 3000
 
         return () => {
             if (timerRef.current) {
@@ -84,19 +80,17 @@ const ImageSlider = () => {
         };
     }, [currentIndex, paused]);
 
-    // Determine which slides to show (current, previous, next)
+    // Current image
     const currentImage = galleryImages[currentIndex];
-    const prevImage = galleryImages[(currentIndex - 1 + galleryImages.length) % galleryImages.length];
-    const nextImage = galleryImages[(currentIndex + 1) % galleryImages.length];
 
     return (
         <div
-            className="relative z-[1px] overflow-hidden"
+            className="relative z-10 h-full"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
         >
             {/* Main Slider Container */}
-            <div className="relative h-[600px] overflow-hidden rounded-xl">
+            <div className="relative h-full overflow-hidden">
                 {/* Current Slide */}
                 <div
                     className="absolute inset-0 transition-opacity duration-1000 ease-in-out z-20"
@@ -106,26 +100,9 @@ const ImageSlider = () => {
                         <img
                             src={currentImage.src}
                             alt={currentImage.alt}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full"
                         />
                     </div>
-                </div>
-
-                {/* Side Preview Images */}
-                <div className="absolute top-1/2 -translate-y-1/2 -left-20 w-40 h-40 opacity-30 blur-sm z-10 transition-all duration-500 group-hover:opacity-60 group-hover:-left-10">
-                    <img
-                        src={prevImage.src}
-                        alt="Previous slide"
-                        className="w-full h-full object-cover rounded-lg"
-                    />
-                </div>
-
-                <div className="absolute top-1/2 -translate-y-1/2 -right-20 w-40 h-40 opacity-30 blur-sm z-10 transition-all duration-500 group-hover:opacity-60 group-hover:-right-10">
-                    <img
-                        src={nextImage.src}
-                        alt="Next slide"
-                        className="w-full h-full object-cover rounded-lg"
-                    />
                 </div>
             </div>
 
@@ -159,52 +136,6 @@ const ImageSlider = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                     </svg>
                 </button>
-            </div>
-
-            {/* Pagination Dots */}
-            <div className="flex justify-center mt-6">
-                {galleryImages.map((_, index) => (
-                    <button
-                        key={index}
-                        onClick={() => goToSlide(index)}
-                        className={`mx-2 transition-all duration-300 ${index === currentIndex
-                            ? `w-8 h-2 bg-[${primary}]`
-                            : `w-2 h-2 bg-gray-400 hover:bg-[${secondary}]`
-                            } rounded-full`}
-                        aria-label={`Go to slide ${index + 1}`}
-                    />
-                ))}
-            </div>
-
-            {/* Progress Bar */}
-            <div className="w-full h-1 bg-gray-300 mt-4 rounded overflow-hidden">
-                <div
-                    className={`h-full bg-[${primary}] transition-all duration-300 ease-linear`}
-                    style={{
-                        width: `${(currentIndex / (galleryImages.length - 1)) * 100}%`,
-                    }}
-                />
-            </div>
-
-            {/* Thumbnails */}
-            <div className="mt-6 flex justify-center overflow-x-auto pb-4 space-x-3">
-                {galleryImages.map((image, index) => (
-                    <div
-                        key={image.id}
-                        className={`relative cursor-pointer transition-all duration-300 ${currentIndex === index ? 'ring-2 ring-offset-2' : 'opacity-60 hover:opacity-100'
-                            }`}
-                        style={{
-                            ringColor: primary,
-                        }}
-                        onClick={() => goToSlide(index)}
-                    >
-                        <img
-                            src={image.src}
-                            alt={`Thumbnail ${index + 1}`}
-                            className="h-16 w-24 object-cover rounded"
-                        />
-                    </div>
-                ))}
             </div>
         </div>
     );

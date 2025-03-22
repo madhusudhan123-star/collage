@@ -40,36 +40,33 @@ export const mainNavigation = [
     {
         id: 'test series',
         label: 'Test Series',
-        hasDropdown: true,
-        dropdownItems: [
-            { id: 'ca final', label: 'CA Final Test Series', path: '/test/cafinal' },
-            { id: 'test series', label: 'Test Series', path: '/test/test' },
-        ]
-    },
-    {
-        id: 'books',
-        label: 'Books',
-        path: '/books',
         hasDropdown: false,
+        path: '/test/cafinal',
     },
-    {
-        id: 'blogs',
-        label: 'Blogs',
-        path: '/blogs',
-        hasDropdown: false
-    },
+    // {
+    //     id: 'books',
+    //     label: 'Books',
+    //     path: '/books',
+    //     hasDropdown: false,
+    // },
+    // {
+    //     id: 'blogs',
+    //     label: 'Blogs',
+    //     path: '/blogs',
+    //     hasDropdown: false
+    // },
     {
         id: 'about',
         label: 'About Us',
         path: '/about',
         hasDropdown: false
     },
-    {
-        id: 'rankers',
-        label: 'Rankers',
-        path: '/rankers',
-        hasDropdown: false
-    },
+    // {
+    //     id: 'rankers',
+    //     label: 'Rankers',
+    //     path: '/rankers',
+    //     hasDropdown: false
+    // },
     {
         id: '',
         label: 'FAQ',

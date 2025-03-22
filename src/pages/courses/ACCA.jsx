@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Tab } from '@headlessui/react';
 
 // Replace relative imports with public URLs
 const acca = '/assets/course/acca.jpg';
 
 const ACCA = () => {
+  const [openSection, setOpenSection] = useState(null);
+  const [openAccordion, setOpenAccordion] = useState(null);
+  
+  const toggleSection = (index) => {
+    setOpenSection(openSection === index ? null : index);
+  };
+  
+  const toggleAccordion = (index) => {
+    setOpenAccordion(openAccordion === index ? null : index);
+  };
+  
   const sections = [
     {
       title: "Applied Knowledge",
@@ -72,129 +84,296 @@ const ACCA = () => {
   ];
 
   const images = {
-    hero: "https://www.accaglobal.com/content/dam/ACCA_Global/pro-quote/pro-quote-1920x1080.jpg",
-    logo: acca,
-    global: "https://www.accaglobal.com/content/dam/ACCA_Global/Professional-Insights/global-smp-business/pi-global-smp-growth.jpg",
-    career: "https://www.accaglobal.com/content/dam/ACCA_Global/Members/Member2020/images/Professional_insights_new.jpg",
-    study: "https://www.accaglobal.com/content/dam/acca/global/images/memberquote/member-quote-2-16x9.jpg",
-    exam: "https://www.accaglobal.com/content/dam/acca/global/images/qualifications/exams-calculator-16x9.jpg",
-    training: "https://www.accaglobal.com/content/dam/acca/global/images/members/studying-desk-laptop-16x9.jpg"
+    hero: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3",
+    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/4/49/ACCA_logo.svg/1200px-ACCA_logo.svg.png",
+    global: "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?ixlib=rb-4.0.3", 
+    career: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3",
+    study: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3",
+    exam: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3",
+    training: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3"
   };
 
   return (
     <div className="bg-gray-50">
-      {/* Hero Section with Background Image */}
-      <div className="relative bg-red-800 text-white py-20">
-        <div className="absolute inset-0 z-0">
-        </div>
-        <div className="container mx-auto px-4 relative z-10">
+
+      {/* Compact Hero Section */}
+      <div className="bg-red-800 text-white py-10">
+        <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="mb-8 md:mb-0 md:w-1/2">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">ACCA Online Course</h1>
-              <p className="text-lg mb-6">Association of Chartered Certified Accountants</p>
+            <div className="mb-4 md:mb-0 md:w-1/2">
+              <h1 className="text-3xl md:text-4xl font-bold mb-2">ACCA Online Course</h1>
+              <p className="text-base mb-4">Association of Chartered Certified Accountants</p>
               <a href='/enroll'>
-              <button className="bg-white text-red-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
-                Appy Now
-              </button>
+                <button className="bg-white text-red-800 px-6 py-2 rounded-lg font-semibold hover:bg-gray-100 transition">
+                  Apply Now
+                </button>
               </a>
             </div>
-            <div className="md:w-1/3">
-              <img
-                src={images.logo}
-                alt="ACCA Logo"
-                className="w-full h-full "
-              />
+            <div className="md:w-1/4">
+              <img src={images.logo} alt="ACCA Logo" className="w-full" />
             </div>
           </div>
         </div>
       </div>
 
-      {/* Quick Overview with Image */}
-      <section className="py-16 bg-white">
+      {/* Brief Introduction Section */}
+      <section id="overview" className="py-8 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="order-2 md:order-1">
-              <img
-                src={images.global}
-                alt="Global Recognition"
-                className="rounded-lg shadow-lg w-full"
-              />
-            </div>
-            <div className="order-1 md:order-2">
-              <h2 className="text-3xl font-bold mb-8">Global Recognition</h2>
-              <div className="grid gap-6">
-                <div className="border p-6 rounded-lg">
-                  <h3 className="font-bold mb-2">Duration</h3>
-                  <p>3-4 years (flexible)</p>
-                </div>
-                <div className="border p-6 rounded-lg">
-                  <h3 className="font-bold mb-2">Mode of Study</h3>
-                  <p>Online / Live Classes</p>
-                </div>
-                <div className="border p-6 rounded-lg">
-                  <h3 className="font-bold mb-2">Recognition</h3>
-                  <p>180+ countries</p>
-                </div>
+          <div className="text-center mb-4">
+            <h2 className="text-2xl font-bold mb-2">Association of Chartered Certified Accountants</h2>
+            <p className="text-lg text-gray-600 italic">Global Professional Accountant Qualification (1-3 Years)</p>
+          </div>
+          
+          <div className="max-w-3xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-3 mb-4">
+              <div className="bg-gray-50 p-3 rounded text-center">
+                <span className="block text-xl">🌍</span>
+                <span className="text-sm">Recognized in 180+ Countries</span>
+              </div>
+              <div className="bg-gray-50 p-3 rounded text-center">
+                <span className="block text-xl">💼</span>
+                <span className="text-sm">High Salary Potential</span>
+              </div>
+              <div className="bg-gray-50 p-3 rounded text-center">
+                <span className="block text-xl">📊</span>
+                <span className="text-sm">In-Demand Job Roles</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Course Structure */}
-      <section className="py-12">
+      {/* Course Structure as Accordion */}
+      <section id="structure" className="py-8 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8 text-center">Course Structure</h2>
-          <div className="space-y-8">
+          <h2 className="text-2xl font-bold mb-4 text-center">Course Structure</h2>
+          
+          <div className="max-w-3xl mx-auto">
             {sections.map((section, index) => (
-              <motion.div 
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.2 }}
-                className="bg-white p-6 rounded-lg shadow-sm"
-              >
-                <h3 className="text-xl font-bold mb-4 text-red-800">{section.title}</h3>
-                <ul className="space-y-2">
-                  {section.papers.map((paper, idx) => (
-                    <li key={idx} className="flex items-center">
-                      <span className="mr-2">•</span>
-                      {paper}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
+              <div key={index} className="mb-2 border rounded-lg overflow-hidden">
+                <button 
+                  className="w-full bg-white p-3 text-left font-semibold flex justify-between items-center"
+                  onClick={() => toggleAccordion(index)}
+                >
+                  <span className="text-red-800">{section.title}</span>
+                  <span>{openAccordion === index ? '−' : '+'}</span>
+                </button>
+                
+                {openAccordion === index && (
+                  <div className="p-3 bg-white border-t">
+                    <ul className="space-y-1">
+                      {section.papers.map((paper, idx) => (
+                        <li key={idx} className="flex items-center text-sm">
+                          <span className="mr-2">•</span>
+                          {paper}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Career Prospects with Image */}
-      <section className="py-16 bg-white">
+      {/* Eligibility & Duration as Compact Section */}
+      <section id="eligibility" className="py-8 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Career Prospects</h2>
-              <p className="text-gray-600 mb-8">
-                ACCA qualification opens doors to diverse career opportunities across the globe
-              </p>
-              <img
-                src={images.career}
-                alt="Career Growth"
-                className="rounded-lg shadow-lg w-full"
-              />
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-2xl font-bold mb-4 text-center">Eligibility & Duration</h2>
+            
+            <div className="grid md:grid-cols-2 gap-4 mb-4">
+              <div className="border rounded-lg p-4">
+                <h3 className="font-bold mb-2 text-lg">Eligibility</h3>
+                <ul className="space-y-1 text-sm">
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-2">✓</span>
+                    <span><b>After 10th:</b> Start with Foundation in Accountancy</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-2">✓</span>
+                    <span><b>After 12th:</b> Direct enrollment in ACCA Qualification</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-2">✓</span>
+                    <span><b>Graduates:</b> Eligible for multiple exemptions</span>
+                  </li>
+                </ul>
+              </div>
+              
+              <div className="border rounded-lg p-4">
+                <h3 className="font-bold mb-2 text-lg">Duration</h3>
+                <ul className="space-y-1 text-sm">
+                  <li className="flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span><b>Applied Knowledge:</b> 6-12 months</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span><b>Applied Skills:</b> 12-18 months</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span><b>Professional Level:</b> 12-24 months</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-600 mr-2">•</span>
+                    <span><b>With exemptions:</b> Duration reduced significantly</span>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <div className="grid gap-4">
+          </div>
+        </div>
+      </section>
+
+      {/* Collapsible Exemptions Table */}
+      <section id="exemptions" className="py-8 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <button 
+              className="w-full bg-white p-3 mb-2 text-left font-bold flex justify-between items-center rounded-lg"
+              onClick={() => toggleSection(0)}
+            >
+              <span>ACCA Course Exemptions</span>
+              <span>{openSection === 0 ? '−' : '+'}</span>
+            </button>
+            
+            {openSection === 0 && (
+              <div className="overflow-x-auto bg-white p-3 rounded-lg shadow-sm">
+                <table className="min-w-full divide-y divide-gray-200 text-sm">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      {Object.keys(exemptionsData[0]).map((header, index) => (
+                        <th key={index} className="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">
+                          {header}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white divide-y divide-gray-200">
+                    {exemptionsData.map((row, index) => (
+                      <tr key={index}>
+                        {Object.values(row).map((cell, cellIndex) => (
+                          <td key={cellIndex} className="px-3 py-2 whitespace-nowrap text-xs">
+                            {cell}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Tabbed Interface for Career Information */}
+      <section id="career" className="py-8 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-2xl font-bold mb-4 text-center">Career Prospects</h2>
+            
+            <Tab.Group>
+              <Tab.List className="flex rounded-lg bg-gray-100 p-1 mb-4">
+                {['Roles', 'Salary', 'Employers'].map((category) => (
+                  <Tab
+                    key={category}
+                    className={({ selected }) =>
+                      `w-full py-2 text-sm font-medium leading-5 text-center rounded-lg
+                      ${selected ? 'bg-red-800 text-white' : 'text-gray-700 hover:bg-gray-200'}`
+                    }
+                  >
+                    {category}
+                  </Tab>
+                ))}
+              </Tab.List>
+              <Tab.Panels className="bg-white rounded-lg p-4 border">
+                <Tab.Panel>
+                  <h3 className="font-bold mb-3">Top ACCA Career Paths</h3>
+                  <div className="grid grid-cols-2 gap-2">
+                    {[
+                      "Financial Analyst",
+                      "Management Accountant",
+                      "Financial Controller",
+                      "Audit Manager",
+                      "Tax Consultant",
+                      "Business Consultant",
+                      "Chief Financial Officer",
+                      "Risk Analyst"
+                    ].map((role, idx) => (
+                      <div key={idx} className="bg-gray-50 p-2 rounded text-sm">
+                        {role}
+                      </div>
+                    ))}
+                  </div>
+                </Tab.Panel>
+                <Tab.Panel>
+                  <h3 className="font-bold mb-3">Salary Packages</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex justify-between">
+                      <span>Entry-Level (0-2 years):</span>
+                      <span className="font-bold">₹4-6 LPA</span>
+                    </li>
+                    <li className="flex justify-between">
+                      <span>Mid-Level (3-5 years):</span>
+                      <span className="font-bold">₹8-12 LPA</span>
+                    </li>
+                    <li className="flex justify-between">
+                      <span>Senior-Level (7-10+ years):</span>
+                      <span className="font-bold">₹20+ LPA</span>
+                    </li>
+                  </ul>
+                </Tab.Panel>
+                <Tab.Panel>
+                  <h3 className="font-bold mb-3">Top Employers</h3>
+                  <ul className="space-y-2 text-sm">
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✓</span>
+                      <span>Big 4 Firms: PwC, EY, Deloitte, KPMG</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✓</span>
+                      <span>Multinational Corporations</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✓</span>
+                      <span>Financial Institutions & Banks</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-green-500 mr-2">✓</span>
+                      <span>Consulting Firms</span>
+                    </li>
+                  </ul>
+                </Tab.Panel>
+              </Tab.Panels>
+            </Tab.Group>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Lakshya - Compact Version */}
+      <section id="why-lakshya" className="py-8 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-2xl font-bold mb-4 text-center">Why Lakshya for ACCA</h2>
+            
+            <div className="grid md:grid-cols-2 gap-2">
               {[
-                "Chief Financial Officer",
-                "Financial Controller",
-                "Management Accountant",
-                "Financial Analyst",
-                "Audit Manager",
-                "Business Consultant"
-              ].map((career, index) => (
-                <div key={index} className="p-4 border rounded-lg">
-                  {career}
+                "Approved Learning Partner (ALP)",
+                "Experienced Faculty",
+                "Comprehensive Study Materials",
+                "Flexible Learning Options",
+                "Personalized Mentorship",
+                "On-Demand CBEs",
+                "Career Assistance",
+                "High Success Rate"
+              ].map((feature, idx) => (
+                <div key={idx} className="flex items-center p-2 bg-white rounded text-sm">
+                  <span className="text-green-500 mr-2">✓</span>
+                  {feature}
                 </div>
               ))}
             </div>
@@ -202,182 +381,39 @@ const ACCA = () => {
         </div>
       </section>
 
-      {/* Key Features */}
-      <section className="py-12">
+      {/* Quick Contact Form */}
+      <section className="py-8 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8 text-center">Key Features</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              "Expert Faculty with Global Experience",
-              "Comprehensive Study Materials",
-              "Regular Mock Tests",
-              "24/7 Doubt Resolution",
-              "Flexible Learning Schedule",
-              "Placement Assistance"
-            ].map((feature, index) => (
-              <div key={index} className="flex items-center p-4 bg-white rounded-lg shadow-sm">
-                <svg className="w-6 h-6 text-red-800 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                </svg>
-                {feature}
-              </div>
-            ))}
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-2xl font-bold mb-4 text-center">Get in Touch</h2>
+            
+            <form className="grid md:grid-cols-2 gap-3 bg-gray-50 p-4 rounded-lg">
+              <input type="text" placeholder="Name" className="p-2 border rounded" />
+              <input type="tel" placeholder="Phone" className="p-2 border rounded" />
+              <input type="email" placeholder="Email" className="p-2 border rounded" />
+              <select className="p-2 border rounded">
+                <option value="">Select Level</option>
+                <option>Applied Knowledge</option>
+                <option>Applied Skills</option>
+                <option>Strategic Professional</option>
+              </select>
+              <button type="submit" className="md:col-span-2 bg-red-800 text-white py-2 rounded hover:bg-red-700 transition">
+                Request Information
+              </button>
+            </form>
           </div>
         </div>
       </section>
 
-      {/* ACCA Course Exemptions & Scholarship */}
-      <section className="py-12 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-8 text-center">ACCA Course Exemptions & Scholarship</h2>
-          <div className="overflow-x-auto">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
-                <tr>
-                  {Object.keys(exemptionsData[0]).map((header, index) => (
-                    <th
-                      key={index}
-                      scope="col"
-                      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                    >
-                      {header}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {exemptionsData.map((row, index) => (
-                  <tr key={index} className={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                    {Object.values(row).map((cell, cellIndex) => (
-                      <td
-                        key={cellIndex}
-                        className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
-                      >
-                        {cell}
-                      </td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* New Content Sections */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          {/* Study Support Section */}
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Study Support</h2>
-              <p className="text-gray-600 mb-4">
-                Get comprehensive study support through:
-              </p>
-              <ul className="space-y-3">
-                {[
-                  "Live Online Classes",
-                  "Recorded Video Lectures",
-                  "Practice Question Banks",
-                  "One-to-One Mentoring",
-                  "Study Materials & Resources"
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center">
-                    <svg className="w-5 h-5 text-red-800 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <img
-                src={images.study}
-                alt="Study Support"
-                className="rounded-lg shadow-lg w-full"
-              />
-            </div>
-          </div>
-
-          {/* Exam Preparation Section */}
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-20">
-            <div className="order-2 md:order-1">
-              <img
-                src={images.exam}
-                alt="Exam Preparation"
-                className="rounded-lg shadow-lg w-full"
-              />
-            </div>
-            <div className="order-1 md:order-2">
-              <h2 className="text-3xl font-bold mb-6">Exam Preparation</h2>
-              <p className="text-gray-600 mb-4">
-                Our comprehensive exam preparation includes:
-              </p>
-              <ul className="space-y-3">
-                {[
-                  "Regular Mock Tests",
-                  "Previous Year Questions",
-                  "Performance Analysis",
-                  "Exam Techniques Workshop",
-                  "Time Management Strategies"
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center">
-                    <svg className="w-5 h-5 text-red-800 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Training Approach Section */}
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Training Approach</h2>
-              <p className="text-gray-600 mb-4">
-                Our training methodology focuses on:
-              </p>
-              <ul className="space-y-3">
-                {[
-                  "Practical Case Studies",
-                  "Industry Expert Sessions",
-                  "Hands-on Assignments",
-                  "Interactive Learning",
-                  "Regular Progress Tracking"
-                ].map((item, index) => (
-                  <li key={index} className="flex items-center">
-                    <svg className="w-5 h-5 text-red-800 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <img
-                src={images.training}
-                alt="Training Approach"
-                className="rounded-lg shadow-lg w-full"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-12 bg-red-800 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl font-bold mb-4">Ready to Start Your ACCA Journey?</h2>
-          <p className="mb-6">Get in touch with our counselors for personalized guidance</p>
-          <button className="bg-white text-red-800 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">
-            Contact Us
-          </button>
-        </div>
-      </section>
+      {/* CTA Button */}
+      <div className="fixed bottom-4 right-4 z-40">
+        <a href="/enroll" className="bg-red-800 text-white px-4 py-2 rounded-full shadow-lg hover:bg-red-700 transition flex items-center">
+          <span>Apply Now</span>
+          <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
     </div>
   );
 };
