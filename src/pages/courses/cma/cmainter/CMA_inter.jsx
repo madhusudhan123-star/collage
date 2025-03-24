@@ -604,7 +604,7 @@ const CMA_inter = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-primary-dark to-primary opacity-90"></div>
         </div>
         <div className="relative z-10 py-16 px-10 text-center text-white">
-          <h2 className="text-3xl font-bold mb-4">Ready to Excel in CA Final?</h2>
+          <h2 className="text-3xl font-bold mb-4">Ready to Excel in CMA Final?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">Join Lakshya Edu for expert guidance and success in your CA journey</p>
           <div className="flex flex-wrap justify-center gap-4">
             <a href='/enroll'>

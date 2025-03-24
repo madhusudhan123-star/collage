@@ -82,6 +82,7 @@ import CMA_found from './pages/courses/cma/cmafound/CMA_found';
 import CA_test from './pages/test_series/CA_test';
 import Cma from './pages/courses/Cma';
 import Ca from './pages/courses/Ca';
+import Privacy from './pages/Privacy';
 
 function App() {
   return (
@@ -108,6 +109,7 @@ function App() {
           <Route path="/test/cafinal" element={<CA_test />} />
           <Route path='/cma' element={<Cma />} />
           <Route path='/ca' element={<Ca />} />
+          <Route path="/privacy-policy" element={<Privacy />} />
         </Routes>
       </main>
       <Footer />

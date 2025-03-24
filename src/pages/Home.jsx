@@ -6,9 +6,9 @@ import cma from '../assets/home/CMA.jpg';
 import acca from '../assets/home/ACCA.jpg';
 import inter from '../assets/home/intermediate.jpg';
 import graduation from '../assets/home/graduation.jpg';
-import banner1 from '../assets/home/banner1.jpg';
+import banner1 from '../assets/home/banner3.jpg';
 import banner2 from '../assets/home/banner2.jpg';
-import banner3 from '../assets/home/banner3.jpg';
+import banner3 from '../assets/home/banner1.jpg';
 import banner4 from '../assets/home/banner4.jpg';
 
 const faqItems = [
@@ -198,7 +198,7 @@ const Home = () => {
                     height="80vh"
                     autoPlay={true}
                     showArrows={true}
-                    interval={5000}
+                    interval={1000}
                 />
             </section>
 
@@ -241,17 +241,7 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-                        <div className="bg-[#f8f9fa] p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
-                            <div className="text-[#A6192E] mb-4 flex justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                                </svg>
-                            </div>
-                            <h3 className="text-xl font-semibold text-center mb-3">Research-Based Learning</h3>
-                            <p className="text-gray-600 text-center">Access to extensive digital libraries, case studies, and industry research to develop analytical and problem-solving skills</p>
-                        </div>
-                        
+                    <div className="grid grid-cols-1 justify-center gap-8 mt-8">
                         <div className="bg-[#f8f9fa] p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
                             <div className="text-[#A6192E] mb-4 flex justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -272,7 +262,7 @@ const Home = () => {
                         <div className="order-2 lg:order-1">
                             <h2 className="text-3xl font-bold mb-6 text-gray-800">About Lakshya Edu</h2>
                             <p className="text-gray-600 mb-6 leading-relaxed">
-                                Established in 2005, Lakshya Educational Institute has grown to become one of the premier destinations for finance and accounting education in the region. Our focus on academic excellence and student success has made us the preferred choice for aspiring finance professionals.
+                                Founded in 2013, Lakshya Edu has been shaping the careers of thousands of students in Commerce, Accounting, and Finance. We are more than just an institution—we are a community of learners, mentors, and achievers. Our focus is to empower students with the right knowledge, skills, and confidence to excel in academics and beyond.
                             </p>
                             <p className="text-gray-600 mb-6 leading-relaxed">
                                 At Lakshya, we believe in providing more than just exam preparation. Our holistic approach to education ensures that students develop both technical knowledge and the practical skills needed to excel in their careers.
@@ -285,7 +275,7 @@ const Home = () => {
                                         </svg>
                                     </div>
                                     <p className="ml-3 text-gray-600">
-                                        <span className="font-semibold text-gray-800">Our Mission:</span> To empower students with knowledge, skills, and values needed to excel in the fields of finance and accounting.
+                                        <span className="font-semibold text-gray-800">Our Mission:</span> To provide high-quality, industry-aligned education.To create a student-centric learning environment with interactive and engaging teaching methods.
                                     </p>
                                 </div>
                                 <div className="flex items-start">
@@ -295,7 +285,7 @@ const Home = () => {
                                         </svg>
                                     </div>
                                     <p className="ml-3 text-gray-600">
-                                        <span className="font-semibold text-gray-800">Our Vision:</span> To be recognized globally as a center of excellence in professional finance education.
+                                        <span className="font-semibold text-gray-800">Our Vision:</span> To be a leading educational institution that transforms students into industry-ready professionals, setting new benchmarks in Commerce and Management education
                                     </p>
                                 </div>
                             </div>
@@ -326,7 +316,7 @@ const Home = () => {
             </section>
 
             {/* Campus Facilities Section */}
-            <section className="py-20 bg-white">
+            {/* <section className="py-20 bg-white">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-16">
                         <h2 className="text-3xl font-bold text-gray-800 mb-4">State-of-the-Art Campus Facilities</h2>
@@ -419,7 +409,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* Course Cards Section */}
             <section className="py-16 bg-[#ECECEC]">
@@ -496,11 +486,11 @@ const Home = () => {
                                 </svg>
                             </div>
                             <p className="text-xl text-gray-700 italic max-w-4xl mx-auto mb-6 leading-relaxed">
-                                The faculty at Lakshya Edu doesn't just teach concepts—they ensure you understand them thoroughly. Their personalized guidance and continuous support made all the difference in my CA journey. The structured approach to complex topics and regular practice tests helped me clear my exams with confidence.
+                                Lakshya Edu gave me the confidence to clear my CA Foundation in the first attempt. The faculty support and study materials were excellent!
                             </p>
                             <div>
-                                <div className="font-semibold text-gray-900">Ravi Kumar</div>
-                                <div className="text-[#A6192E] text-sm">CA Foundation Rank Holder</div>
+                                <div className="font-semibold text-gray-900">Sekar Kasturi</div>
+                                <div className="text-[#A6192E] text-sm">CA Foundation Student</div>
                             </div>
                         </div>
                         
@@ -509,12 +499,12 @@ const Home = () => {
                             <div className="testimonial-card">
                                 <p className="mb-4 text-gray-700 italic relative pl-6">
                                     <span className="absolute left-0 top-0 text-2xl text-[#A6192E]">"</span>
-                                    The online CA classes are a lifesaver! The interactive sessions and doubt-solving support made learning super easy.
+                                        I loved every moment of learning at Lakshya. The interactive classes and mentorship helped me stay motivated throughout my CMA journey
                                     <span className="text-2xl text-[#A6192E]">"</span>
                                 </p>
                                 <div className="border-t border-gray-200 pt-3 mt-3">
-                                    <div className="font-semibold text-gray-900">Priya M</div>
-                                    <div className="text-gray-500 text-sm">CA Student</div>
+                                    <div className="font-semibold text-gray-900">Singireddy Abhishitha</div>
+                                    <div className="text-gray-500 text-sm">CMA Student</div>
                                 </div>
                             </div>
 
@@ -533,12 +523,12 @@ const Home = () => {
                             <div className="testimonial-card">
                                 <p className="mb-4 text-gray-700 italic relative pl-6">
                                     <span className="absolute left-0 top-0 text-2xl text-[#A6192E]">"</span>
-                                    The study material and mentoring sessions have been instrumental in my preparation for the final exams.
+                                    Lakshya Edu prepared me for the real business world. The practical learning approach made all the difference in my career
                                     <span className="text-2xl text-[#A6192E]">"</span>
                                 </p>
                                 <div className="border-t border-gray-200 pt-3 mt-3">
-                                    <div className="font-semibold text-gray-900">Meera D</div>
-                                    <div className="text-gray-500 text-sm">CMA Final</div>
+                                    <div className="font-semibold text-gray-900">Rohit Sharma</div>
+                                    <div className="text-gray-500 text-sm">BBA Student</div>
                                 </div>
                             </div>
                         </div>
@@ -576,9 +566,9 @@ const Home = () => {
             {/* Statistics Section */}
             <section className="py-16 bg-[#f3f4f6]">
                 <div className="container mx-auto px-4">
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6 text-center">
                         <div className="bg-white p-6 rounded-lg shadow-sm">
-                            <div className="text-[#A6192E] text-4xl font-bold mb-2">15+</div>
+                            <div className="text-[#A6192E] text-4xl font-bold mb-2">11+</div>
                             <div className="text-gray-600">Years of Excellence</div>
                         </div>
                         <div className="bg-white p-6 rounded-lg shadow-sm">
@@ -589,10 +579,10 @@ const Home = () => {
                             <div className="text-[#A6192E] text-4xl font-bold mb-2">50+</div>
                             <div className="text-gray-600">Expert Faculty</div>
                         </div>
-                        <div className="bg-white p-6 rounded-lg shadow-sm">
+                        {/* <div className="bg-white p-6 rounded-lg shadow-sm">
                             <div className="text-[#A6192E] text-4xl font-bold mb-2">10,000+</div>
                             <div className="text-gray-600">Successful Students</div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </section>

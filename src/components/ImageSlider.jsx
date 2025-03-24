@@ -4,7 +4,7 @@ import banner2 from '../assets/home/banner2.jpg';
 import banner3 from '../assets/home/banner3.jpg';
 import banner4 from '../assets/home/banner4.jpg';
 
-const ImageSlider = ({ images, height = '80vh', autoPlay = true, showArrows = true, interval = 3000 }) => {
+const ImageSlider = ({ images, height = '80vh', autoPlay = true, showArrows = true, interval = 1000 }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isTransitioning, setIsTransitioning] = useState(false);
     const [paused, setPaused] = useState(false);

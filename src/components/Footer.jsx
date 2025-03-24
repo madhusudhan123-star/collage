@@ -159,17 +159,17 @@ const Footer = () => {
                                 <svg className="w-5 h-5 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                                 </svg>
-                                <span className="text-sm">+91 98765 43210</span>
+                                <span className="text-sm">+91 8886664725/+91 8886664724</span>
                             </div>
                             <div className="flex items-start">
                                 <svg className="w-5 h-5 mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                 </svg>
-                                <span className="text-sm">admissions@isn.edu</span>
+                                <span className="text-sm">info@lakshyaedu.co.in</span>
                             </div>
                         </div>
                         
-                        <div className="mt-6">
+                        {/* <div className="mt-6">
                             <h4 className="text-md font-semibold mb-3">Subscribe for Updates</h4>
                             <form onSubmit={handleSubmit} className="flex">
                                 <input
@@ -193,7 +193,7 @@ const Footer = () => {
                                     Thank you for subscribing!
                                 </div>
                             )}
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
@@ -208,8 +208,8 @@ const Footer = () => {
 
                         <div className="mt-4 md:mt-0 flex space-x-6">
                             <Link to="/privacy-policy" className="text-xs text-white/70 hover:text-white">Privacy Policy</Link>
-                            <Link to="/terms-of-use" className="text-xs text-white/70 hover:text-white">Terms of Use</Link>
-                            <Link to="/sitemap" className="text-xs text-white/70 hover:text-white">Sitemap</Link>
+                            {/* <Link to="/terms-of-use" className="text-xs text-white/70 hover:text-white">Terms of Use</Link>
+                            <Link to="/sitemap" className="text-xs text-white/70 hover:text-white">Sitemap</Link> */}
                         </div>
                     </div>
                 </div>
